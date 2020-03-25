@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Principal" Height="450" Width="800">
     <Grid>
+        <Menu>
+            <MenuItem Header="Registros">
+                <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" Click="RegistrarUsuariosMenuItem_Click"></MenuItem>
+            </MenuItem>
 
+            <MenuItem Header="Comsultas">
+                <MenuItem x:Name="ConsultarUsuarios" Header="Usuarios" Click="ConsultarUsuarios_Click"></MenuItem>
+            </MenuItem>
+
+        </Menu>
     </Grid>
 </Window>

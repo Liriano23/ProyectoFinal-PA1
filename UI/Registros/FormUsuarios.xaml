@@ -1,0 +1,179 @@
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Registros.FormUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
+        mc:Ignorable="d"
+        Title="FormUsuarios" Height="483" Width="598" Background="LightGray">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Content="UsuarioId:" Style="{StaticResource Labels}"></Label>
+            <Label Content="Nombres: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Apellidos: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Cédula: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Teléfono: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Celular: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Dirección: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Email" Style="{StaticResource Labels}"></Label>
+            <Label Content="Área: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Nombre de usuario: " Style="{StaticResource Labels}" Width="175"></Label>
+            <Label Content="Contraseña" Style="{StaticResource Labels}"></Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="NombresTextBox" Margin="0,10">
+                <TextBox.Text>
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="ApellidosTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="CedulaTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="TelefonoTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="CelularTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="DireccionTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="EmailTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="AreaTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="Area" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="NombreUsuarioTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="ContrasenaTextBox" Margin="0,10">
+                <TextBox.Text>
+                    <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Column="0" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Center" Click="NuevoButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/NewImage.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Center" Click="GuardarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/SaveImage.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Center" Click="EliminarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/DeleteImage.png"/>
+            </Button.Background>
+        </Button>
+        
+        <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
+                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/BuscarImage.png"/>
+            </Button.Background>
+        </Button>
+        
+    </Grid>
+</Window>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProyectoFinal_PA1.UI.Registros;
+using ProyectoFinal_PA1.UI.Consultas;
 
 namespace ProyectoFinal_PA1
 {
@@ -23,6 +25,18 @@ namespace ProyectoFinal_PA1
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void RegistrarUsuariosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormUsuarios fu = new FormUsuarios();
+            fu.Show();
+        }
+
+        private void ConsultarUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarUsuarios cu = new ConsultarUsuarios();
+            cu.Show();
         }
     }
 }
