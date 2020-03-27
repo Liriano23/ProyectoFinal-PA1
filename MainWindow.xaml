@@ -10,6 +10,7 @@
         <Menu>
             <MenuItem Header="Registros">
                 <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" Click="RegistrarUsuariosMenuItem_Click"></MenuItem>
+                <MenuItem x:Name="RegistrarClientesMenuItem" Header="Clientes" Click="RegistrarUsuariosMenuItem_Click"></MenuItem>
             </MenuItem>
 
             <MenuItem Header="Comsultas">

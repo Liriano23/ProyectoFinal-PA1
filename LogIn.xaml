@@ -5,15 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1"
         mc:Ignorable="d"
-        Title="LogIn" Height="450" Width="800" Background="LightGray">
+        Title="LogIn" Height="253" Width="388" Background="LightGray">
     <Grid>
-        <Label Content="Nombre usuario: " Width="100" Height="30" Margin="70,154,307,197"></Label>
-        <Label Content="Contraseña: " Width="100" Height="30" Margin="70,239,307,112"></Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TextBox x:Name="NombreUsuarioTextBox" Width="100" Height="30" Margin="185,159,192,192"></TextBox>
-        <TextBox x:Name="ContrasenaTextBox" Width="100" Height="30" Margin="185,249,192,102"></TextBox>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Height="auto">
+            <Label Content="Nombre usuario: " Width="100" Height="30" ></Label>
+            <Label Content="Contraseña: " Width="100" Height="30" ></Label>
+        </StackPanel>
 
-        <Button x:Name="IngresarButton" Content="Iniciar sesion" Width="100" Height="50" Margin="180,304,197,27" Click="IngresarButton_Click"></Button>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Height="auto">
+            <TextBox x:Name="NombreUsuarioTextBox" Margin="0,5"></TextBox>
+            <TextBox x:Name="ContrasenaTextBox" Margin="0,5"></TextBox>
+        </StackPanel>
+
+        <Button x:Name="IngresarButton" Content="Iniciar sesion"  Click="IngresarButton_Click" Grid.ColumnSpan="2" Margin="25,74,0,-29"></Button>
+
+        <Button Visibility="Visible" Opacity="0.7" BorderThickness="0,0,0,0" Grid.Column="1" Margin="0,4,165,46">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/NewImage.png"/>
+            </Button.Background>
+        </Button>
+        
+
     </Grid>
 </Window>

@@ -22,6 +22,8 @@ namespace ProyectoFinal_PA1
         List<Usuarios> lista = new List<Usuarios>();
         public static int UsuarioId;
 
+        private static string userName = "admin123";
+        private static string password = "admin123";
         public LogIn()
         {
             InitializeComponent();
@@ -33,6 +35,17 @@ namespace ProyectoFinal_PA1
 
             lista = UsuariosBLL.GetList(p => true);
             bool paso = false;
+            
+            //Usuario por defecto
+            if(NombreUsuarioTextBox.Text == userName && ContrasenaTextBox.Text == password)
+            {
+                MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Hand);
+                main.Show();
+                paso = true;
+                return;
+
+            }
+            //Si existe usuario en base de datos
             foreach (var item in lista)
             {
                 if ((item.NombreUsuario == NombreUsuarioTextBox.Text) && (item.Contrasena == ContrasenaTextBox.Text))
@@ -51,5 +64,7 @@ namespace ProyectoFinal_PA1
                 NombreUsuarioTextBox.Focus();
             }
         }
+
+
     }
 }
