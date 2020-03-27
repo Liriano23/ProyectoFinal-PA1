@@ -28,12 +28,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("NombreCategoria")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int?>("UsuarioId1")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CategoriaId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Categorias");
                 });
@@ -74,12 +74,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int?>("UsuarioId1")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ClienteId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Clientes");
                 });
@@ -120,7 +120,7 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int?>("UsuarioId1")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("sueldo")
@@ -128,9 +128,47 @@ namespace ProyectoFinal_PA1.Migrations
 
                     b.HasKey("EmpleadoId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Empleados");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Productos", b =>
+                {
+                    b.Property<int>("ProductoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CategoriaId1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FechaIngreso")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Inventario")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MarcaProducto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreProducto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("SuplidorId1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuarioId1")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ProductoId");
+
+                    b.HasIndex("CategoriaId1");
+
+                    b.HasIndex("SuplidorId1");
+
+                    b.HasIndex("UsuarioId1");
+
+                    b.ToTable("Productos");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Suplidores", b =>
@@ -160,12 +198,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int?>("UsuarioId1")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("SuplidorId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Suplidores");
                 });
@@ -219,38 +257,45 @@ namespace ProyectoFinal_PA1.Migrations
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Categorias", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
-                        .WithMany("Categorias")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Clientes", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
-                        .WithMany("Clientes")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Empleados", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
-                        .WithMany("Empleados")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Productos", b =>
+                {
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Categorias", "CategoriaId")
+                        .WithMany()
+                        .HasForeignKey("CategoriaId1");
+
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Suplidores", "SuplidorId")
+                        .WithMany()
+                        .HasForeignKey("SuplidorId1");
+
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Suplidores", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
-                        .WithMany("Suplidores")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
                 });
 #pragma warning restore 612, 618
         }

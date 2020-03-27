@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormClientes" Height="560" Width="615" Background="LightGray">
+        Title="FormClientes" Height="454" Width="576" Background="LightGray">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -181,7 +181,7 @@
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click">
+                Width="100" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="0,5,0,0">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>

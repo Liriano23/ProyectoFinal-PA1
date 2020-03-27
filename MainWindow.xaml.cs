@@ -39,12 +39,6 @@ namespace ProyectoFinal_PA1
             cu.Show();
         }
 
-        //private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ConsultarClientes consultarClientes = new ConsultarClientes();
-        //    consultarClientes.Show();
-        //}
-
         private void RegistrarClientesMenuItem_Click(object sender, RoutedEventArgs e)
         {
             FormClientes formularioClientes = new FormClientes();
@@ -55,6 +49,28 @@ namespace ProyectoFinal_PA1
         {
             ConsultarClientes consultarClientes = new ConsultarClientes();
             consultarClientes.Show();
+        }
+
+        private void ConsultarProductos_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarProductos consultarProductos = new ConsultarProductos();
+            consultarProductos.Show();
+        }
+
+        private void RegistrarProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormProductos formProductos = new FormProductos();
+            formProductos.Show();
+        }
+
+        private void RegistrarVentasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ConsultarVentas_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

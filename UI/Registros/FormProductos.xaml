@@ -1,0 +1,151 @@
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Registros.FormProductos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
+        mc:Ignorable="d"
+        Title="FormProductos" Height="347" Width="534" Background="LightGray">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="210"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Content="ProductoId:" Style="{StaticResource Labels}"></Label>
+            <Label Content="Nombre Producto: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Marca Producto: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Inventario: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Fecha Ingreso: " Style="{StaticResource Labels}" Width="99"></Label>
+
+            <Label Content="Suplidor Id: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Categoria Id: " Style="{StaticResource Labels}"></Label>
+            <Label Content="UsuarioId:" Style="{StaticResource Labels}"></Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+
+            <TextBox x:Name="ProductoIdTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="ProductoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="NombreProductoTextBox">
+                <TextBox.Text>
+                    <Binding Path="NombreProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="MarcaProductoTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="MarcaProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="InventarioTextBox">
+                <TextBox.Text>
+                    <Binding Path="Inventario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,7">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+
+            <TextBox x:Name="SuplidorIdTextBox">
+                <TextBox.Text>
+                    <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+        </StackPanel>
+
+        <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Left" Margin="44,22,0,28" Click="NuevoButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Left" Margin="15,22,0,28" Click="GuardarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Left" Margin="15,22,0,28" Click="EliminarButton_Click_1">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
+                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" >
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

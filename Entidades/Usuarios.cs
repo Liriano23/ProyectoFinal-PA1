@@ -23,16 +23,6 @@ namespace ProyectoFinal_PA1.Entidades
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
 
-        [ForeignKey("UsuarioId")]
-        public List<Clientes> Clientes { get; set; }
-        [ForeignKey("UsuarioId")]
-        public List<Suplidores> Suplidores { get; set; }
-        [ForeignKey("UsuarioId")]
-        public List<Categorias> Categorias { get; set; }
-        [ForeignKey("UsuarioId")]
-        public List<Empleados> Empleados { get; set; }
-
-
         public Usuarios()
         {
             UsuarioId = 0;

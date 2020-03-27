@@ -22,7 +22,7 @@ namespace ProyectoFinal_PA1.Entidades
         public DateTime FechaNacimiento { get; set; }
         public DateTime FechaIngreso { get; set; }
 
-        public int UsuarioId { get; set; }
+        public Usuarios UsuarioId { get; set; }
 
         public Clientes()
         {

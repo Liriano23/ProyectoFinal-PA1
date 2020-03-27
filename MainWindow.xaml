@@ -11,11 +11,16 @@
             <MenuItem Header="Registros">
                 <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" Click="RegistrarUsuariosMenuItem_Click"></MenuItem>
                 <MenuItem x:Name="RegistrarClientesMenuItem" Header="Clientes" Click="RegistrarClientesMenuItem_Click"></MenuItem>
+                <MenuItem x:Name="RegistrarProductosMenuItem" Header="Productos" Click="RegistrarProductosMenuItem_Click"></MenuItem>
+                <MenuItem x:Name="RegistrarVentasMenuItem" Header="Ventas" Click="RegistrarVentasMenuItem_Click"></MenuItem>
+
             </MenuItem>
 
             <MenuItem Header="Comsultas">
                 <MenuItem x:Name="ConsultarUsuarios" Header="Usuarios" Click="ConsultarUsuarios_Click"></MenuItem>
                 <MenuItem x:Name="ConsultarClientes" Header="Clientes" Click="ConsultarClientes_Click"></MenuItem>
+                <MenuItem x:Name="ConsultarProductos" Header="Productos" Click="ConsultarProductos_Click"></MenuItem>
+                <MenuItem x:Name="ConsultarVentas" Header="Ventas" Click="ConsultarVentas_Click"></MenuItem>
 
             </MenuItem>
 

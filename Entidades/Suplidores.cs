@@ -20,7 +20,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public string Ciudad { get; set; }
 		public string Email { get; set; }
 
-		public int UsuarioId { get; set; }
+		public Usuarios UsuarioId { get; set; }
 
 		public Suplidores()
 		{
@@ -32,7 +32,7 @@ namespace ProyectoFinal_PA1.Entidades
 			Celular = string.Empty;
 			Ciudad = string.Empty;
 			Email = string.Empty;
-			UsuarioId = 0;
+			
 		}
 	}
 }

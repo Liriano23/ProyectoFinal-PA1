@@ -21,7 +21,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public decimal sueldo { get; set; }
 		public DateTime FechaNacimiento { get; set; }
 		public DateTime FechaIngreso { get; set; }
-		public int UsuarioId { get; set; }
+		public Usuarios UsuarioId { get; set; }
 
 		public Empleados()
 		{
@@ -38,7 +38,7 @@ namespace ProyectoFinal_PA1.Entidades
 			sueldo = 0;
 			FechaNacimiento = DateTime.Now;
 			FechaIngreso = DateTime.Now;
-			UsuarioId = 0;
+			
 		}
 	}
 }

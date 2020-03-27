@@ -17,6 +17,9 @@ namespace ProyectoFinal_PA1.DAL
        
         public DbSet<Clientes> Clientes { get; set; }
 
+        public DbSet<Productos> Productos { get; set; }
+        public DbSet<Ventas> Ventas { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data source = Data/RepuestoRafa");
