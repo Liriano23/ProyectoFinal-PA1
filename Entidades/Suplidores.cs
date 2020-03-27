@@ -8,9 +8,7 @@ namespace ProyectoFinal_PA1.Entidades
 {
 	public class Suplidores
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+		
 		[Key]
 		public int SuplidorId { get; set; }
 
@@ -22,7 +20,6 @@ namespace ProyectoFinal_PA1.Entidades
 		public string Ciudad { get; set; }
 		public string Email { get; set; }
 
-		[ForeignKey("SuplidorId")]
 		public int UsuarioId { get; set; }
 
 		public Suplidores()

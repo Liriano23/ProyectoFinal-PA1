@@ -38,5 +38,23 @@ namespace ProyectoFinal_PA1
             ConsultarUsuarios cu = new ConsultarUsuarios();
             cu.Show();
         }
+
+        //private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ConsultarClientes consultarClientes = new ConsultarClientes();
+        //    consultarClientes.Show();
+        //}
+
+        private void RegistrarClientesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormClientes formularioClientes = new FormClientes();
+            formularioClientes.Show();
+        }
+
+        private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarClientes consultarClientes = new ConsultarClientes();
+            consultarClientes.Show();
+        }
     }
 }

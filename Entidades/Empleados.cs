@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoFinal_PA1.Entidades
 {
     public class Empleados
     {
+		[Key]
 		public int EmpleadoId { get; set; }
 		public string Nombres { get; set; }
 		public string Apellidos { get; set; }
@@ -19,8 +21,6 @@ namespace ProyectoFinal_PA1.Entidades
 		public decimal sueldo { get; set; }
 		public DateTime FechaNacimiento { get; set; }
 		public DateTime FechaIngreso { get; set; }
-
-		[ForeignKey("EmpleadoId")]
 		public int UsuarioId { get; set; }
 
 		public Empleados()

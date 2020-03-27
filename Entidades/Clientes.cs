@@ -22,7 +22,6 @@ namespace ProyectoFinal_PA1.Entidades
         public DateTime FechaNacimiento { get; set; }
         public DateTime FechaIngreso { get; set; }
 
-        [ForeignKey("UsuarioId")]
         public int UsuarioId { get; set; }
 
         public Clientes()
