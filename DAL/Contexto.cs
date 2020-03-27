@@ -9,6 +9,10 @@ namespace ProyectoFinal_PA1.DAL
 {
     public class Contexto : DbContext
     {
+        
+        public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
+        public DbSet<Suplidores> Suplidores { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
