@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace ProyectoFinal_PA1.Entidades
+{
+	public class Suplidores
+	{
+		//
+		// TODO: Add constructor logic here
+		//
+		[Key]
+		public int SuplidorId { get; set; }
+
+		public string NombreSuplidor { get; set; }
+		public string NombreCompania { get; set; }
+		public string Direccion { get; set; }
+		public string Telefono { get; set; }
+		public string Celular { get; set; }
+		public string Ciudad { get; set; }
+		public string Email { get; set; }
+
+		[ForeignKey("SuplidorId")]
+		public int UsuarioId { get; set; }
+
+		public Suplidores()
+		{
+			SuplidorId = 0; 
+			NombreSuplidor = string.Empty;
+			NombreCompania = string.Empty;
+			Direccion = string.Empty;
+			Telefono = string.Empty;
+			Celular = string.Empty;
+			Ciudad = string.Empty;
+			Email = string.Empty;
+			UsuarioId = 0;
+		}
+	}
+}
