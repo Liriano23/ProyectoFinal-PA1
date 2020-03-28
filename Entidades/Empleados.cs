@@ -18,7 +18,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public string Direccion { get; set; }
 		public string Email { get; set; }
 		public string Cargo { get; set; }
-		public decimal sueldo { get; set; }
+		public decimal Sueldo { get; set; }
 		public DateTime FechaNacimiento { get; set; }
 		public DateTime FechaIngreso { get; set; }
 		public Usuarios UsuarioId { get; set; }
@@ -33,9 +33,8 @@ namespace ProyectoFinal_PA1.Entidades
 			Celular = string.Empty;
 			Direccion = string.Empty;
 			Email = string.Empty;
-			Celular = string.Empty;
 			Cargo = string.Empty;
-			sueldo = 0;
+			Sueldo = 0;
 			FechaNacimiento = DateTime.Now;
 			FechaIngreso = DateTime.Now;
 			

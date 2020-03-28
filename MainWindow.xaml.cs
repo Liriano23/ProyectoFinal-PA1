@@ -45,6 +45,7 @@ namespace ProyectoFinal_PA1
             formularioClientes.Show();
         }
 
+
         private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
         {
             ConsultarClientes consultarClientes = new ConsultarClientes();
@@ -71,6 +72,18 @@ namespace ProyectoFinal_PA1
         private void ConsultarVentas_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void RegistrarEmpleadosMenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            FormEmpleados formularioEmpleados = new FormEmpleados();
+            formularioEmpleados.Show();
+        }
+
+        private void ConsultarEmpleados_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaEmpleado ConsultarEmpleado = new ConsultaEmpleado();
+            ConsultarEmpleado.Show();
         }
     }
 }

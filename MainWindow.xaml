@@ -5,22 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1"
         mc:Ignorable="d"
-        Title="Principal" Height="450" Width="800">
+        Title="Principal" Height="500" Width="850">
     <Grid>
         <Menu>
-            <MenuItem Header="Registros">
-                <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" Click="RegistrarUsuariosMenuItem_Click"></MenuItem>
-                <MenuItem x:Name="RegistrarClientesMenuItem" Header="Clientes" Click="RegistrarClientesMenuItem_Click"></MenuItem>
-                <MenuItem x:Name="RegistrarProductosMenuItem" Header="Productos" Click="RegistrarProductosMenuItem_Click"></MenuItem>
-                <MenuItem x:Name="RegistrarVentasMenuItem" Header="Ventas" Click="RegistrarVentasMenuItem_Click"></MenuItem>
+            <MenuItem Header="Registros" FontSize="20" >
+                <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" FontSize="20" Click="RegistrarUsuariosMenuItem_Click"/>
+                <MenuItem x:Name="RegistrarClientesMenuItem" Header="Clientes" FontSize="20" Click="RegistrarClientesMenuItem_Click"/>
+                <MenuItem x:Name="RegistrarEmpleadosMenuItem" Header="Empleados" FontSize="20" Click="RegistrarEmpleadosMenuItem_Click_1"/>
+                <MenuItem x:Name="RegistrarProductosMenuItem" Header="Productos" FontSize="20" Click="RegistrarProductosMenuItem_Click"/>
+                <MenuItem x:Name="RegistrarVentasMenuItem" Header="Ventas" FontSize="20" Click="RegistrarVentasMenuItem_Click"/>
+
 
             </MenuItem>
 
-            <MenuItem Header="Comsultas">
-                <MenuItem x:Name="ConsultarUsuarios" Header="Usuarios" Click="ConsultarUsuarios_Click"></MenuItem>
-                <MenuItem x:Name="ConsultarClientes" Header="Clientes" Click="ConsultarClientes_Click"></MenuItem>
-                <MenuItem x:Name="ConsultarProductos" Header="Productos" Click="ConsultarProductos_Click"></MenuItem>
-                <MenuItem x:Name="ConsultarVentas" Header="Ventas" Click="ConsultarVentas_Click"></MenuItem>
+            <MenuItem Header="Consultas" FontSize="20" >
+                <MenuItem x:Name="ConsultarUsuarios" FontSize="20" Header="Usuarios" Click="ConsultarUsuarios_Click"/>
+                <MenuItem x:Name="ConsultarClientes" FontSize="20" Header="Clientes" Click="ConsultarClientes_Click"/>
+                <MenuItem x:Name="ConsultarEmpleados" FontSize="20" Header="Empleados" Click="ConsultarEmpleados_Click"/>
+                <MenuItem x:Name="ConsultarProductos" FontSize="20" Header="Productos" Click="ConsultarProductos_Click"/>
+                <MenuItem x:Name="ConsultarVentas" FontSize="20" Header="Ventas" Click="ConsultarVentas_Click"/>
 
             </MenuItem>
 
