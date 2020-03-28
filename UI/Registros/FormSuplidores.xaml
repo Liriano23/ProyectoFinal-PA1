@@ -47,7 +47,7 @@
 
             <TextBox x:Name="NombreSuplidorTextBox">
                 <TextBox.Text>
-                    <Binding Path="NombreSuplidor" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>

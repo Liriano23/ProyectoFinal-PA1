@@ -97,5 +97,17 @@ namespace ProyectoFinal_PA1
         {
             System.Console.WriteLine("Te falta ingresar la consulta de veta");
         }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            ConsultarCategoria consultarCategoria = new ConsultarCategoria();
+            consultarCategoria.Show();
+        }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            FormCategoria formCategoria = new FormCategoria();
+            formCategoria.Show();
+        }
     }
 }

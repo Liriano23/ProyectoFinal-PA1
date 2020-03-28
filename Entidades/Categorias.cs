@@ -19,7 +19,6 @@ namespace ProyectoFinal_PA1.Entidades
             CategoriaId = 0;
             NombreCategoria = string.Empty;
             Descripcion = string.Empty;
-            
         }
     }
 }

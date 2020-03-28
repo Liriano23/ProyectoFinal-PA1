@@ -10,6 +10,7 @@ namespace ProyectoFinal_PA1.DAL
     public class Contexto : DbContext
     {
         
+        public DbSet<Compras> Compras { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
         public DbSet<Suplidores> Suplidores { get; set; }

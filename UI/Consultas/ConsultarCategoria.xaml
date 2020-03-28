@@ -1,11 +1,11 @@
-﻿<Window x:Class="ProyectoFinal_PA1.UI.Consultas.ConsultarSuplidor"
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Consultas.ConsultarCategoria"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-       Title="Consultar Suplidor" Height="400" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="Consultar Categorias" Height="319" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFC5BDBD">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -17,7 +17,7 @@
             <ComboBoxItem Content="TODO"/>
             <ComboBoxItem Content="ID"/>
             <ComboBoxItem Content="Nombre"/>
-            <ComboBoxItem Content="Nombre Compañia"/>
+            <ComboBoxItem Content="Descripcion"/>
         </ComboBox>
 
         <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>
@@ -31,6 +31,7 @@
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-291"/>
+        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-246"/>
     </Grid>
 </Window>
+
