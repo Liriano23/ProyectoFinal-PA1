@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-         Title="Consulta Empleado" Height="350" Width="1100" Background="LightGray">
-    <Grid>
+         Title="Consulta Empleado" Height="500" Width="1100" Background="LightGray" WindowStartupLocation="CenterScreen" >
+    <Grid Background="#FFC5BDBD">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -31,6 +31,15 @@
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-246"/>
+        <DataGrid Name="ConsultarDataGrid" Margin="7,44,-5,-351" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.392"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-2.976"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
     </Grid>
 </Window>

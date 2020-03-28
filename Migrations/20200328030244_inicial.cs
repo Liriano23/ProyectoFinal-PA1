@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinal_PA1.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,6 +29,25 @@ namespace ProyectoFinal_PA1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ventas",
+                columns: table => new
+                {
+                    VentaId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ClienteId = table.Column<int>(nullable: false),
+                    EmpleadoId = table.Column<int>(nullable: false),
+                    FechaEmision = table.Column<DateTime>(nullable: false),
+                    SubTotal = table.Column<decimal>(nullable: false),
+                    ITBIS = table.Column<double>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ventas", x => x.VentaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,7 +114,7 @@ namespace ProyectoFinal_PA1.Migrations
                     Direccion = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Cargo = table.Column<string>(nullable: true),
-                    sueldo = table.Column<decimal>(nullable: false),
+                    Sueldo = table.Column<decimal>(nullable: false),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
                     FechaIngreso = table.Column<DateTime>(nullable: false),
                     UsuarioId1 = table.Column<int>(nullable: true)
@@ -118,6 +137,7 @@ namespace ProyectoFinal_PA1.Migrations
                     SuplidorId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     NombreSuplidor = table.Column<string>(nullable: true),
+                    Apellidos = table.Column<string>(nullable: true),
                     NombreCompania = table.Column<string>(nullable: true),
                     Direccion = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
@@ -135,6 +155,28 @@ namespace ProyectoFinal_PA1.Migrations
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VentasDetalles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductoId = table.Column<int>(nullable: false),
+                    VentaId = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VentasDetalles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VentasDetalles_Ventas_VentaId",
+                        column: x => x.VentaId,
+                        principalTable: "Ventas",
+                        principalColumn: "VentaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -208,6 +250,11 @@ namespace ProyectoFinal_PA1.Migrations
                 name: "IX_Suplidores_UsuarioId1",
                 table: "Suplidores",
                 column: "UsuarioId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VentasDetalles_VentaId",
+                table: "VentasDetalles",
+                column: "VentaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -222,10 +269,16 @@ namespace ProyectoFinal_PA1.Migrations
                 name: "Productos");
 
             migrationBuilder.DropTable(
+                name: "VentasDetalles");
+
+            migrationBuilder.DropTable(
                 name: "Categorias");
 
             migrationBuilder.DropTable(
                 name: "Suplidores");
+
+            migrationBuilder.DropTable(
+                name: "Ventas");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

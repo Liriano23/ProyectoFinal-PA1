@@ -13,6 +13,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public int SuplidorId { get; set; }
 
 		public string NombreSuplidor { get; set; }
+		public string Apellidos { get; set; }
 		public string NombreCompania { get; set; }
 		public string Direccion { get; set; }
 		public string Telefono { get; set; }
@@ -24,15 +25,15 @@ namespace ProyectoFinal_PA1.Entidades
 
 		public Suplidores()
 		{
-			SuplidorId = 0; 
+			SuplidorId = 0;
 			NombreSuplidor = string.Empty;
+			Apellidos = string.Empty;
 			NombreCompania = string.Empty;
 			Direccion = string.Empty;
 			Telefono = string.Empty;
 			Celular = string.Empty;
 			Ciudad = string.Empty;
 			Email = string.Empty;
-			
 		}
 	}
 }

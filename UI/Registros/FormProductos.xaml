@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormProductos" Height="347" Width="534" Background="LightGray">
-    <Grid>
+        Title="FormProductos" Height="347" Width="534" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFC5BDBD">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>

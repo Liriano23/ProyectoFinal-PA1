@@ -59,7 +59,7 @@ namespace ProyectoFinal_PA1.BLL
             Contexto db = new Contexto();
             try
             {
-                var eliminar = db.Empleados.Find(id);
+                var eliminar = db.Suplidores.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
                 paso = (db.SaveChanges() > 0);
             }

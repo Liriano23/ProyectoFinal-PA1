@@ -9,8 +9,8 @@ using ProyectoFinal_PA1.DAL;
 namespace ProyectoFinal_PA1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200327194916_Inicial")]
-    partial class Inicial
+    [Migration("20200328030244_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,14 +119,14 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("Sueldo")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("UsuarioId1")
                         .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("sueldo")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("EmpleadoId");
 
@@ -178,6 +178,9 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<int>("SuplidorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Celular")
                         .HasColumnType("TEXT");
@@ -257,6 +260,63 @@ namespace ProyectoFinal_PA1.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Ventas", b =>
+                {
+                    b.Property<int>("VentaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Descuento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EmpleadoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FechaEmision")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("ITBIS")
+                        .HasColumnType("REAL");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("VentaId");
+
+                    b.ToTable("Ventas");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.VentasDetalles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("VentaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VentaId");
+
+                    b.ToTable("VentasDetalles");
+                });
+
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Categorias", b =>
                 {
                     b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
@@ -298,6 +358,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
                         .WithMany()
                         .HasForeignKey("UsuarioId1");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.VentasDetalles", b =>
+                {
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Ventas", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("VentaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

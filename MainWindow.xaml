@@ -5,28 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1"
         mc:Ignorable="d"
-        Title="Principal" Height="500" Width="850">
-    <Grid>
-        <Menu>
-            <MenuItem Header="Registros" FontSize="20" >
-                <MenuItem x:Name="RegistrarUsuariosMenuItem" Header="Usuarios" FontSize="20" Click="RegistrarUsuariosMenuItem_Click"/>
-                <MenuItem x:Name="RegistrarClientesMenuItem" Header="Clientes" FontSize="20" Click="RegistrarClientesMenuItem_Click"/>
-                <MenuItem x:Name="RegistrarEmpleadosMenuItem" Header="Empleados" FontSize="20" Click="RegistrarEmpleadosMenuItem_Click_1"/>
-                <MenuItem x:Name="RegistrarProductosMenuItem" Header="Productos" FontSize="20" Click="RegistrarProductosMenuItem_Click"/>
-                <MenuItem x:Name="RegistrarVentasMenuItem" Header="Ventas" FontSize="20" Click="RegistrarVentasMenuItem_Click"/>
+        Title="Principal" Height="500" Width="700" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFC5BDBD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        
+        
+        <Label Content="Menu Principal" HorizontalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="Bold"/>
 
+        <Label Content="Registros" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" FontWeight="Bold"/>
 
-            </MenuItem>
+        <Button Content="Usuarios" FontSize="16" Grid.Row="2" Grid.Column="0" Click="Button_Click" Background="#FF3081E2"/>
+        <Button Content="Clientes" FontSize="16" Grid.Row="4" Grid.Column="0" Click="Button_Click_1" Background="#FF3081E2"/>
+        <Button Content="Empleados" FontSize="16" Grid.Row="6" Grid.Column="0" Click="Button_Click_2" Background="#FF3081E2"/>
+        <Button Content="Suplidores" FontSize="16" Grid.Row="8" Grid.Column="0" Click="Button_Click_3" Background="#FF3081E2"/>
+        <Button Content="Productos" FontSize="16" Grid.Row="10" Grid.Column="0" Click="Button_Click_4" Background="#FF3081E2"/>
+        <Button Content="Ventas" FontSize="16" Grid.Row="12" Grid.Column="0" Click="Button_Click_5" Background="#FF3081E2"/>
 
-            <MenuItem Header="Consultas" FontSize="20" >
-                <MenuItem x:Name="ConsultarUsuarios" FontSize="20" Header="Usuarios" Click="ConsultarUsuarios_Click"/>
-                <MenuItem x:Name="ConsultarClientes" FontSize="20" Header="Clientes" Click="ConsultarClientes_Click"/>
-                <MenuItem x:Name="ConsultarEmpleados" FontSize="20" Header="Empleados" Click="ConsultarEmpleados_Click"/>
-                <MenuItem x:Name="ConsultarProductos" FontSize="20" Header="Productos" Click="ConsultarProductos_Click"/>
-                <MenuItem x:Name="ConsultarVentas" FontSize="20" Header="Ventas" Click="ConsultarVentas_Click"/>
-
-            </MenuItem>
-
-        </Menu>
+        <Label Content="Consultas" HorizontalAlignment="Center" Grid.Column="2" FontSize="16" FontWeight="Bold"/>
+        <Button Content="Consultas Usuarios" FontSize="16"  Grid.Row="2" Grid.Column="2" Click="Button_Click_6" Background="#FF3081E2"/>
+        <Button Content="Consultas Clientes" FontSize="16" Grid.Row="4" Grid.Column="2" Click="Button_Click_7" Background="#FF3081E2"/>
+        <Button Content="Consultas Empleados" FontSize="16" Grid.Row="6" Grid.Column="2" Click="Button_Click_8" Background="#FF3081E2"/>
+        <Button Content="Consultas Suplidores" FontSize="16" Grid.Row="8" Grid.Column="2" Click="Button_Click_9" Background="#FF3081E2"/>
+        <Button Content="Consultas Productos" FontSize="16" Grid.Row="10" Grid.Column="2" Click="Button_Click_10" Background="#FF3081E2"/>
+        <Button Content="Consultas Ventas" FontSize="16" Grid.Row="12" Grid.Column="2" Click="Button_Click_11" Background="#FF3081E2"/>
     </Grid>
 </Window>

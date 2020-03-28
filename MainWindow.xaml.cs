@@ -27,63 +27,75 @@ namespace ProyectoFinal_PA1
             InitializeComponent();
         }
 
-        private void RegistrarUsuariosMenuItem_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             FormUsuarios fu = new FormUsuarios();
             fu.Show();
         }
 
-        private void ConsultarUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultarUsuarios cu = new ConsultarUsuarios();
-            cu.Show();
-        }
-
-        private void RegistrarClientesMenuItem_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             FormClientes formularioClientes = new FormClientes();
             formularioClientes.Show();
         }
 
-
-        private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultarClientes consultarClientes = new ConsultarClientes();
-            consultarClientes.Show();
-        }
-
-        private void ConsultarProductos_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultarProductos consultarProductos = new ConsultarProductos();
-            consultarProductos.Show();
-        }
-
-        private void RegistrarProductosMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            FormProductos formProductos = new FormProductos();
-            formProductos.Show();
-        }
-
-        private void RegistrarVentasMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ConsultarVentas_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RegistrarEmpleadosMenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             FormEmpleados formularioEmpleados = new FormEmpleados();
             formularioEmpleados.Show();
         }
 
-        private void ConsultarEmpleados_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            ConsultaEmpleado ConsultarEmpleado = new ConsultaEmpleado();
-            ConsultarEmpleado.Show();
+            FormSuplidores formularioSuplidores = new FormSuplidores();
+            formularioSuplidores.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            FormProductos formProductos = new FormProductos();
+            formProductos.Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            FormVentas formVentas = new FormVentas();
+            formVentas.Show();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ConsultarUsuarios consultarUsuarios = new ConsultarUsuarios();
+            consultarUsuarios.Show();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            ConsultarClientes consultarClientes = new ConsultarClientes();
+            consultarClientes.Show();
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
+            consultaEmpleado.Show();
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
+            consultarSuplidor.Show();
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            ConsultarProductos consultarProductos = new ConsultarProductos();
+            consultarProductos.Show();
+        }
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)
+        {
+            System.Console.WriteLine("Te falta ingresar la consulta de veta");
         }
     }
 }

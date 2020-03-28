@@ -16,75 +16,56 @@ using ProyectoFinal_PA1.Entidades;
 namespace ProyectoFinal_PA1.UI.Registros
 {
     /// <summary>
-    /// Lógica de interacción para FormEmpleados.xaml
+    /// Lógica de interacción para FormSuplidores.xaml
     /// </summary>
-    public partial class FormEmpleados : Window
+    public partial class FormSuplidores : Window
     {
-        Empleados empleado = new Empleados();
-        public FormEmpleados()
+        Suplidores suplidor = new Suplidores();
+        public FormSuplidores()
         {
             InitializeComponent();
-            this.DataContext = empleado;
-            EmpleadoIdTextBox.Text = "0";
+            this.DataContext = suplidor;
+            SuplidorIdTextBox.Text = "0";
         }
         private bool ExisteEnDB()
         {
-            Empleados empleado = EmpleadosBLL.Buscar(Convert.ToInt32(EmpleadoIdTextBox.Text));
-            return (empleado != null);
+            Suplidores suplidor = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
+            return (suplidor != null);
         }
 
         private void Actualizar()
         {
             this.DataContext = null;
-            this.DataContext = empleado;
+            this.DataContext = suplidor;
         }
 
         private void Limpiar()
         {
-            EmpleadoIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
+            SuplidorIdTextBox.Text = "0";
+            NombreSuplidorTextBox.Text = string.Empty;
             ApellidosTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
+            NombreCompaniaTextBox.Text = string.Empty;
             DireccionTextBox.Text = string.Empty;
             TelefonoTextBox.Text = string.Empty;
             CelularTextBox.Text = string.Empty;
             EmailTextBox.Text = string.Empty;
-            CargoTextBox.Text = string.Empty;
-            SueldoTextBox.Text = "0";
-            FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
-            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+            CiudadTextBox.Text = string.Empty;
             UsuarioIdTextBox.Text = "0";
 
             Usuarios usuario = new Usuarios();
             Actualizar();
         }
+
         private bool Validar()
         {
             bool paso = true;
 
-            if (string.IsNullOrEmpty(FechaIngresoDateTimePicker.Text))
+            
+
+            if (string.IsNullOrEmpty(CiudadTextBox.Text.Replace("-", "")))
             {
                 paso = false;
-                FechaIngresoDateTimePicker.Focus();
-            }
-
-            if (string.IsNullOrEmpty(FechaNacimientoDateTimePicker.Text))
-            {
-                paso = false;
-                FechaNacimientoDateTimePicker.Focus();
-            }
-
-            if (string.IsNullOrEmpty(SueldoTextBox.Text))
-            {
-                paso = false;
-                SueldoTextBox.Focus();
-            }
-
-
-            if (string.IsNullOrEmpty(CargoTextBox.Text.Replace("-", "")))
-            {
-                paso = false;
-                CargoTextBox.Focus();
+                CiudadTextBox.Focus();
             }
 
             if (string.IsNullOrEmpty(EmailTextBox.Text))
@@ -98,7 +79,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 paso = false;
                 CelularTextBox.Focus();
             }
-            
+
             if (string.IsNullOrEmpty(TelefonoTextBox.Text.Replace("-", "")))
             {
                 paso = false;
@@ -111,10 +92,10 @@ namespace ProyectoFinal_PA1.UI.Registros
                 DireccionTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(CedulaTextBox.Text.Replace("-", "")))
+            if (string.IsNullOrEmpty(NombreCompaniaTextBox.Text.Replace("-", "")))
             {
                 paso = false;
-                CedulaTextBox.Focus();
+                NombreCompaniaTextBox.Focus();
             }
 
             if (string.IsNullOrEmpty(ApellidosTextBox.Text))
@@ -124,22 +105,21 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             }
 
-            if (string.IsNullOrEmpty(NombresTextBox.Text))
+            if (string.IsNullOrEmpty(NombreSuplidorTextBox.Text))
             {
                 paso = false;
-                NombresTextBox.Focus();
+                NombreSuplidorTextBox.Focus();
 
             }
             return paso;
         }
-
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Empleados empleados = EmpleadosBLL.Buscar(Convert.ToInt32(EmpleadoIdTextBox.Text));
+            Suplidores suplidores = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
 
-            if (empleados != null)
+            if (suplidores != null)
             {
-                empleado = empleados;
+                suplidor = suplidores;
                 Actualizar();
             }
             else
@@ -160,8 +140,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (!Validar())
                 return;
 
-            if (String.IsNullOrEmpty(EmpleadoIdTextBox.Text) || EmpleadoIdTextBox.Text == "0")
-                paso = EmpleadosBLL.Guardar(empleado);
+            if (String.IsNullOrEmpty(SuplidorIdTextBox.Text) || SuplidorIdTextBox.Text == "0")
+                paso = SuplidoresBLL.Guardar(suplidor);
             else
             {
                 if (!ExisteEnDB())
@@ -170,7 +150,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                         "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-                paso = EmpleadosBLL.Modificar(empleado);
+                paso = SuplidoresBLL.Modificar(suplidor);
             }
 
             if (paso)
@@ -182,13 +162,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
-
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            int.TryParse(EmpleadoIdTextBox.Text, out id);
+            int.TryParse(SuplidorIdTextBox.Text, out id);
 
             if (EmpleadosBLL.Eliminar(id))
             {

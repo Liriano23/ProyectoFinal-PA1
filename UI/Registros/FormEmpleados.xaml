@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-         Title="Formulario Empleados" Height="500" Width="576" Background="LightGray">
-    <Grid>
+         Title="Formulario Empleados" Height="500" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFC5BDBD">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="150"/>

@@ -1,44 +1,42 @@
-﻿<Window x:Class="ProyectoFinal_PA1.UI.Registros.FormUsuarios"
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Registros.FormSuplidores"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormUsuarios" Height="526" Width="598" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="Formulario Suplidores" Height="380" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFC5BDBD">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="350"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="275"/>
+            <RowDefinition Height="145"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-            <Label Content="UsuarioId:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Nombres: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Apellidos: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Cédula: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Sexo: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Teléfono: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Celular:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Dirección:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Email:" Style="{StaticResource Labels}"></Label>
-            <Label Content="TipoEmpleado: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Fecha Ingreso:" Style="{StaticResource Labels}" Width="92"></Label>
-            <Label Content="Nombre de usuario: "  Width="175" Style="{StaticResource Labels}"></Label>
-            <Label Content="Contraseña" Style="{StaticResource Labels}" ></Label>
+            <Label Content="SuplidorId:" Style="{StaticResource Labels}"/>
+            <Label Content="Nombres: " Style="{StaticResource Labels}"/>
+            <Label Content="Apellidos: " Style="{StaticResource Labels}"/>
+            <Label Content="NombreCompania: " Style="{StaticResource Labels}"/>
+            <Label Content="Direccion: " Style="{StaticResource Labels}"/>
+            <Label Content="Telefono: " Style="{StaticResource Labels}"/>
+            <Label Content="Celular:" Style="{StaticResource Labels}"/>
+            <Label Content="Email:" Style="{StaticResource Labels}"/>
+            <Label Content="Ciudad:" Style="{StaticResource Labels}"/>
+
+            <Label Content="Usuario Id:" Style="{StaticResource Labels}" />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5">
+            <TextBox x:Name="SuplidorIdTextBox" Margin="0,5">
                 <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -47,9 +45,9 @@
             </TextBox>
 
 
-            <TextBox x:Name="NombresTextBox">
+            <TextBox x:Name="NombreSuplidorTextBox">
                 <TextBox.Text>
-                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreSuplidor" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -69,26 +67,27 @@
             </TextBox>
 
 
-            <TextBox x:Name="CedulaTextBox">
+            <TextBox x:Name="NombreCompaniaTextBox" >
                 <TextBox.Text>
-                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreCompania" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox x:Name="SexoComboBox" Margin="0,8">
-                <ComboBox.SelectedItem>
-                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+
+            <TextBox x:Name="DireccionTextBox" Margin="0,8">
+                <TextBox.Text>
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBox.SelectedItem>
-            </ComboBox>
+                </TextBox.Text>
+            </TextBox>
 
-            <TextBox x:Name="TelefonoTextBox">
+            <TextBox x:Name="TelefonoTextBox" Margin="0,5">
                 <TextBox.Text>
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -108,17 +107,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="DireccionTextBox" Margin="0,5">
-                <TextBox.Text>
-                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBox x:Name="EmailTextBox">
+            <TextBox x:Name="EmailTextBox" >
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -128,25 +117,9 @@
                 </TextBox.Text>
             </TextBox>
 
-            <ComboBox x:Name="TipoUsuarioComboBox" Margin="0,5">
-                <ComboBox.SelectedItem>
-                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"></Binding>
-                </ComboBox.SelectedItem>
-            </ComboBox>
-
-            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5">
-                <DatePicker.SelectedDate>
-                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </DatePicker.SelectedDate>
-            </DatePicker>
-
-            <TextBox x:Name="NombreUsuarioTextBox" Margin="0,5">
+            <TextBox x:Name="CiudadTextBox" Margin="0,5" >
                 <TextBox.Text>
-                    <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Ciudad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -154,11 +127,9 @@
                 </TextBox.Text>
             </TextBox>
 
-
-
-            <TextBox x:Name="ContrasenaTextBox">
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,2">
                 <TextBox.Text>
-                    <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -168,32 +139,34 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="47,93,0,-43">
+                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="29,18,0,87">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="18,93,0,-43">
+                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="0,18,0,87">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="18,93,0,-43">
+                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="0,18,0,87">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                Width="100" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="0,5,0,0">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
+
     </Grid>
 </Window>
+
