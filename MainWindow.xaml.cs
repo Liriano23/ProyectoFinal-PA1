@@ -109,5 +109,17 @@ namespace ProyectoFinal_PA1
             FormCategoria formCategoria = new FormCategoria();
             formCategoria.Show();
         }
+
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            FormCompras formCompras = new FormCompras();
+            formCompras.Show();
+        }
+
+        private void Button_Click_15(object sender, RoutedEventArgs e)
+        {
+            ConsultarCompra consultarCompra = new ConsultarCompra();
+            consultarCompra.Show();
+        }
     }
 }

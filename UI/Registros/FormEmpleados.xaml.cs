@@ -55,7 +55,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             UsuarioIdTextBox.Text = "0";
 
-            Usuarios usuario = new Usuarios();
+            Empleados empleados= new Empleados();
             Actualizar();
         }
         private bool Validar()

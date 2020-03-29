@@ -46,7 +46,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             DescripcionTextBox.Text = string.Empty;
             UsuarioIdTextBox.Text = "0";
 
-            Usuarios usuario = new Usuarios();
+            Categorias categoria = new Categorias();
             Actualizar();
         }
 

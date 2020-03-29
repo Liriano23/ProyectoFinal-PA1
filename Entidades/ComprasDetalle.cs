@@ -10,7 +10,7 @@ namespace ProyectoFinal_PA1.Entidades
         [Key]
         public int Id { get; set; }
         public int ProductoId { get; set; }
-        public int VentaId { get; set; }
+        public int CompraId { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
 
@@ -18,7 +18,7 @@ namespace ProyectoFinal_PA1.Entidades
         {
             Id = 0;
             ProductoId = 0;
-            VentaId = 0;
+            CompraId = 0;
             Cantidad = 0;
             Precio = 0;
         }

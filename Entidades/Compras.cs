@@ -18,8 +18,8 @@ namespace ProyectoFinal_PA1.Entidades
         public decimal Descuento { get; set; }
         public decimal Total { get; set; }
 
-        [ForeignKey("VentaId")]
-        public List<VentasDetalles> Detalle { get; set; }
+        [ForeignKey("CompraId")]
+        public List<ComprasDetalle> Detalle { get; set; }
 
         public Compras()
         {
@@ -31,7 +31,7 @@ namespace ProyectoFinal_PA1.Entidades
             ITBIS = 0;
             Descuento = 0;
             Total = 0;
-            this.Detalle = new List<VentasDetalles>();
+            this.Detalle = new List<ComprasDetalle>();
         }
     }
 }

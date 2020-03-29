@@ -52,7 +52,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CiudadTextBox.Text = string.Empty;
             UsuarioIdTextBox.Text = "0";
 
-            Usuarios usuario = new Usuarios();
+            Suplidores suplidor = new Suplidores();
             Actualizar();
         }
 

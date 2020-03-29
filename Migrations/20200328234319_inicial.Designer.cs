@@ -9,7 +9,7 @@ using ProyectoFinal_PA1.DAL;
 namespace ProyectoFinal_PA1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200328030244_inicial")]
+    [Migration("20200328234319_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,63 @@ namespace ProyectoFinal_PA1.Migrations
                     b.HasIndex("UsuarioId1");
 
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Compras", b =>
+                {
+                    b.Property<int>("CompraId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Descuento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EmpleadoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FechaDeCompra")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("ITBIS")
+                        .HasColumnType("REAL");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SuplidorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CompraId");
+
+                    b.ToTable("Compras");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.ComprasDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CompraId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompraId");
+
+                    b.ToTable("ComprasDetalle");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Empleados", b =>
@@ -329,6 +386,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
                         .WithMany()
                         .HasForeignKey("UsuarioId1");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.ComprasDetalle", b =>
+                {
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Compras", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("CompraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Empleados", b =>

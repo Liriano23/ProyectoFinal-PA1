@@ -8,6 +8,25 @@ namespace ProyectoFinal_PA1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    CompraId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SuplidorId = table.Column<int>(nullable: false),
+                    EmpleadoId = table.Column<int>(nullable: false),
+                    FechaDeCompra = table.Column<DateTime>(nullable: false),
+                    SubTotal = table.Column<decimal>(nullable: false),
+                    ITBIS = table.Column<double>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.CompraId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -48,6 +67,28 @@ namespace ProyectoFinal_PA1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ventas", x => x.VentaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComprasDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductoId = table.Column<int>(nullable: false),
+                    CompraId = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalle_Compras_CompraId",
+                        column: x => x.CompraId,
+                        principalTable: "Compras",
+                        principalColumn: "CompraId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,6 +268,11 @@ namespace ProyectoFinal_PA1.Migrations
                 column: "UsuarioId1");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ComprasDetalle_CompraId",
+                table: "ComprasDetalle",
+                column: "CompraId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Empleados_UsuarioId1",
                 table: "Empleados",
                 column: "UsuarioId1");
@@ -263,6 +309,9 @@ namespace ProyectoFinal_PA1.Migrations
                 name: "Clientes");
 
             migrationBuilder.DropTable(
+                name: "ComprasDetalle");
+
+            migrationBuilder.DropTable(
                 name: "Empleados");
 
             migrationBuilder.DropTable(
@@ -270,6 +319,9 @@ namespace ProyectoFinal_PA1.Migrations
 
             migrationBuilder.DropTable(
                 name: "VentasDetalles");
+
+            migrationBuilder.DropTable(
+                name: "Compras");
 
             migrationBuilder.DropTable(
                 name: "Categorias");
