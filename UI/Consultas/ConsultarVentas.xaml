@@ -1,0 +1,36 @@
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Consultas.ConsultarVentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
+        mc:Ignorable="d"
+        Title="ConsultarVentas" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Filtrar" Width="auto" Margin="10,5,735,14" Grid.Row="0" RenderTransformOrigin="0,0.484"></TextBlock>
+
+        <ComboBox Name="FiltrarComboBox" Margin="65,4,625,17" Grid.Row="0">
+            <ComboBoxItem Content="TODO"/>
+            <ComboBoxItem Content="VentaId"/>
+            <ComboBoxItem Content="ClienteId"/>
+            <ComboBoxItem Content="Total"></ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>
+        <TextBox Name="CriterioTextBox" Width="100" Height="20" Margin="310,4,390,19"></TextBox>
+
+        <Button Name="ConsultarButton" Height="25" 
+                Margin="480,4,230,14" HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+            </Button.Background>
+            Consultar
+        </Button>
+
+        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-246"/>
+    </Grid>
+</Window>

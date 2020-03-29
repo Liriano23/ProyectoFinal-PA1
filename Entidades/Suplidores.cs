@@ -21,7 +21,9 @@ namespace ProyectoFinal_PA1.Entidades
 		public string Ciudad { get; set; }
 		public string Email { get; set; }
 
-		public Usuarios UsuarioId { get; set; }
+		[ForeignKey("Usuarios")]
+		public int UsuarioId { get; set; }
+		public ICollection<Productos> Productos { get; set; }
 
 		public Suplidores()
 		{

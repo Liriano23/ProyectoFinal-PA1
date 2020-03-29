@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
         Title="FormClientes" Height="454" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFC5BDBD">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
@@ -35,44 +35,49 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
-            <TextBox x:Name="ClienteIdTextBox" Margin="0,5">
+            <TextBox x:Name="ClienteIdTextBox" Margin="0,5"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del cliente debe de ser 0 para agregar nuevo cliente">
                 <TextBox.Text>
-                    <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ClienteId1" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="NombresTextBox">
+            <TextBox x:Name="NombresTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el nombre del cliente">
                 <TextBox.Text>
                     <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="ApellidosTextBox" Margin="0,8">
+            <TextBox x:Name="ApellidosTextBox" Margin="0,8"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el apellido del cliente">
                 <TextBox.Text>
                     <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="LastNameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellido(os)"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="CedulaTextBox">
+            <TextBox x:Name="CedulaTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la cedula del cliente">
                 <TextBox.Text>
                     <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Cedula"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -87,48 +92,55 @@
                 </ComboBox.SelectedItem>
             </ComboBox>
 
-            <TextBox x:Name="DireccionTextBox">
+            <TextBox x:Name="DireccionTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion del cliente">
                 <TextBox.Text>
                     <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="AddressValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Direccion"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="TelefonoTextBox" Margin="0,5">
+            <TextBox x:Name="TelefonoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono del cliente">
                 <TextBox.Text>
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Telefono"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="CelularTextBox" Margin="0,5">
+            <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el celular del cliente">
                 <TextBox.Text>
                     <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Celular"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="EmailTextBox">
+            <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del cliente">
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Email"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <DatePicker x:Name="FechaNacimientoDateTimePicker" Margin="0,5">
+            <DatePicker x:Name="FechaNacimientoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de nacimiento del cliente">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -138,7 +150,7 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5">
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de ingreso al sistema del cliente">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -148,11 +160,12 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-            <TextBox x:Name="UsuarioIdTextBox">
+            <TextBox x:Name="UsuarioIdTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del cliente">
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

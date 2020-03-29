@@ -23,16 +23,18 @@ namespace ProyectoFinal_PA1.UI.Registros
         public FormClientes()
         {
             InitializeComponent();
-            this.DataContext = cliente;
             ClienteIdTextBox.Text = "0";
 
             SexoComboBox.Items.Add("Masculino");
             SexoComboBox.Items.Add("Femenino");
             SexoComboBox.Items.Add("Otro");
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+
+            this.DataContext = cliente;
         }
         private void Limpiar()
         {
-           
+            ClienteIdTextBox.Text = "0";
             NombresTextBox.Text = string.Empty;
             ApellidosTextBox.Text = string.Empty;
             CedulaTextBox.Text = string.Empty;
@@ -45,7 +47,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             UsuarioIdTextBox.Text = "0";
 
-            Usuarios usuario = new Usuarios();
+            Clientes cliente = new Clientes();
             Actualizar();
         }
 

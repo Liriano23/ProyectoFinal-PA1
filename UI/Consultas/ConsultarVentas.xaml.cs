@@ -15,42 +15,48 @@ using ProyectoFinal_PA1.BLL;
 namespace ProyectoFinal_PA1.UI.Consultas
 {
     /// <summary>
-    /// Lógica de interacción para ConsultarCompra.xaml
+    /// Interaction logic for ConsultarVentas.xaml
     /// </summary>
-    public partial class ConsultarCompra : Window
+    public partial class ConsultarVentas : Window
     {
-        public ConsultarCompra()
+        public ConsultarVentas()
         {
             InitializeComponent();
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            var listado = new List<Compras>();
+            var listado = new List<Ventas>();
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltrarComboBox.SelectedIndex)
                 {
                     case 0:
-                        listado = ComprasBLL.GetList(o => true);
+                        listado = VentasBLL.GetList(o => true);
                         break;
                     case 1:
                         int id;
                         id = int.Parse(CriterioTextBox.Text);
-                        listado = ComprasBLL.GetList(o => o.CompraId == id);
+                        listado = VentasBLL.GetList(o => o.VentaId == id);
                         break;
 
                     case 2:
-                        int usuarioId;
-                        usuarioId = int.Parse(CriterioTextBox.Text);
-                        listado = ComprasBLL.GetList(o => o.UsuarioId == usuarioId);
+                        int clienteId;
+                        clienteId = int.Parse(CriterioTextBox.Text);
+                        listado = VentasBLL.GetList(o => o.ClienteId == clienteId);
                         break;
-                    
+
+                    case 3:
+                        decimal total;
+                        total = int.Parse(CriterioTextBox.Text);
+                        listado = VentasBLL.GetList(o => o.Total == total);
+                        break;
+
                 }
             }
             else
             {
-                listado = ComprasBLL.GetList(p => true);
+                listado = VentasBLL.GetList(p => true);
             }
             ConsultarDataGrid.ItemsSource = null;
             ConsultarDataGrid.ItemsSource = listado;

@@ -22,15 +22,17 @@ namespace ProyectoFinal_PA1.UI.Registros
         public FormUsuarios()
         {
             InitializeComponent();
-            this.DataContext = usuario;
             UsuarioIdTextBox.Text = "0";
-
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+            
             SexoComboBox.Items.Add("Masculino");
             SexoComboBox.Items.Add("Femenino");
             SexoComboBox.Items.Add("Otro");
 
             TipoUsuarioComboBox.Items.Add("Empleado");
             TipoUsuarioComboBox.Items.Add("Administrador");
+
+            this.DataContext = usuario;
         }
 
         private void Limpiar()
@@ -53,21 +55,22 @@ namespace ProyectoFinal_PA1.UI.Registros
             Actualizar();
         }
 
-        //private void LlenaCampo(Usuarios usuario)
-        //{
-        //    UsuarioIdTextBox.Text = Convert.ToString(usuario.UsuarioId);
-        //    NombresTextBox.Text = usuario.Nombres;
-        //    ApellidosTextBox.Text = usuario.Apellidos;
-        //    CedulaTextBox.Text = usuario.Cedula;
-        //    SexoComboBox.SelectedIndex = Convert.ToString(usuario.Sexo);
-        //    TelefonoTextBox.Text = usuario.Telefono;
-        //    CelularTextBox.Text = usuario.Celular;
-        //    DireccionTextBox.Text = usuario.Direccion;
-        //    EmailTextBox.Text = usuario.Email;
-        //    FechaIngresoDateTimePicker.SelectedDate = usuario.FechaIngreso;
-        //    NombreUsuarioTextBox.Text = usuario.NombreUsuario;
-        //    ContrasenaTextBox.Text = usuario.Contrasena;
-        //}
+        private void LlenaCampo(Usuarios usuario)
+        {
+            UsuarioIdTextBox.Text = Convert.ToString(usuario.UsuarioId);
+            NombresTextBox.Text = usuario.Nombres;
+            ApellidosTextBox.Text = usuario.Apellidos;
+            CedulaTextBox.Text = usuario.Cedula;
+            SexoComboBox.SelectedItem = usuario.Sexo;
+            TelefonoTextBox.Text = usuario.Telefono;
+            CelularTextBox.Text = usuario.Celular;
+            DireccionTextBox.Text = usuario.Direccion;
+            EmailTextBox.Text = usuario.Email;
+            TipoUsuarioComboBox.SelectedItem = usuario.TipoUsuario;
+            FechaIngresoDateTimePicker.SelectedDate = usuario.FechaIngreso;
+            NombreUsuarioTextBox.Text = usuario.NombreUsuario;
+            ContrasenaTextBox.Text = usuario.Contrasena;
+        }
 
         private bool ExisteEnDB()
         {
@@ -105,12 +108,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 paso = false;
                 MessageBox.Show("El campo Cedula no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                CedulaTextBox.Focus();
+            }
+
+            if(SexoComboBox.SelectedItem == null)
+            {
+                paso = false;
+                MessageBox.Show("El campo Cedula no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                SexoComboBox.Focus();
             }
 
             if (string.IsNullOrEmpty(TelefonoTextBox.Text.Replace("-", "")))
             {
                 paso = false;
                 MessageBox.Show("El campo Telefono no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                TelefonoTextBox.Focus();
             }
 
             if (string.IsNullOrEmpty(CelularTextBox.Text.Replace("-","")))
@@ -134,13 +146,6 @@ namespace ProyectoFinal_PA1.UI.Registros
                 EmailTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(FechaIngresoDateTimePicker.Text))
-            {
-                paso = false;
-                MessageBox.Show("El campo Fecha Ingreso no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                FechaIngresoDateTimePicker.Focus();
-            }
-
             if (string.IsNullOrEmpty(NombreUsuarioTextBox.Text))
             {
                 paso = false;
@@ -154,7 +159,6 @@ namespace ProyectoFinal_PA1.UI.Registros
                 MessageBox.Show("El campo contraseña Usuario no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 NombreUsuarioTextBox.Focus();
             }
-
             return paso;
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -211,17 +215,22 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Usuarios FindUser = UsuariosBLL.Buscar(Convert.ToInt32(UsuarioIdTextBox.Text));
+            int id;
+            Usuarios usuarios = new Usuarios();
+            int.TryParse(UsuarioIdTextBox.Text, out id);
+            
+            Limpiar();
 
-            if (FindUser != null)
+            usuarios = UsuariosBLL.Buscar(id);
+
+            if (usuarios != null)
             {
-                usuario = FindUser;
-                Actualizar();
+                MessageBox.Show("Exito");
+                LlenaCampo(usuarios);
             }
             else
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                MessageBox.Show("No encontrado!!!", "Informacion", MessageBoxButton.YesNo, MessageBoxImage.Information);
             }
         }
     }

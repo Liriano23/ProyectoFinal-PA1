@@ -28,12 +28,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("NombreCategoria")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuarioId1")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CategoriaId");
 
-                    b.HasIndex("UsuarioId1");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Categorias");
                 });
@@ -74,12 +77,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuarioId1")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ClienteId");
 
-                    b.HasIndex("UsuarioId1");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Clientes");
                 });
@@ -92,9 +98,6 @@ namespace ProyectoFinal_PA1.Migrations
 
                     b.Property<decimal>("Descuento")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("EmpleadoId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("FechaDeCompra")
                         .HasColumnType("TEXT");
@@ -111,7 +114,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CompraId");
+
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Compras");
                 });
@@ -180,12 +191,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuarioId1")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("EmpleadoId");
 
-                    b.HasIndex("UsuarioId1");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Empleados");
                 });
@@ -196,7 +210,10 @@ namespace ProyectoFinal_PA1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CategoriaId1")
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CategoriasCategoriaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("FechaIngreso")
@@ -211,19 +228,25 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("NombreProducto")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("SuplidorId1")
+                    b.Property<int>("SuplidorId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UsuarioId1")
+                    b.Property<int?>("SuplidoresSuplidorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ProductoId");
 
-                    b.HasIndex("CategoriaId1");
+                    b.HasIndex("CategoriasCategoriaId");
 
-                    b.HasIndex("SuplidorId1");
+                    b.HasIndex("SuplidoresSuplidorId");
 
-                    b.HasIndex("UsuarioId1");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Productos");
                 });
@@ -258,12 +281,15 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuarioId1")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("SuplidorId");
 
-                    b.HasIndex("UsuarioId1");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Suplidores");
                 });
@@ -374,16 +400,23 @@ namespace ProyectoFinal_PA1.Migrations
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Categorias", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Categorias")
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Clientes", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Clientes")
+                        .HasForeignKey("UsuariosUsuarioId");
+                });
+
+            modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Compras", b =>
+                {
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Compras")
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.ComprasDetalle", b =>
@@ -397,31 +430,31 @@ namespace ProyectoFinal_PA1.Migrations
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Empleados", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Empleados")
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Productos", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Categorias", "CategoriaId")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Categorias", null)
+                        .WithMany("Productos")
+                        .HasForeignKey("CategoriasCategoriaId");
 
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Suplidores", "SuplidorId")
-                        .WithMany()
-                        .HasForeignKey("SuplidorId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Suplidores", null)
+                        .WithMany("Productos")
+                        .HasForeignKey("SuplidoresSuplidorId");
 
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Productos")
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Suplidores", b =>
                 {
-                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", "UsuarioId")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId1");
+                    b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
+                        .WithMany("Suplidores")
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.VentasDetalles", b =>

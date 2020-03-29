@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
         Title="FormProductos" Height="347" Width="534" Background="LightGray" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFC5BDBD">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
@@ -32,51 +32,57 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
-            <TextBox x:Name="ProductoIdTextBox" Margin="0,5">
+            <TextBox x:Name="ProductoIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe de ser 0 para agregar un nuevo producto">
                 <TextBox.Text>
                     <Binding Path="ProductoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="NombreProductoTextBox">
+            <TextBox x:Name="NombreProductoTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el nombre del producto">
                 <TextBox.Text>
                     <Binding Path="NombreProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre del producto"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="MarcaProductoTextBox" Margin="0,8">
+            <TextBox x:Name="MarcaProductoTextBox" Margin="0,8"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
                 <TextBox.Text>
                     <Binding Path="MarcaProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="BrandValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad del producto que ira al inventario cuando este se registre"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <TextBox x:Name="InventarioTextBox">
+            <TextBox x:Name="InventarioTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
                 <TextBox.Text>
                     <Binding Path="Inventario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="InventaryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad de productos que iran al inventario"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
 
-            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,7">
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,7" ToolTip="Aqui debe ingresar la fecha en la que fue agregado el producto">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -87,31 +93,36 @@
             </DatePicker>
 
 
-            <TextBox x:Name="SuplidorIdTextBox">
+            <TextBox x:Name="SuplidorIdTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del suplidor que distribuye el producto">
                 <TextBox.Text>
                     <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="SupplierValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar SuplidorId"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5">
+            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id de la categoria que pertenece el producto">
                 <TextBox.Text>
                     <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="CategoryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar CategoriaId"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5">
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del usuario que registro el producto al sistema">
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="UserIDValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuariosId"></local:TextValidation>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

@@ -21,8 +21,9 @@ namespace ProyectoFinal_PA1.Entidades
 		public decimal Sueldo { get; set; }
 		public DateTime FechaNacimiento { get; set; }
 		public DateTime FechaIngreso { get; set; }
-		public Usuarios UsuarioId { get; set; }
 
+		[ForeignKey("Usuarios")]
+		public int UsuarioId { get; set; }
 		public Empleados()
 		{
 			EmpleadoId = 0;

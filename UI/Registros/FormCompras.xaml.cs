@@ -66,7 +66,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             Compras compras = new Compras();
             compras.CompraId = int.Parse(CompraIDTextBox.Text);
             compras.SuplidorId = int.Parse(SuplidorIdTextbox.Text);
-            compras.EmpleadoId = int.Parse(EmpleadoIdTextbox.Text);
+            compras.UsuarioId = int.Parse(EmpleadoIdTextbox.Text);
             compras.FechaDeCompra = (DateTime)FechaDeCompraTimePicker.SelectedDate;
             compras.SubTotal = decimal.Parse(SubTotalTextBox.Text);
             compras.ITBIS = double.Parse(ITBISTextBox.Text);
@@ -81,7 +81,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CompraIDTextBox.Text = Convert.ToString(compra.CompraId);
             SuplidorIdTextbox.Text = Convert.ToString(compra.SuplidorId);
-            EmpleadoIdTextbox.Text = Convert.ToString(compra.EmpleadoId);
+            EmpleadoIdTextbox.Text = Convert.ToString(compra.UsuarioId);
             FechaDeCompraTimePicker.SelectedDate = compra.FechaDeCompra;
             SubTotalTextBox.Text = Convert.ToString(compra.SubTotal);
             ITBISTextBox.Text = Convert.ToString(compra.ITBIS);

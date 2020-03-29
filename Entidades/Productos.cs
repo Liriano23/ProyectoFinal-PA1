@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace ProyectoFinal_PA1.Entidades
 {
     public class Productos
@@ -15,9 +15,14 @@ namespace ProyectoFinal_PA1.Entidades
 
         public int Inventario { get; set; }
         public DateTime FechaIngreso { get; set; }
-        public Suplidores SuplidorId { get; set; }
-        public Categorias CategoriaId { get; set; }
-        public Usuarios UsuarioId { get; set; }
+        [ForeignKey("Suplidores")]
+        public int SuplidorId { get; set; }
+
+        [ForeignKey("Categorias")]
+        public int CategoriaId { get; set; }
+
+        [ForeignKey("Usuarios")]
+        public int UsuarioId { get; set; }
 
         public Productos()
         {

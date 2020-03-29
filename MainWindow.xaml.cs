@@ -69,53 +69,63 @@ namespace ProyectoFinal_PA1
             consultarUsuarios.Show();
         }
 
+        //
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             ConsultarClientes consultarClientes = new ConsultarClientes();
             consultarClientes.Show();
         }
 
+        //Boton Consultar Empleados
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
             consultaEmpleado.Show();
         }
 
+        //Boton ConsultarSuplidores
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
             ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
             consultarSuplidor.Show();
         }
 
+        //Boton Consultar Productos
         private void Button_Click_10(object sender, RoutedEventArgs e)
         {
             ConsultarProductos consultarProductos = new ConsultarProductos();
             consultarProductos.Show();
         }
 
+        //Boton Consultar Ventas
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
-            System.Console.WriteLine("Te falta ingresar la consulta de veta");
+            ConsultarVentas consultarVentas = new ConsultarVentas();
+            consultarVentas.Show();
         }
 
+        //Boton Consultar categorias
         private void Button_Click_12(object sender, RoutedEventArgs e)
         {
             ConsultarCategoria consultarCategoria = new ConsultarCategoria();
             consultarCategoria.Show();
         }
 
+        //Boton registrar categorias
         private void Button_Click_13(object sender, RoutedEventArgs e)
         {
             FormCategoria formCategoria = new FormCategoria();
             formCategoria.Show();
         }
 
+        //Boton registrar Compras
         private void Button_Click_14(object sender, RoutedEventArgs e)
         {
             FormCompras formCompras = new FormCompras();
             formCompras.Show();
         }
 
+        //Boton Consultar Compras
         private void Button_Click_15(object sender, RoutedEventArgs e)
         {
             ConsultarCompra consultarCompra = new ConsultarCompra();

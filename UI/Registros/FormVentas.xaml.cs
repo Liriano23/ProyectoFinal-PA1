@@ -26,16 +26,18 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             InitializeComponent();
 
-
             VentaIdTextBox.Text = "0";
             ClienteIdTextbox.Text = "0";
-            ProductoIdTexBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
             EmpleadoIdTextbox.Text = "0";
-            ITBISTextBox.Text = "0.18";
+            SubTotalTextBox.Text = "0";
+            PrecioTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
+            ItbisTextBox.Text = "0";
+            TotalTextBox.Text = "0";
 
-
-            this.DataContext = venta;
             this.Detalle = new List<VentasDetalles>();
+            this.DataContext = venta;
         }
 
         private void Limpiar()
@@ -43,18 +45,36 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             VentaIdTextBox.Text = "0";
             ClienteIdTextbox.Text = "0";
-            ProductoIdTexBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
             EmpleadoIdTextbox.Text = "0";
-            ITBISTextBox.Text = "0.18";
+            ItbisTextBox.Text = "0.18";
             SubTotalTextBox.Text = "0";
             DescuentoTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
+            TotalTextBox.Text = "0";
             FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
 
             this.Detalle = new List<VentasDetalles>();
+            CargarGrid();
             Ventas venta = new Ventas();
             Actualizar();
+        }
+
+
+        private void LlenaCampo(Ventas ventas)
+        {
+            VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
+            ClienteIdTextbox.Text = Convert.ToString(ventas.ClienteId);
+            EmpleadoIdTextbox.Text = Convert.ToString(ventas.EmpleadoId);
+            FechaVentaDateTimePicker.SelectedDate = ventas.FechaEmision;
+            SubTotalTextBox.Text = Convert.ToString(ventas.SubTotal);
+            ItbisTextBox.Text = Convert.ToString(ventas.ITBIS);
+            DescuentoTextBox.Text = Convert.ToString(ventas.Descuento);
+            TotalTextBox.Text = Convert.ToString(ventas.Total);
+
+            this.Detalle = ventas.Detalle;
+            CargarGrid();
         }
 
         private bool ExisteEnDB()
@@ -69,6 +89,13 @@ namespace ProyectoFinal_PA1.UI.Registros
             this.DataContext = venta;
         }
 
+        private void CargarGrid()
+        {
+            VentaDetalleDataGrid.ItemsSource = null;
+            VentaDetalleDataGrid.ItemsSource = this.Detalle;
+        }
+
+
         private bool Validar()
         {
             bool paso = true;
@@ -76,7 +103,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (string.IsNullOrEmpty(VentaIdTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Venta Id no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El campo Venta Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 VentaIdTextBox.Focus();
 
             }
@@ -84,7 +111,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (string.IsNullOrEmpty(ClienteIdTextbox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Cliente Id no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El campo Cliente Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 ClienteIdTextbox.Focus();
 
             }
@@ -92,44 +119,41 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (string.IsNullOrEmpty(EmpleadoIdTextbox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Empleado Id no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El campo Empleado Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 EmpleadoIdTextbox.Focus();
             }
 
             if (SubTotalTextBox.Text == "0" || string.IsNullOrEmpty(SubTotalTextBox.Text))
             {
-                MessageBox.Show("Debe completar el capo SubTotal", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Debe completar el capo SubTotal", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 SubTotalTextBox.Focus();
             }
            
             if (string.IsNullOrEmpty(DescuentoTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Descuento no puede estar vacio o debe ser 0", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El campo Descuento no puede estar vacio o debe ser 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 DescuentoTextBox.Focus();
-            }
-
-            if (string.IsNullOrEmpty(ProductoIdTexBox.Text))
-            {
-                paso = false;
-                MessageBox.Show("El campo Producto Id no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                ProductoIdTexBox.Focus();
-            }
-
-            if (string.IsNullOrEmpty(PrecioTextBox.Text))
-            {
-                paso = false;
-                MessageBox.Show("El campo Precio no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                PrecioTextBox.Focus();
             }
 
             if (string.IsNullOrEmpty(FechaVentaDateTimePicker.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Fecha Venta no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El campo Fecha Venta no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 FechaVentaDateTimePicker.Focus();
             }
 
+            if(string.IsNullOrEmpty(TotalTextBox.Text))
+            {
+                paso = false;
+                MessageBox.Show("El campo Total no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                TotalTextBox.Focus();
+            }
+            if (this.Detalle.Count == 0)
+            {
+                MessageBox.Show("La venta debe tener un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                paso = false;
+            }
             return paso;
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -186,28 +210,53 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (VentaDetalleDataGrid.ItemsSource != null)
+            {
+                this.Detalle = (List<VentasDetalles>)VentaDetalleDataGrid.ItemsSource;
+            }
 
+            //Agregar un nuevo detalle con los datos introducidos
+            this.Detalle.Add(new VentasDetalles
+            {
+                Id = 0,
+                ProductoId = Convert.ToInt32(ProductoIdTextBox.Text),
+                Precio = Convert.ToInt32(PrecioTextBox.Text),
+                Cantidad = Convert.ToInt32(CantidadTextBox.Text)
+
+            });
+            CargarGrid();
+            ProductoIdTextBox.Text = string.Empty;
+            CantidadTextBox.Text = string.Empty;
+            PrecioTextBox.Text = string.Empty;
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (VentaDetalleDataGrid.Items.Count > 0 && VentaDetalleDataGrid.SelectedItem != null)
+            {
+                Detalle.RemoveAt(VentaDetalleDataGrid.SelectedIndex);
+                CargarGrid();
+            }
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Ventas ventas = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
+            int id;
+            Ventas sale = new Ventas();
+            int.TryParse(VentaIdTextBox.Text, out id);
 
-            if (ventas != null)
+            sale = VentasBLL.Buscar(id);
+
+            if (sale != null)
             {
-                venta = ventas;
-                Actualizar();
+                LlenaCampo(sale);
             }
             else
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+       
     }
 }

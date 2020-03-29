@@ -3,29 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinal_PA1.Migrations
 {
-    public partial class inicial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Compras",
-                columns: table => new
-                {
-                    CompraId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SuplidorId = table.Column<int>(nullable: false),
-                    EmpleadoId = table.Column<int>(nullable: false),
-                    FechaDeCompra = table.Column<DateTime>(nullable: false),
-                    SubTotal = table.Column<decimal>(nullable: false),
-                    ITBIS = table.Column<double>(nullable: false),
-                    Descuento = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Compras", x => x.CompraId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
@@ -70,28 +51,6 @@ namespace ProyectoFinal_PA1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ComprasDetalle",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProductoId = table.Column<int>(nullable: false),
-                    CompraId = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
-                    Precio = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ComprasDetalle_Compras_CompraId",
-                        column: x => x.CompraId,
-                        principalTable: "Compras",
-                        principalColumn: "CompraId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Categorias",
                 columns: table => new
                 {
@@ -99,14 +58,15 @@ namespace ProyectoFinal_PA1.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     NombreCategoria = table.Column<string>(nullable: true),
                     Descripcion = table.Column<string>(nullable: true),
-                    UsuarioId1 = table.Column<int>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categorias", x => x.CategoriaId);
                     table.ForeignKey(
-                        name: "FK_Categorias_Usuarios_UsuarioId1",
-                        column: x => x.UsuarioId1,
+                        name: "FK_Categorias_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
@@ -128,14 +88,41 @@ namespace ProyectoFinal_PA1.Migrations
                     Email = table.Column<string>(nullable: true),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
                     FechaIngreso = table.Column<DateTime>(nullable: false),
-                    UsuarioId1 = table.Column<int>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clientes", x => x.ClienteId);
                     table.ForeignKey(
-                        name: "FK_Clientes_Usuarios_UsuarioId1",
-                        column: x => x.UsuarioId1,
+                        name: "FK_Clientes_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "UsuarioId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    CompraId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SuplidorId = table.Column<int>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false),
+                    FechaDeCompra = table.Column<DateTime>(nullable: false),
+                    SubTotal = table.Column<decimal>(nullable: false),
+                    ITBIS = table.Column<double>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.CompraId);
+                    table.ForeignKey(
+                        name: "FK_Compras_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
@@ -158,14 +145,15 @@ namespace ProyectoFinal_PA1.Migrations
                     Sueldo = table.Column<decimal>(nullable: false),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
                     FechaIngreso = table.Column<DateTime>(nullable: false),
-                    UsuarioId1 = table.Column<int>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Empleados", x => x.EmpleadoId);
                     table.ForeignKey(
-                        name: "FK_Empleados_Usuarios_UsuarioId1",
-                        column: x => x.UsuarioId1,
+                        name: "FK_Empleados_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
@@ -185,14 +173,15 @@ namespace ProyectoFinal_PA1.Migrations
                     Celular = table.Column<string>(nullable: true),
                     Ciudad = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    UsuarioId1 = table.Column<int>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Suplidores", x => x.SuplidorId);
                     table.ForeignKey(
-                        name: "FK_Suplidores_Usuarios_UsuarioId1",
-                        column: x => x.UsuarioId1,
+                        name: "FK_Suplidores_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
@@ -221,6 +210,28 @@ namespace ProyectoFinal_PA1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ComprasDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductoId = table.Column<int>(nullable: false),
+                    CompraId = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalle_Compras_CompraId",
+                        column: x => x.CompraId,
+                        principalTable: "Compras",
+                        principalColumn: "CompraId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Productos",
                 columns: table => new
                 {
@@ -230,42 +241,50 @@ namespace ProyectoFinal_PA1.Migrations
                     MarcaProducto = table.Column<string>(nullable: true),
                     Inventario = table.Column<int>(nullable: false),
                     FechaIngreso = table.Column<DateTime>(nullable: false),
-                    SuplidorId1 = table.Column<int>(nullable: true),
-                    CategoriaId1 = table.Column<int>(nullable: true),
-                    UsuarioId1 = table.Column<int>(nullable: true)
+                    SuplidorId = table.Column<int>(nullable: false),
+                    CategoriaId = table.Column<int>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false),
+                    CategoriasCategoriaId = table.Column<int>(nullable: true),
+                    SuplidoresSuplidorId = table.Column<int>(nullable: true),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productos", x => x.ProductoId);
                     table.ForeignKey(
-                        name: "FK_Productos_Categorias_CategoriaId1",
-                        column: x => x.CategoriaId1,
+                        name: "FK_Productos_Categorias_CategoriasCategoriaId",
+                        column: x => x.CategoriasCategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "CategoriaId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Productos_Suplidores_SuplidorId1",
-                        column: x => x.SuplidorId1,
+                        name: "FK_Productos_Suplidores_SuplidoresSuplidorId",
+                        column: x => x.SuplidoresSuplidorId,
                         principalTable: "Suplidores",
                         principalColumn: "SuplidorId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Productos_Usuarios_UsuarioId1",
-                        column: x => x.UsuarioId1,
+                        name: "FK_Productos_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categorias_UsuarioId1",
+                name: "IX_Categorias_UsuariosUsuarioId",
                 table: "Categorias",
-                column: "UsuarioId1");
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clientes_UsuarioId1",
+                name: "IX_Clientes_UsuariosUsuarioId",
                 table: "Clientes",
-                column: "UsuarioId1");
+                column: "UsuariosUsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_UsuariosUsuarioId",
+                table: "Compras",
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalle_CompraId",
@@ -273,29 +292,29 @@ namespace ProyectoFinal_PA1.Migrations
                 column: "CompraId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Empleados_UsuarioId1",
+                name: "IX_Empleados_UsuariosUsuarioId",
                 table: "Empleados",
-                column: "UsuarioId1");
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Productos_CategoriaId1",
+                name: "IX_Productos_CategoriasCategoriaId",
                 table: "Productos",
-                column: "CategoriaId1");
+                column: "CategoriasCategoriaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Productos_SuplidorId1",
+                name: "IX_Productos_SuplidoresSuplidorId",
                 table: "Productos",
-                column: "SuplidorId1");
+                column: "SuplidoresSuplidorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Productos_UsuarioId1",
+                name: "IX_Productos_UsuariosUsuarioId",
                 table: "Productos",
-                column: "UsuarioId1");
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Suplidores_UsuarioId1",
+                name: "IX_Suplidores_UsuariosUsuarioId",
                 table: "Suplidores",
-                column: "UsuarioId1");
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalles_VentaId",
