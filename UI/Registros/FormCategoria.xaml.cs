@@ -43,7 +43,6 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaTextBox.Text = string.Empty;
-            DescripcionTextBox.Text = string.Empty;
             UsuarioIdTextBox.Text = "0";
 
             Categorias categoria = new Categorias();
@@ -54,13 +53,6 @@ namespace ProyectoFinal_PA1.UI.Registros
         private bool Validar()
         {
             bool paso = true;
-
-            if (string.IsNullOrEmpty(DescripcionTextBox.Text))
-            {
-                paso = false;
-                DescripcionTextBox.Focus();
-
-            }
 
             if (string.IsNullOrEmpty(NombreCategoriaTextBox.Text))
             {

@@ -27,109 +27,132 @@ namespace ProyectoFinal_PA1
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        //Boton registrar usuarios
+        private void UsuarioButton_Click(object sender, RoutedEventArgs e)
         {
             FormUsuarios fu = new FormUsuarios();
             fu.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        //Boton registrar clientes
+        private void ClientesButton_Click(object sender, RoutedEventArgs e)
         {
+            
             FormClientes formularioClientes = new FormClientes();
             formularioClientes.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        //Boton registrar Empleados
+        private void EmpleadosButton_Click(object sender, RoutedEventArgs e)
         {
+            
             FormEmpleados formularioEmpleados = new FormEmpleados();
             formularioEmpleados.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        //Boton registrar Suplidores
+        private void SuplidoresrButton_Click(object sender, RoutedEventArgs e)
         {
+            
             FormSuplidores formularioSuplidores = new FormSuplidores();
             formularioSuplidores.Show();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        //Boton registrar Productos
+        private void ProductosButton_Click(object sender, RoutedEventArgs e)
         {
+            
             FormProductos formProductos = new FormProductos();
             formProductos.Show();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        //Boton registrar Categorias
+        private void CategoriasButton_Click(object sender, RoutedEventArgs e)
         {
+            FormCategoria formCategoria = new FormCategoria();
+            formCategoria.Show();
+            
+        }
+
+        //Boton registrar Ventas
+        private void VentasButton_Click(object sender, RoutedEventArgs e)
+        {
+            
             FormVentas formVentas = new FormVentas();
             formVentas.Show();
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-            ConsultarUsuarios consultarUsuarios = new ConsultarUsuarios();
-            consultarUsuarios.Show();
-        }
-
-        //
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
-            ConsultarClientes consultarClientes = new ConsultarClientes();
-            consultarClientes.Show();
-        }
-
-        //Boton Consultar Empleados
-        private void Button_Click_8(object sender, RoutedEventArgs e)
-        {
-            ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
-            consultaEmpleado.Show();
-        }
-
-        //Boton ConsultarSuplidores
-        private void Button_Click_9(object sender, RoutedEventArgs e)
-        {
-            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
-            consultarSuplidor.Show();
-        }
-
-        //Boton Consultar Productos
-        private void Button_Click_10(object sender, RoutedEventArgs e)
-        {
-            ConsultarProductos consultarProductos = new ConsultarProductos();
-            consultarProductos.Show();
-        }
-
-        //Boton Consultar Ventas
-        private void Button_Click_11(object sender, RoutedEventArgs e)
-        {
-            ConsultarVentas consultarVentas = new ConsultarVentas();
-            consultarVentas.Show();
-        }
-
-        //Boton Consultar categorias
-        private void Button_Click_12(object sender, RoutedEventArgs e)
-        {
-            ConsultarCategoria consultarCategoria = new ConsultarCategoria();
-            consultarCategoria.Show();
-        }
-
-        //Boton registrar categorias
-        private void Button_Click_13(object sender, RoutedEventArgs e)
-        {
-            FormCategoria formCategoria = new FormCategoria();
-            formCategoria.Show();
-        }
-
         //Boton registrar Compras
-        private void Button_Click_14(object sender, RoutedEventArgs e)
+        private void ComprasButton_Click(object sender, RoutedEventArgs e)
         {
             FormCompras formCompras = new FormCompras();
             formCompras.Show();
         }
 
-        //Boton Consultar Compras
-        private void Button_Click_15(object sender, RoutedEventArgs e)
+        //Boton consultar usuarios
+        private void ConsultarUsuarioButton_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarCompra consultarCompra = new ConsultarCompra();
-            consultarCompra.Show();
+            ConsultarUsuarios consultarUsuarios = new ConsultarUsuarios();
+            consultarUsuarios.Show();
         }
+
+        //Boton consultar Cliente
+        private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ConsultarClientes consultarClientes = new ConsultarClientes();
+            consultarClientes.Show();
+        }
+
+        //Boton consultar Empleados
+        private void ConsultarEmpleadosButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+            ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
+            consultaEmpleado.Show();
+        }
+
+        //Boton consultar Suplidores
+        private void ConsultarSuplidoresrButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
+            consultarSuplidor.Show();
+        }
+
+        //Boton consultar Productos
+        private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ConsultarProductos consultarProductos = new ConsultarProductos();
+            consultarProductos.Show();
+        }
+
+        //Boton consultar Categorias
+        private void ConsultarCategoriasButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ConsultarCategoria consultarCategoria = new ConsultarCategoria();
+            consultarCategoria.Show();
+        }
+
+        //Boton consultar Ventas
+        private void ConsultarVentasButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ConsultarVentas consultarVentas = new ConsultarVentas();
+            consultarVentas.Show();
+            
+        }
+
+        //Boton consultar compras
+        private void ConsultarComprasButton_Click(object sender, RoutedEventArgs e)
+        {
+            FormCompras formCompras = new FormCompras();
+            formCompras.Show();
+        }
+
+       
     }
 }

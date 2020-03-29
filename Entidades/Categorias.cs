@@ -11,7 +11,6 @@ namespace ProyectoFinal_PA1.Entidades
         [Key]
         public int CategoriaId { get; set; }
         public string NombreCategoria { get; set; }
-        public string Descripcion { get; set; }
 
         [ForeignKey("Usuarios")]
         public int UsuarioId { get; set; }
@@ -22,7 +21,6 @@ namespace ProyectoFinal_PA1.Entidades
         {
             CategoriaId = 0;
             NombreCategoria = string.Empty;
-            Descripcion = string.Empty;
             UsuarioId = 0;
         }
     }

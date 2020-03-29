@@ -44,9 +44,7 @@ namespace ProyectoFinal_PA1.UI.Consultas
                     case 2:
                         listado = CategoriasBLL.GetList(x => x.NombreCategoria == CriterioTextBox.Text);
                         break;
-                    case 3:
-                        listado = CategoriasBLL.GetList(x => x.Descripcion == CriterioTextBox.Text);
-                        break;
+                    
                 }
             }
             else

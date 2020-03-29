@@ -17,7 +17,6 @@
             <ComboBoxItem Content="TODO"/>
             <ComboBoxItem Content="ID"/>
             <ComboBoxItem Content="Nombre"/>
-            <ComboBoxItem Content="Descripcion"/>
         </ComboBox>
 
         <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>

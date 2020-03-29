@@ -21,7 +21,6 @@
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
             <Label Content="CategotriaId:" Style="{StaticResource Labels}"/>
             <Label Content="Nombre Categoria: " Style="{StaticResource Labels}"/>
-            <Label Content="Descripcion: " Style="{StaticResource Labels}"/>
 
             <Label Content="Usuario Id:" Style="{StaticResource Labels}" />
         </StackPanel>
@@ -41,16 +40,6 @@
             <TextBox x:Name="NombreCategoriaTextBox">
                 <TextBox.Text>
                     <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBox x:Name="DescripcionTextBox" Margin="0,8">
-                <TextBox.Text>
-                    <Binding Path="Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>

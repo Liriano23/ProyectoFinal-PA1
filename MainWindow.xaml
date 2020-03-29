@@ -43,23 +43,23 @@
 
         <Label Content="Registros" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" FontWeight="Bold"/>
 
-        <Button Content="Usuarios" FontSize="16" Grid.Row="2" Grid.Column="0" Click="Button_Click" Background="#FF3081E2"/>
-        <Button Content="Clientes" FontSize="16" Grid.Row="4" Grid.Column="0" Click="Button_Click_1" Background="#FF3081E2"/>
-        <Button Content="Empleados" FontSize="16" Grid.Row="6" Grid.Column="0" Click="Button_Click_2" Background="#FF3081E2"/>
-        <Button Content="Suplidores" FontSize="16" Grid.Row="8" Grid.Column="0" Click="Button_Click_3" Background="#FF3081E2"/>
-        <Button Content="Productos" FontSize="16" Grid.Row="10" Grid.Column="0" Click="Button_Click_4" Background="#FF3081E2"/>
-        <Button Content="Categorias Productos" FontSize="16" Grid.Row="12" Grid.Column="0" Click="Button_Click_13" Background="#FF3081E2" Height="30" VerticalAlignment="Top"/>
-        <Button Content="Ventas" FontSize="16" Grid.Row="14" Grid.Column="0" Click="Button_Click_5" Background="#FF3081E2"/>
-        <Button Content="Compras" FontSize="16" Grid.Row="16" Grid.Column="0" Click="Button_Click_14"  Background="#FF3081E2"/>
+        <Button x:Name="UsuarioButton" Content="Usuarios" FontSize="16" Grid.Row="2" Grid.Column="0" Click="UsuarioButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ClientesButton" Content="Clientes" FontSize="16" Grid.Row="4" Grid.Column="0" Click="ClientesButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="EmpleadosButton" Content="Empleados" FontSize="16" Grid.Row="6" Grid.Column="0" Click="EmpleadosButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="SuplidoresrButton" Content="Suplidores" FontSize="16" Grid.Row="8" Grid.Column="0" Click="SuplidoresrButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ProductosButton" Content="Productos" FontSize="16" Grid.Row="10" Grid.Column="0" Click="ProductosButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="CategoriasButton" Content="Categorias Productos" FontSize="16" Grid.Row="12" Grid.Column="0" Click="CategoriasButton_Click"  Background="#FF3081E2" Height="30" VerticalAlignment="Top"/>
+        <Button x:Name="VentasButton" Content="Ventas" FontSize="16" Grid.Row="14" Grid.Column="0" Click="VentasButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ComprasButton" Content="Compras" FontSize="16" Grid.Row="16" Grid.Column="0" Click="ComprasButton_Click"  Background="#FF3081E2"/>
 
         <Label Content="Consultas" HorizontalAlignment="Center" Grid.Column="2" FontSize="16" FontWeight="Bold"/>
-        <Button Content="Consultas Usuarios" FontSize="16"  Grid.Row="2" Grid.Column="2" Click="Button_Click_6" Background="#FF3081E2"/>
-        <Button Content="Consultas Clientes" FontSize="16" Grid.Row="4" Grid.Column="2" Click="Button_Click_7" Background="#FF3081E2"/>
-        <Button Content="Consultas Empleados" FontSize="16" Grid.Row="6" Grid.Column="2" Click="Button_Click_8" Background="#FF3081E2"/>
-        <Button Content="Consultas Suplidores" FontSize="16" Grid.Row="8" Grid.Column="2" Click="Button_Click_9" Background="#FF3081E2"/>
-        <Button Content="Consultas Productos" FontSize="16" Grid.Row="10" Grid.Column="2" Click="Button_Click_10" Background="#FF3081E2"/>
-        <Button Content="consulta Categorias" FontSize="16" Grid.Row="12" Grid.Column="2" Click="Button_Click_12" Background="#FF3081E2"/>
-        <Button Content="Consultas Ventas" FontSize="16" Grid.Row="14" Grid.Column="2" Click="Button_Click_11" Background="#FF3081E2"/>
-        <Button Content="Consultas Compras" FontSize="16" Grid.Row="16" Grid.Column="2" Click="Button_Click_15"  Background="#FF3081E2"/>
+        <Button x:Name="ConsultarUsuarioButton"  Content="Consultas Usuarios" FontSize="16"  Grid.Row="2" Grid.Column="2" Click="ConsultarUsuarioButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarClientesButton"  Content="Consultas Clientes" FontSize="16" Grid.Row="4" Grid.Column="2" Click="ConsultarClientesButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarEmpleadosButton"  Content="Consultas Empleados" FontSize="16" Grid.Row="6" Grid.Column="2" Click="ConsultarEmpleadosButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarSuplidoresrButton" Content="Consultas Suplidores" FontSize="16" Grid.Row="8" Grid.Column="2" Click="ConsultarSuplidoresrButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarProductosButton"  Content="Consultas Productos" FontSize="16" Grid.Row="10" Grid.Column="2" Click="ConsultarProductosButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarCategoriasButton"  Content="consulta Categorias" FontSize="16" Grid.Row="12" Grid.Column="2" Click="ConsultarCategoriasButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarVentasButton"  Content="Consultas Ventas" FontSize="16" Grid.Row="14" Grid.Column="2" Click="ConsultarVentasButton_Click" Background="#FF3081E2"/>
+        <Button x:Name="ConsultarComprasButton"  Content="Consultas Compras" FontSize="16" Grid.Row="16" Grid.Column="2" Click="ConsultarComprasButton_Click"  Background="#FF3081E2"/>
     </Grid>
 </Window>

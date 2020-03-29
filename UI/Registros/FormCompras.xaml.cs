@@ -23,32 +23,43 @@ namespace ProyectoFinal_PA1.UI.Registros
         public List<ComprasDetalle> Detalle { get; set; }
         public FormCompras()
         {
-
+            
             InitializeComponent();
+
+            CompraIDTextBox.Text = "0";
+            SuplidorIdTextbox.Text = "0";
+            SubTotalTextBox.Text = "0";
+            ITBISTextBox.Text = "0";
+            DescuentoTextBox.Text = "0";
+            ProductoIdTexBox.Text = "0";
+            PrecioTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
+            TotalTextBox.Text = "0";
+
             this.DataContext = compra;
             this.Detalle = new List<ComprasDetalle>();
 
             CargarGrid();
         }
-
         private void Limpiar()
         {
             CompraIDTextBox.Text = "0";
             SuplidorIdTextbox.Text = "0";
-            EmpleadoIdTextbox.Text = "0";
             SubTotalTextBox.Text = "0";
-            ITBISTextBox.Text = "0.18";
+            ITBISTextBox.Text = "0";
             DescuentoTextBox.Text = "0";
             ProductoIdTexBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
+            TotalTextBox.Text = "0";
             FechaDeCompraTimePicker.SelectedDate = DateTime.Now;
 
             Compras compra = new Compras();
             this.Detalle = new List<ComprasDetalle>();
             CargarGrid();
+            Actualizar();
         }
-
+        
         private bool ExisteEnDB()
         {
             Compras compra = ComprasBLL.Buscar(Convert.ToInt32(CompraIDTextBox.Text));
@@ -66,12 +77,11 @@ namespace ProyectoFinal_PA1.UI.Registros
             Compras compras = new Compras();
             compras.CompraId = int.Parse(CompraIDTextBox.Text);
             compras.SuplidorId = int.Parse(SuplidorIdTextbox.Text);
-            compras.UsuarioId = int.Parse(EmpleadoIdTextbox.Text);
             compras.FechaDeCompra = (DateTime)FechaDeCompraTimePicker.SelectedDate;
             compras.SubTotal = decimal.Parse(SubTotalTextBox.Text);
             compras.ITBIS = double.Parse(ITBISTextBox.Text);
             compras.Descuento = decimal.Parse(DescuentoTextBox.Text);
-
+            compras.Total = decimal.Parse(TotalTextBox.Text); 
             compras.Detalle = this.Detalle;
 
             return compras;
@@ -81,14 +91,15 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CompraIDTextBox.Text = Convert.ToString(compra.CompraId);
             SuplidorIdTextbox.Text = Convert.ToString(compra.SuplidorId);
-            EmpleadoIdTextbox.Text = Convert.ToString(compra.UsuarioId);
             FechaDeCompraTimePicker.SelectedDate = compra.FechaDeCompra;
             SubTotalTextBox.Text = Convert.ToString(compra.SubTotal);
             ITBISTextBox.Text = Convert.ToString(compra.ITBIS);
             DescuentoTextBox.Text = Convert.ToString(compra.Descuento);
+            TotalTextBox.Text = Convert.ToString(compra.Total);
 
             this.Detalle = compra.Detalle;
             CargarGrid();
+
         }
 
 
@@ -100,6 +111,21 @@ namespace ProyectoFinal_PA1.UI.Registros
         private bool Validar()
         {
             bool paso = true;
+
+            if (string.IsNullOrEmpty(TotalTextBox.Text))
+            {
+                paso = false;
+                TotalTextBox.Focus();
+
+            }
+
+            if (string.IsNullOrEmpty(SubTotalTextBox.Text))
+            {
+                paso = false;
+                SubTotalTextBox.Focus();
+
+            }
+
 
             if (string.IsNullOrEmpty(DescuentoTextBox.Text))
             {
@@ -129,12 +155,6 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             }
 
-            if (string.IsNullOrEmpty(EmpleadoIdTextbox.Text))
-            {
-                paso = false;
-                EmpleadoIdTextbox.Focus();
-
-            }
 
             if (string.IsNullOrEmpty(SuplidorIdTextbox.Text))
             {
@@ -149,6 +169,12 @@ namespace ProyectoFinal_PA1.UI.Registros
                 CompraIDTextBox.Focus();
 
             }
+
+            if (this.Detalle.Count == 0)
+            {
+                MessageBox.Show("La Compra debe tener un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                paso = false;
+            }
             return paso;
         }
 
@@ -161,7 +187,7 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             this.Detalle.Add(new ComprasDetalle
             {
-                Id = Convert.ToInt32(CompraIDTextBox.Text),
+                Id = 0,
                 ProductoId = Convert.ToInt32(ProductoIdTexBox.Text),
                 Precio = Convert.ToInt32(PrecioTextBox.Text),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text)
@@ -169,9 +195,9 @@ namespace ProyectoFinal_PA1.UI.Registros
             });
 
             CargarGrid();
-
-            int valor = Convert.ToInt32(CantidadTextBox.Text);
-            int id = Convert.ToInt32(ProductoIdTexBox.Text);
+            ProductoIdTexBox.Text = string.Empty;
+            CantidadTextBox.Text = string.Empty;
+            PrecioTextBox.Text = string.Empty;
             ProductoIdTexBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
@@ -184,6 +210,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 Detalle.RemoveAt(CompraDetalleDataGrid.SelectedIndex);
                 CargarGrid();
             }
+
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -211,7 +238,6 @@ namespace ProyectoFinal_PA1.UI.Registros
                 }
                 paso = ComprasBLL.Modificar(compra);
             }
-
             if (paso)
             {
                 MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
