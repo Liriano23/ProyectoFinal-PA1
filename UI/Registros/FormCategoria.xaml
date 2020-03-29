@@ -27,31 +27,34 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
-            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5">
+            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="ID Tienen que ser igual a 0">
                 <TextBox.Text>
                     <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="NombreCategoriaTextBox">
+            <TextBox x:Name="NombreCategoriaTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese el Nombre de la Categoria">
                 <TextBox.Text>
                     <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre de Categoria"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,2">
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,10" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese su Usuario Id">
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

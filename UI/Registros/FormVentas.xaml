@@ -29,7 +29,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-            
+
             <TextBox x:Name="VentaIdTextBox" HorizontalContentAlignment="Center" Margin="0,3" Style="{StaticResource TextBoxValidation}" ToolTip="El Id de la venta debe ser 0 para registrar una nueva venta">
                 <TextBox.Text>
                     <Binding Path="VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -103,12 +103,12 @@
 
         <Label Style="{StaticResource Labels}" Width="60" Content="Precio: " Grid.Column="1" Margin="70,179,0,1" Grid.RowSpan="2"></Label>
         <TextBox x:Name="PrecioTextBox" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="119,0,446,78" ToolTip="Ingrese el precio del producto">
-            
+
         </TextBox>
 
         <Label Style="{StaticResource Labels}" Width="72" Content="Cantidad: " Grid.Column="2" Grid.Row="1" Margin="56,0,0,0"></Label>
         <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" ToolTip="Ingrese la cantidad del producto">
-            
+
         </TextBox>
 
         <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la venta">
@@ -124,7 +124,7 @@
         <Label Content="Total: " HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" 
                Style="{StaticResource Labels}" Width="70" Height="25" Margin="149,94,0,-18"></Label>
 
-        <TextBox x:Name="TotalTextBox" Grid.Column="2" Grid.Row="2" Margin="223,93,129,-21"  Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el monto total de la venta">
+        <TextBox x:Name="TotalTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" Margin="223,93,129,-21"  Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el monto total de la venta">
             <TextBox.Text>
                 <Binding Path="Total" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -136,9 +136,9 @@
 
         <Label Style="{StaticResource Labels}" Width="66" Content="Sub Total:" Grid.Column="2" Margin="152,58,0,6" Grid.Row="2"/>
 
-        <TextBox x:Name="SubTotalTextBox" HorizontalContentAlignment="Center" Margin="224,54,140,18" Grid.Column="2" Grid.Row="2" Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el subTotal de la venta">
+        <TextBox x:Name="SubTotalTextBox" HorizontalContentAlignment="Center" Margin="224,54,140,0" Grid.Column="2" Grid.Row="2" Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el subTotal de la venta" Height="28" VerticalAlignment="Top">
             <TextBox.Text>
-                <Binding Path="Subtotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="SubTotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule></ExceptionValidationRule>
                     </Binding.ValidationRules>

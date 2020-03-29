@@ -39,7 +39,7 @@ namespace ProyectoFinal_PA1.BLL
             try
             {
 
-                db.Database.ExecuteSqlRaw($"Delete FROM ComprasDetelle where CompraId = {compra.CompraId}");
+                db.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalle where CompraId = {compra.CompraId}");
                 foreach (var item in compra.Detalle)
                 {
                     db.Entry(item).State = EntityState.Added;
