@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormVentas" Height="502" Width="611" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="FormVentas" Height="520" Width="611" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -59,7 +59,6 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule></ExceptionValidationRule>
                             <local:NumberValidation></local:NumberValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -75,12 +74,12 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-            <TextBox Name="ItbisTextBox" HorizontalContentAlignment="Center"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el ITBIS que es 18%">
+            <TextBox Name="ITBISTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el ITBIS que es 18%">
                 <TextBox.Text>
                     <Binding Path="ITBIS" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule></ExceptionValidationRule>
-                            <local:NumberValidation></local:NumberValidation>
+                           
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -124,7 +123,10 @@
         <Label Content="Total: " HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" 
                Style="{StaticResource Labels}" Width="70" Height="25" Margin="149,94,0,-18"></Label>
 
-        <TextBox x:Name="TotalTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" Margin="223,93,129,-21"  Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el monto total de la venta">
+        <TextBox x:Name="TotalTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" Margin="223,93,129,-21"  
+                 Style="{StaticResource TextBoxValidation}" 
+                 ToolTip="Presione espacio para mostrar el monto total de la venta" TextChanged="TotalTextBox_TextChanged"
+                 >
             <TextBox.Text>
                 <Binding Path="Total" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -136,7 +138,7 @@
 
         <Label Style="{StaticResource Labels}" Width="66" Content="Sub Total:" Grid.Column="2" Margin="152,58,0,6" Grid.Row="2"/>
 
-        <TextBox x:Name="SubTotalTextBox" HorizontalContentAlignment="Center" Margin="224,54,140,0" Grid.Column="2" Grid.Row="2" Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el subTotal de la venta" Height="28" VerticalAlignment="Top">
+        <TextBox x:Name="SubTotalTextBox" HorizontalContentAlignment="Center" Margin="224,54,140,0" Grid.Column="2" Grid.Row="2" Style="{StaticResource TextBoxValidation}" ToolTip="Presione espacio para mostrar el subTotal de la venta" Height="28" VerticalAlignment="Top" TextChanged="SubTotalTextBox_TextChanged">
             <TextBox.Text>
                 <Binding Path="SubTotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

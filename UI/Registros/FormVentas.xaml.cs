@@ -19,12 +19,29 @@ namespace ProyectoFinal_PA1.UI.Registros
     /// </summary>
     public partial class FormVentas : Window
     {
+        /// <summary>
+        /// </summary>
+         
+            
+            //Atributos Auxiliares
+        private decimal SubTotal;
+        private decimal Total;
+        private int Cantidad;
+        private decimal Precio;
+        private decimal Itbis;
+        private decimal Bandera;
+        private decimal AplicaPorcentaje;
+        private double Porcentaje;
+        private decimal Descuento;
+
         Ventas venta = new Ventas();
         public List<VentasDetalles> Detalle { get; set; }
 
         public FormVentas()
         {
             InitializeComponent();
+            
+            this.DataContext = venta;
 
             VentaIdTextBox.Text = "0";
             ClienteIdTextbox.Text = "0";
@@ -33,11 +50,19 @@ namespace ProyectoFinal_PA1.UI.Registros
             SubTotalTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
-            ItbisTextBox.Text = "0";
+            ITBISTextBox.Text = "18";
             TotalTextBox.Text = "0";
 
             this.Detalle = new List<VentasDetalles>();
-            this.DataContext = venta;
+
+            SubTotal = 0;
+            Total = 0;
+            Cantidad = 0;
+            Precio = 0;
+            Itbis = 0;
+            Bandera = 0;
+            AplicaPorcentaje = 0;
+            Porcentaje = 0;
         }
 
         private void Limpiar()
@@ -47,7 +72,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             ClienteIdTextbox.Text = "0";
             ProductoIdTextBox.Text = "0";
             EmpleadoIdTextbox.Text = "0";
-            ItbisTextBox.Text = "0.18";
+            ITBISTextBox.Text = "18";
             SubTotalTextBox.Text = "0";
             DescuentoTextBox.Text = "0";
             PrecioTextBox.Text = "0";
@@ -58,6 +83,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             this.Detalle = new List<VentasDetalles>();
             CargarGrid();
             Ventas venta = new Ventas();
+
             Actualizar();
         }
 
@@ -69,7 +95,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             EmpleadoIdTextbox.Text = Convert.ToString(ventas.EmpleadoId);
             FechaVentaDateTimePicker.SelectedDate = ventas.FechaEmision;
             SubTotalTextBox.Text = Convert.ToString(ventas.SubTotal);
-            ItbisTextBox.Text = Convert.ToString(ventas.ITBIS);
+            ITBISTextBox.Text = Convert.ToString(ventas.ITBIS);
             DescuentoTextBox.Text = Convert.ToString(ventas.Descuento);
             TotalTextBox.Text = Convert.ToString(ventas.Total);
 
@@ -225,9 +251,29 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             });
             CargarGrid();
+            AumentarSubTotal();
+            AumentarTotal();
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
+        }
+
+
+        private void AumentarSubTotal() //Metodo para aumentar el subTotal
+        {
+            Cantidad = Convert.ToInt32(CantidadTextBox.Text);
+            Porcentaje = Convert.ToDouble(Convert.ToDouble(ITBISTextBox.Text) / 100);
+            Itbis = (decimal)Porcentaje;
+            Precio = Convert.ToDecimal(PrecioTextBox.Text);
+            Bandera = Convert.ToDecimal(Precio * Cantidad);
+            AplicaPorcentaje = (Bandera * Itbis);
+            SubTotal +=(Bandera + AplicaPorcentaje);
+        }
+
+        private void AumentarTotal()
+        {
+           Descuento = Convert.ToDecimal(DescuentoTextBox.Text);
+           Total = SubTotal - Descuento;
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -257,6 +303,30 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
         }
 
-       
+        private void TotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+
+                TotalTextBox.Text = Total.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void SubTotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+               
+                SubTotalTextBox.Text = SubTotal.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
     }
 }

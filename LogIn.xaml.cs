@@ -39,9 +39,10 @@ namespace ProyectoFinal_PA1
             //Usuario por defecto
             if(NombreUsuarioTextBox.Text == userName && ContrasenaTextBox.Text == password)
             {
-                MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 main.Show();
                 paso = true;
+                this.Close();
                 return;
 
             }
@@ -53,6 +54,8 @@ namespace ProyectoFinal_PA1
                     UsuarioId = item.UsuarioId;
                     main.Show();
                     paso = true;
+                    this.Close();
+                    MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
                 }
             }

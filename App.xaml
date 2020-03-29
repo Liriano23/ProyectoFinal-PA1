@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ProyectoFinal_PA1"
              StartupUri="MainWindow.xaml" DispatcherUnhandledException="Application_DispatcherUnhandledException">
+
     <Application.Resources>
-        
         <Style x:Key="Labels" TargetType="Label">
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="HorizontalAlignment" Value="Left"></Setter>
@@ -21,6 +21,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+  
     </Application.Resources>
 </Application>
