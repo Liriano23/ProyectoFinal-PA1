@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-        Title="ConsultarUsuarios" Height="500" Width="800" ResizeMode="CanMinimize" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="ConsultarUsuarios" Height="500" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
 
         <Grid.RowDefinitions>

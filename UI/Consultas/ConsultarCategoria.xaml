@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consultar Categorias" ResizeMode="CanMinimize" Height="365" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="Consultar Categorias" Height="365" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
