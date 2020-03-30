@@ -71,7 +71,9 @@ Todas las consultas tienen este estilo por esto solo muestro esta aqui.
 
 Presione el siguiente enlace para ver a la imagen de la consulta: https://user-images.githubusercontent.com/59903517/77951036-6b0f1480-7297-11ea-856f-17fa5cc8f37f.PNG
 
+# Diagrama de base de datos
 
+**Diagrama de base de datos** https://user-images.githubusercontent.com/59903517/77967230-b71b8280-72b2-11ea-8759-b127b11d548e.JPG
 
 # Construccion 
 **C Sharp.**
