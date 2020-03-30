@@ -158,6 +158,11 @@ namespace ProyectoFinal_PA1
             consultarCompra.Show();
         }
 
-       
+        private void CerrarSecion_Click(object sender, RoutedEventArgs e)
+        {
+            LogIn logIn = new LogIn();
+            this.Close();
+            logIn.Show();
+        }
     }
 }
