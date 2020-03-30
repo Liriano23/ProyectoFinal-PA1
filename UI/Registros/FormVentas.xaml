@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormVentas" Height="520" Width="633" Background="LightGray" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Formulario Ventas" Height="520" Width="633" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -74,7 +74,7 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-            <TextBox Name="ITBISTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el ITBIS que es 18%">
+            <TextBox Name="ITBISTextBox" HorizontalContentAlignment="Center" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el ITBIS que es 18%">
                 <TextBox.Text>
                     <Binding Path="ITBIS" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -155,12 +155,37 @@
             </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="2" Grid.Column="0" Margin="44,137,0,-76" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Grid.ColumnSpan="2" Click="NuevoButton_Click" ToolTip="Presione para limpiar los campos"></Button>
-        <Button x:Name="GuardarButton" Content="Guardar" Grid.Row="2" Grid.Column="1" Margin="99,140,0,-74" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Grid.ColumnSpan="2" Click="GuardarButton_Click" ToolTip="Presione para Guardar nueva venta"></Button>
-        <Button x:Name="ElimnarButton" Content="ELiminar" Grid.Row="2" Grid.Column="2" Margin="97,138,0,-76" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Click="ElimnarButton_Click" ToolTip="Presione para eliminar una venta"></Button>
-        <Button x:Name="BuscarButton" Content="Buscar" Grid.Row="0" Grid.Column="2" Margin="20,4,0,148" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Click="BuscarButton_Click" ToolTip="Presione para buscar una venta"></Button>
-        <Button x:Name="RemoverButton" Content="Remover" Grid.Row="2" Margin="3,57,0,16" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="139" Grid.ColumnSpan="2" Click="RemoverButton_Click" ToolTip="Presione para remover un producto de la lista"></Button>
-        <Button x:Name="AgregarButton" Content="Agregar" Margin="245,0,0,70" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="107" Grid.Column="2" Grid.Row="1" Height="30" VerticalAlignment="Bottom" Click="AgregarButton_Click" ToolTip="Presione para Agregar un producto a la lista"></Button>
+        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="2" Grid.Column="0" Margin="44,137,0,-76" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Grid.ColumnSpan="2" Click="NuevoButton_Click" ToolTip="Presione para limpiar los campos">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="GuardarButton" Content="Guardar" Grid.Row="2" Grid.Column="1" Margin="99,140,0,-74" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Grid.ColumnSpan="2" Click="GuardarButton_Click" ToolTip="Presione para Guardar nueva venta">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="ElimnarButton" Content="ELiminar" Grid.Row="2" Grid.Column="2" Margin="97,138,0,-76" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Click="ElimnarButton_Click" ToolTip="Presione para eliminar una venta">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminarr.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="BuscarButton" Content="Buscar" Grid.Row="0" Grid.Column="2" Margin="20,4,0,148" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Click="BuscarButton_Click" ToolTip="Presione para buscar una venta">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
+            </Button.Background>
+        </Button>
+        
+        <Button x:Name="RemoverButton" Content="Remover" Grid.Row="2" Margin="3,57,0,16" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="139" Grid.ColumnSpan="2" Click="RemoverButton_Click" ToolTip="Presione para remover un producto de la lista">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/remover.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="AgregarButton" Content="Agregar" Margin="245,0,0,70" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="107" Grid.Column="2" Grid.Row="1" Height="30" VerticalAlignment="Bottom" Click="AgregarButton_Click" ToolTip="Presione para Agregar un producto a la lista">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/agregar.png" />
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

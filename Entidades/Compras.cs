@@ -11,9 +11,9 @@ namespace ProyectoFinal_PA1.Entidades
         [Key]
         public int CompraId { get; set; }
         public int SuplidorId { get; set; }
-
-        [ForeignKey("Usuarios")]
-        public int UsuariosId { get; set; }
+        
+        //[ForeignKey("Usuarios")]
+        //public int UsuariosId { get; set; }
         public DateTime FechaDeCompra { get; set; }
         public decimal SubTotal { get; set; }
         public double ITBIS { get; set; }
@@ -27,7 +27,7 @@ namespace ProyectoFinal_PA1.Entidades
         {
             CompraId = 0;
             SuplidorId = 0;
-            UsuariosId = 0;
+            //UsuariosId = 0;
             FechaDeCompra = DateTime.Now;
             SubTotal = 0;
             ITBIS = 0;

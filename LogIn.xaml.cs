@@ -22,8 +22,8 @@ namespace ProyectoFinal_PA1
         List<Usuarios> lista = new List<Usuarios>();
         public static int UsuarioId;
 
-        private static string userName = "admin123";
-        private static string password = "admin123";
+        private static string userName = "Admin";
+        private static string password = "Admin";
         public LogIn()
         {
             InitializeComponent();
@@ -37,9 +37,8 @@ namespace ProyectoFinal_PA1
             bool paso = false;
             
             //Usuario por defecto
-            if(NombreUsuarioTextBox.Text == userName && ContrasenaTextBox.Text == password)
+            if(NombreUsuarioTextBox.Text == userName && contrasenaBox.Password == password)
             {
-                MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 main.Show();
                 paso = true;
                 this.Close();
@@ -49,7 +48,7 @@ namespace ProyectoFinal_PA1
             //Si existe usuario en base de datos
             foreach (var item in lista)
             {
-                if ((item.NombreUsuario == NombreUsuarioTextBox.Text) && (item.Contrasena == ContrasenaTextBox.Text))
+                if ((item.NombreUsuario == NombreUsuarioTextBox.Text) && (item.Contrasena == contrasenaBox.Password))
                 {
                     UsuarioId = item.UsuarioId;
                     main.Show();
@@ -63,7 +62,7 @@ namespace ProyectoFinal_PA1
             {
                 MessageBox.Show("Nombre de usuario o Contraseña incorrecto", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 NombreUsuarioTextBox.Text = string.Empty;
-                ContrasenaTextBox.Text = string.Empty;
+                contrasenaBox.Password = string.Empty;
                 NombreUsuarioTextBox.Focus();
             }
         }

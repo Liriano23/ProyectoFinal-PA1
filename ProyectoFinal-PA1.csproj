@@ -10,11 +10,53 @@
 
   <ItemGroup>
     <None Remove="Data\RepuestoRafa-wal" />
+    <None Remove="Resources\agregar.png" />
+    <None Remove="Resources\buscar.png" />
+    <None Remove="Resources\Buscarr.png" />
+    <None Remove="Resources\eliminar.png" />
+    <None Remove="Resources\Eliminarr.png" />
+    <None Remove="Resources\guardar.png" />
+    <None Remove="Resources\logIn.jpg" />
+    <None Remove="Resources\MenuPrincipal.jpeg" />
+    <None Remove="Resources\nuevo.png" />
+    <None Remove="Resources\remover.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\agregar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\buscar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Buscarr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\eliminar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Eliminarr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\guardar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\logIn.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MenuPrincipal.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\nuevo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\remover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +68,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\RepuestoRafa">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

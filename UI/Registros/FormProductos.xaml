@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormProductos" Height="347" Width="534" Background="LightGray" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Formulario Productos" Height="347" Width="534" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -127,28 +127,28 @@
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
                 Width="100" HorizontalAlignment="Left" Margin="44,22,0,45" Click="NuevoButton_Click" ToolTip="Presione para Limpiar los campos">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
                 Width="100" HorizontalAlignment="Left" Margin="15,22,0,47" Click="GuardarButton_Click" ToolTip="Presione para guardar producto">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
                 Width="100" HorizontalAlignment="Left" Margin="15,22,0,47" Click="EliminarButton_Click_1" ToolTip="Presione para eliminar producto">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminarr.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
                 Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" ToolTip="Presione para buscar un producto">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
 

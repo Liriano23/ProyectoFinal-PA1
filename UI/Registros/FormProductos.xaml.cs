@@ -29,10 +29,10 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
 
-            ProductoIdTextBox.Text = string.Empty;
-            NombreProductoTextBox.Text = string.Empty;
-            MarcaProductoTextBox.Text = string.Empty;
-            InventarioTextBox.Text = string.Empty;
+            ProductoIdTextBox.Text = "N/A";
+            NombreProductoTextBox.Text = "N/A";
+            MarcaProductoTextBox.Text = "N/A";
+            InventarioTextBox.Text = "N/A";
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             SuplidorIdTextBox.Text = "0";
             CategoriaIdTextBox.Text = "0";

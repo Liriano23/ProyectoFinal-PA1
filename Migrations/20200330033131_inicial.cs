@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinal_PA1.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -106,22 +106,22 @@ namespace ProyectoFinal_PA1.Migrations
                     CompraId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SuplidorId = table.Column<int>(nullable: false),
-                    UsuariosId = table.Column<int>(nullable: false),
                     FechaDeCompra = table.Column<DateTime>(nullable: false),
                     SubTotal = table.Column<decimal>(nullable: false),
                     ITBIS = table.Column<double>(nullable: false),
                     Descuento = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
+                    Total = table.Column<decimal>(nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Compras", x => x.CompraId);
                     table.ForeignKey(
-                        name: "FK_Compras_Usuarios_UsuariosId",
-                        column: x => x.UsuariosId,
+                        name: "FK_Compras_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,9 +275,9 @@ namespace ProyectoFinal_PA1.Migrations
                 column: "UsuariosId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Compras_UsuariosId",
+                name: "IX_Compras_UsuariosUsuarioId",
                 table: "Compras",
-                column: "UsuariosId");
+                column: "UsuariosUsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalle_CompraId",

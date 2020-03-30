@@ -154,8 +154,8 @@ namespace ProyectoFinal_PA1
         //Boton consultar compras
         private void ConsultarComprasButton_Click(object sender, RoutedEventArgs e)
         {
-            FormCompras formCompras = new FormCompras();
-            formCompras.Show();
+            ConsultarCompra consultarCompra = new ConsultarCompra();
+            consultarCompra.Show();
         }
 
        

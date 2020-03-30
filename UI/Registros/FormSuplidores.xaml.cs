@@ -42,14 +42,14 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             SuplidorIdTextBox.Text = "0";
-            NombreSuplidorTextBox.Text = string.Empty;
-            ApellidosTextBox.Text = string.Empty;
-            NombreCompaniaTextBox.Text = string.Empty;
-            DireccionTextBox.Text = string.Empty;
-            TelefonoTextBox.Text = string.Empty;
-            CelularTextBox.Text = string.Empty;
-            EmailTextBox.Text = string.Empty;
-            CiudadTextBox.Text = string.Empty;
+            NombreSuplidorTextBox.Text = "N/A";
+            ApellidosTextBox.Text = "N/A";
+            NombreCompaniaTextBox.Text ="N/A";
+            DireccionTextBox.Text ="N/A";
+            TelefonoTextBox.Text = "N/A";
+            CelularTextBox.Text = "N/A";
+            EmailTextBox.Text = "N/A";
+            CiudadTextBox.Text = "N/A";
             UsuarioIdTextBox.Text = "0";
 
             Suplidores suplidor = new Suplidores();

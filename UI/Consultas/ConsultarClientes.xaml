@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
         Title="Consultar Clientes" Height="319" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFC5BDBD">
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>

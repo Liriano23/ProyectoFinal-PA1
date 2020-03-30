@@ -39,17 +39,17 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             UsuarioIdTextBox.Text = "0";
             NombresTextBox.Text = "N/A";
-            ApellidosTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
+            ApellidosTextBox.Text = "N/A";
+            CedulaTextBox.Text = "N/A";
             SexoComboBox.SelectedItem = "";
-            TelefonoTextBox.Text = string.Empty;
-            CelularTextBox.Text = string.Empty;
-            DireccionTextBox.Text = string.Empty;
-            EmailTextBox.Text = string.Empty;
+            TelefonoTextBox.Text = "N/A";
+            CelularTextBox.Text = "N/A";
+            DireccionTextBox.Text = "N/A";
+            EmailTextBox.Text = "N/A";
             TipoUsuarioComboBox.SelectedItem = "";
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            NombreUsuarioTextBox.Text = string.Empty;
-            ContrasenaTextBox.Text = string.Empty;
+            NombreUsuarioTextBox.Text = "N/A";
+            ContrasenaTextBox.Text = "N/A";
 
             Usuarios usuario = new Usuarios();
             Actualizar();

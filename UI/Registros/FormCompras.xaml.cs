@@ -19,6 +19,17 @@ namespace ProyectoFinal_PA1.UI.Registros
     /// </summary>
     public partial class FormCompras : Window
     {
+
+        // Variables Auxiliares
+        private decimal SubTotal;
+        private decimal Total;
+        private int Cantidad;
+        private decimal Precio;
+        private decimal Itbis;
+        private decimal Bandera;
+        private decimal AplicaPorcentaje;
+        private double Porcentaje;
+        private decimal Descuento;
         Compras compra = new Compras();
         public List<ComprasDetalle> Detalle { get; set; }
         public FormCompras()
@@ -29,7 +40,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CompraIDTextBox.Text = "0";
             SuplidorIdTextbox.Text = "0";
             SubTotalTextBox.Text = "0";
-            ITBISTextBox.Text = "0";
+            ITBISTextBox.Text = "18";
             DescuentoTextBox.Text = "0";
             ProductoIdTexBox.Text = "0";
             PrecioTextBox.Text = "0";
@@ -38,21 +49,38 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             this.DataContext = compra;
             this.Detalle = new List<ComprasDetalle>();
-
             CargarGrid();
+
+            Cantidad = (Cantidad < 0) ? Cantidad = 0 : Cantidad;
+            Precio = (Precio < 0) ? Precio = 0 : Precio;
+            Itbis = (Bandera < 0) ? Itbis = 0 : Itbis;
+            Bandera = (Bandera < 0) ? Bandera = 0 : Bandera;
+            Porcentaje = (Porcentaje < 0) ? Porcentaje = 0 : Porcentaje;
+            AplicaPorcentaje = (Total < 0) ? AplicaPorcentaje = 0 : AplicaPorcentaje;
+            SubTotal = (SubTotal < 0) ? SubTotal = 0 : SubTotal;
+            Total = (Total < 0) ? Total = 0 : Total;
         }
         private void Limpiar()
         {
             CompraIDTextBox.Text = "0";
             SuplidorIdTextbox.Text = "0";
             SubTotalTextBox.Text = "0";
-            ITBISTextBox.Text = "0";
+            ITBISTextBox.Text = "18";
             DescuentoTextBox.Text = "0";
             ProductoIdTexBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaDeCompraTimePicker.SelectedDate = DateTime.Now;
+            
+            SubTotal = 0;
+            Total = 0;
+            Cantidad = 0;
+            Precio = 0;
+            Itbis = 0;
+            Bandera = 0;
+            AplicaPorcentaje = 0;
+            Porcentaje = 0;
 
             Compras compra = new Compras();
             this.Detalle = new List<ComprasDetalle>();
@@ -92,10 +120,14 @@ namespace ProyectoFinal_PA1.UI.Registros
             CompraIDTextBox.Text = Convert.ToString(compra.CompraId);
             SuplidorIdTextbox.Text = Convert.ToString(compra.SuplidorId);
             FechaDeCompraTimePicker.SelectedDate = compra.FechaDeCompra;
-            SubTotalTextBox.Text = Convert.ToString(compra.SubTotal);
             ITBISTextBox.Text = Convert.ToString(compra.ITBIS);
             DescuentoTextBox.Text = Convert.ToString(compra.Descuento);
-            TotalTextBox.Text = Convert.ToString(compra.Total);
+
+            SubTotal = compra.SubTotal;
+            Total = compra.Total;
+            SubTotalTextBox.Text = Convert.ToString(SubTotal);
+            TotalTextBox.Text = Convert.ToString(Total);
+
 
             this.Detalle = compra.Detalle;
             CargarGrid();
@@ -195,10 +227,46 @@ namespace ProyectoFinal_PA1.UI.Registros
             });
 
             CargarGrid();
+            AumentarSubTotal();
+            AumentarTotal();
+            int valor = Convert.ToInt32(CantidadTextBox.Text);
+            int id = Convert.ToInt32(ProductoIdTexBox.Text);
+            ProductosBLL.AumentarInventario(id, valor);
+
             ProductoIdTexBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
            
+        }
+        //Metodo para aumentar el subTotal
+        private void AumentarSubTotal() 
+        {
+            Cantidad = Convert.ToInt32(CantidadTextBox.Text);
+            Porcentaje = Convert.ToDouble(Convert.ToDouble(ITBISTextBox.Text) / 100);
+           
+            Precio = Convert.ToDecimal(PrecioTextBox.Text);
+            
+            AplicaPorcentaje = (Bandera * Itbis);
+            SubTotal += (Bandera + AplicaPorcentaje);
+        }
+        //Metodo para Remover cantidad del Subtotal si se elimina un producto del Grid
+        private void RemoveFromSubTotal() 
+        {
+            SubTotal -= Bandera;
+        }
+
+        //Metodo para Remover cantidad del Total si se elimina un producto del Grid
+        private void RemoveFromTotal() 
+        {
+            Total = SubTotal;
+        }
+
+        private void AumentarTotal()
+        {
+            Itbis = (decimal)Porcentaje;
+            Bandera = Convert.ToDecimal(SubTotal * Itbis);
+            Descuento = Convert.ToDecimal(DescuentoTextBox.Text);
+            Total = SubTotal - Descuento;
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -206,6 +274,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (CompraDetalleDataGrid.Items.Count > 0 && CompraDetalleDataGrid.SelectedItem != null)
             {
                 Detalle.RemoveAt(CompraDetalleDataGrid.SelectedIndex);
+                RemoveFromSubTotal();
+                RemoveFromTotal();
                 CargarGrid();
             }
 
@@ -278,6 +348,32 @@ namespace ProyectoFinal_PA1.UI.Registros
             else
             {
                 MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void SubTotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+
+                SubTotalTextBox.Text = SubTotal.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void TotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+
+                TotalTextBox.Text = Total.ToString();
+            }
+            catch (Exception)
+            {
+                return;
             }
         }
     }

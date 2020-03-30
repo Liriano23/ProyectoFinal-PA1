@@ -42,7 +42,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             CategoriaIdTextBox.Text = "0";
-            NombreCategoriaTextBox.Text = string.Empty;
+            NombreCategoriaTextBox.Text= "N/A";
             UsuarioIdTextBox.Text = "0";
 
             Categorias categoria = new Categorias();

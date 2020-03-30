@@ -42,14 +42,14 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             EmpleadoIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
-            ApellidosTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
-            DireccionTextBox.Text = string.Empty;
-            TelefonoTextBox.Text = string.Empty;
-            CelularTextBox.Text = string.Empty;
-            EmailTextBox.Text = string.Empty;
-            CargoTextBox.Text = string.Empty;
+            NombresTextBox.Text = "N/A";
+            ApellidosTextBox.Text = "N/A";
+            CedulaTextBox.Text = "N/A";
+            DireccionTextBox.Text = "N/A";
+            TelefonoTextBox.Text = "N/A";
+            CelularTextBox.Text = "N/A";
+            EmailTextBox.Text = "N/A";
+            CargoTextBox.Text = "N/A";
             SueldoTextBox.Text = "0";
             FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;

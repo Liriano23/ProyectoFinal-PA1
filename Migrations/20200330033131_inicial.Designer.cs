@@ -9,8 +9,8 @@ using ProyectoFinal_PA1.DAL;
 namespace ProyectoFinal_PA1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200330022237_Inicial")]
-    partial class Inicial
+    [Migration("20200330033131_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,12 +107,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuariosId")
+                    b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CompraId");
 
-                    b.HasIndex("UsuariosId");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Compras");
                 });
@@ -401,9 +401,7 @@ namespace ProyectoFinal_PA1.Migrations
                 {
                     b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
                         .WithMany("Compras")
-                        .HasForeignKey("UsuariosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UsuariosUsuarioId");
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.ComprasDetalle", b =>
