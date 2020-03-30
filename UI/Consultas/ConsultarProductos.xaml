@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-        Title="ConsultarProductos" Height="450" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="ConsultarProductos" Height="500" Width="800" ResizeMode="CanMinimize" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -21,14 +21,17 @@
         </ComboBox>
 
         <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>
-        <TextBox Name="CriterioTextBox" Width="100" Height="20" Margin="310,4,390,19"></TextBox>
+        <TextBox Name="CriterioTextBox" Height="20" Margin="310,4,376,19"/>
 
         <Button Name="ConsultarButton" Height="25" 
                 Margin="480,4,230,14" HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click" >
+            <Button.Background>
+                <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/Buscarr.png"/>
+            </Button.Background>
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-246"/>
+        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-428"/>
 
     </Grid>
 </Window>

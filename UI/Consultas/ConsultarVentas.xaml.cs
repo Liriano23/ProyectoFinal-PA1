@@ -51,7 +51,6 @@ namespace ProyectoFinal_PA1.UI.Consultas
                         total = int.Parse(CriterioTextBox.Text);
                         listado = VentasBLL.GetList(o => o.Total == total);
                         break;
-
                 }
             }
             else

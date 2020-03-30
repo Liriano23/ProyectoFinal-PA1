@@ -225,7 +225,6 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             if (usuarios != null)
             {
-                MessageBox.Show("Exito");
                 LlenaCampo(usuarios);
             }
             else

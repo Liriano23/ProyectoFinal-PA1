@@ -5,41 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-         Title="Consulta Empleado" Height="500" Width="1100" Background="LightGray" WindowStartupLocation="CenterScreen" >
+         Title="Consulta Empleado" Height="500" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Filtrar" Width="auto" Margin="10,5,863,14" Grid.Row="0" RenderTransformOrigin="0,0.484"/>
+        <TextBlock Text="Filtrar" Width="auto" Grid.Row="0" RenderTransformOrigin="0,0.484" Margin="2,4,710,10"/>
 
-        <ComboBox Name="FiltrarComboBox" Margin="65,4,870,17" Grid.Row="0">
+        <ComboBox Name="FiltrarComboBox" Grid.Row="0" Margin="92,6,512,14">
             <ComboBoxItem Content="TODO"/>
             <ComboBoxItem Content="ID"/>
             <ComboBoxItem Content="Nombre"/>
             <ComboBoxItem Content="Cedula"/>
         </ComboBox>
 
-        <TextBlock Text="Criterio" Margin="279,5,665,18" Grid.Row="0"/>
-        <TextBox Name="CriterioTextBox" Width="100" Height="20" Margin="332,8,668,15"/>
+        <TextBlock Text="Criterio"  Grid.Row="0" Margin="320,6,350,-6"/>
+        <TextBox Name="CriterioTextBox" Height="20" Margin="375,8,317,16"/>
 
         <Button Name="ConsultarButton" Height="25" 
-                Margin="538,6,470,12" HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click">
+                 HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click" Margin="516,6,182,14">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/Buscarr.png" />
             </Button.Background>
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="7,44,-5,-351" RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="-1.392"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-2.976"/>
-                </TransformGroup>
-            </DataGrid.RenderTransform>
+        <DataGrid Name="ConsultarDataGrid" Margin="6,44,-4,-435" RenderTransformOrigin="0.5,0.5">
+           
         </DataGrid>
     </Grid>
 </Window>
