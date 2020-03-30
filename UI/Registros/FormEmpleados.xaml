@@ -173,7 +173,7 @@ Title="Formulario Empleados" Height="500" Width="576" Background="LightGray" Win
 
             <TextBox x:Name="UsuarioIdTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del Empleado">
                 <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"/>

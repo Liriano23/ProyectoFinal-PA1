@@ -22,7 +22,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public string Email { get; set; }
 
 		[ForeignKey("Usuarios")]
-		public int UsuarioId { get; set; }
+		public int UsuariosId { get; set; }
 		public ICollection<Productos> Productos { get; set; }
 
 		public Suplidores()
@@ -36,6 +36,7 @@ namespace ProyectoFinal_PA1.Entidades
 			Celular = string.Empty;
 			Ciudad = string.Empty;
 			Email = string.Empty;
+			UsuariosId = 0;
 		}
 	}
 }

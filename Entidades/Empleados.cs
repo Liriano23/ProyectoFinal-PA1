@@ -23,7 +23,7 @@ namespace ProyectoFinal_PA1.Entidades
 		public DateTime FechaIngreso { get; set; }
 
 		[ForeignKey("Usuarios")]
-		public int UsuarioId { get; set; }
+		public int UsuariosId { get; set; }
 		public Empleados()
 		{
 			EmpleadoId = 0;

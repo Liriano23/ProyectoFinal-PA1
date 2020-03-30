@@ -23,6 +23,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         public FormClientes()
         {
             InitializeComponent();
+            this.DataContext = cliente;
             ClienteIdTextBox.Text = "0";
 
             SexoComboBox.Items.Add("Masculino");
@@ -30,8 +31,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             SexoComboBox.Items.Add("Otro");
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
 
-            this.DataContext = cliente;
         }
+
         private void Limpiar()
         {
             ClienteIdTextBox.Text = "0";
@@ -51,6 +52,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             Actualizar();
         }
 
+        private void LlenaCampo(Clientes clientes)
+        {
+            ClienteIdTextBox.Text = Convert.ToString(clientes.ClienteId);
+            NombresTextBox.Text = clientes.Nombres;
+            ApellidosTextBox.Text = clientes.Apellidos;
+            CedulaTextBox.Text = clientes.Cedula;
+            SexoComboBox.SelectedItem = clientes.Sexo;
+            DireccionTextBox.Text = clientes.Direccion;
+            TelefonoTextBox.Text = clientes.Telefono;
+            CelularTextBox.Text = clientes.Celular;
+            EmailTextBox.Text = clientes.Email;
+            FechaNacimientoDateTimePicker.SelectedDate = clientes.FechaNacimiento;
+            FechaIngresoDateTimePicker.SelectedDate = clientes.FechaIngreso;
+            UsuarioIdTextBox.Text = Convert.ToString(clientes.UsuariosId);
+        }
         private bool ExisteEnDB()
         {
             Clientes cliente = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
@@ -194,12 +210,15 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Clientes clientes = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
+            int id;
+            Clientes client = new Clientes();
+            int.TryParse(ClienteIdTextBox.Text, out id);
+            Limpiar();
+            client = ClientesBLL.Buscar(id);
 
-            if (clientes != null)
+            if (client != null)
             {
-                cliente = clientes;
-                Actualizar();
+                LlenaCampo(client);
             }
             else
             {

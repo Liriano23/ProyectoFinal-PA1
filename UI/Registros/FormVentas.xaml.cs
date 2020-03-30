@@ -48,21 +48,19 @@ namespace ProyectoFinal_PA1.UI.Registros
             ProductoIdTextBox.Text = "0";
             EmpleadoIdTextbox.Text = "0";
             SubTotalTextBox.Text = "0";
-            PrecioTextBox.Text = "0";
-            CantidadTextBox.Text = "0";
             ITBISTextBox.Text = "18";
             TotalTextBox.Text = "0";
 
             this.Detalle = new List<VentasDetalles>();
 
-            SubTotal = 0;
-            Total = 0;
-            Cantidad = 0;
-            Precio = 0;
-            Itbis = 0;
-            Bandera = 0;
-            AplicaPorcentaje = 0;
-            Porcentaje = 0;
+            Cantidad = (Cantidad < 0) ? Cantidad = 0 : Cantidad;
+            Precio = (Precio < 0) ? Precio = 0 : Precio;
+            Itbis = (Bandera < 0) ? Itbis = 0 : Itbis;
+            Bandera = (Bandera < 0) ? Bandera = 0 : Bandera;
+            Porcentaje = (Porcentaje < 0) ? Porcentaje = 0 : Porcentaje;
+            AplicaPorcentaje = (Total < 0) ? AplicaPorcentaje = 0 : AplicaPorcentaje;
+            SubTotal = (SubTotal < 0) ? SubTotal = 0 : SubTotal;
+            Total = (Total < 0) ? Total = 0 : Total;
         }
 
         private void Limpiar()
@@ -79,7 +77,14 @@ namespace ProyectoFinal_PA1.UI.Registros
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
-
+            SubTotal = 0;
+            Total = 0;
+            Cantidad = 0;
+            Precio = 0;
+            Itbis = 0;
+            Bandera = 0;
+            AplicaPorcentaje = 0;
+            Porcentaje = 0;
             this.Detalle = new List<VentasDetalles>();
             CargarGrid();
             Ventas venta = new Ventas();
@@ -94,11 +99,14 @@ namespace ProyectoFinal_PA1.UI.Registros
             ClienteIdTextbox.Text = Convert.ToString(ventas.ClienteId);
             EmpleadoIdTextbox.Text = Convert.ToString(ventas.EmpleadoId);
             FechaVentaDateTimePicker.SelectedDate = ventas.FechaEmision;
-            SubTotalTextBox.Text = Convert.ToString(ventas.SubTotal);
             ITBISTextBox.Text = Convert.ToString(ventas.ITBIS);
             DescuentoTextBox.Text = Convert.ToString(ventas.Descuento);
-            TotalTextBox.Text = Convert.ToString(ventas.Total);
-
+            
+            SubTotal = ventas.SubTotal;
+            Total = ventas.Total;
+            SubTotalTextBox.Text = Convert.ToString(SubTotal);
+            TotalTextBox.Text = Convert.ToString(Total);
+            
             this.Detalle = ventas.Detalle;
             CargarGrid();
         }
@@ -120,7 +128,6 @@ namespace ProyectoFinal_PA1.UI.Registros
             VentaDetalleDataGrid.ItemsSource = null;
             VentaDetalleDataGrid.ItemsSource = this.Detalle;
         }
-
 
         private bool Validar()
         {
@@ -253,11 +260,13 @@ namespace ProyectoFinal_PA1.UI.Registros
             CargarGrid();
             AumentarSubTotal();
             AumentarTotal();
+            int valor = Convert.ToInt32(CantidadTextBox.Text);
+            int id = Convert.ToInt32(ProductoIdTextBox.Text);
+            ProductosBLL.DisminuirInventario(id, valor);
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
         }
-
 
         private void AumentarSubTotal() //Metodo para aumentar el subTotal
         {
@@ -268,6 +277,16 @@ namespace ProyectoFinal_PA1.UI.Registros
             Bandera = Convert.ToDecimal(Precio * Cantidad);
             AplicaPorcentaje = (Bandera * Itbis);
             SubTotal +=(Bandera + AplicaPorcentaje);
+        }
+
+        private void RemoveFromSubTotal() //Metodo para Remover cantidad del Subtotal si se elimina un producto del Grid
+        {
+            SubTotal -= Bandera;
+        }
+
+        private void RemoveFromTotal() //Metodo para Remover cantidad del Total si se elimina un producto del Grid
+        {
+                Total = SubTotal;
         }
 
         private void AumentarTotal()
@@ -281,8 +300,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (VentaDetalleDataGrid.Items.Count > 0 && VentaDetalleDataGrid.SelectedItem != null)
             {
                 Detalle.RemoveAt(VentaDetalleDataGrid.SelectedIndex);
+                
+                RemoveFromSubTotal();
+                RemoveFromTotal();
                 CargarGrid();
             }
+           
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)

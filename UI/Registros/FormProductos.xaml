@@ -75,12 +75,10 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="InventaryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad de productos que iran al inventario"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-
 
             <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,7" ToolTip="Aqui debe ingresar la fecha en la que fue agregado el producto">
                 <DatePicker.SelectedDate>
@@ -92,14 +90,12 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-
             <TextBox x:Name="SuplidorIdTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del suplidor que distribuye el producto">
                 <TextBox.Text>
                     <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="SupplierValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar SuplidorId"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -118,41 +114,39 @@
 
             <TextBox x:Name="UsuarioIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del usuario que registro el producto al sistema">
                 <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIDValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuariosId"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Margin="44,22,0,28" Click="NuevoButton_Click">
+                Width="100" HorizontalAlignment="Left" Margin="44,22,0,45" Click="NuevoButton_Click" ToolTip="Presione para Limpiar los campos">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Margin="15,22,0,28" Click="GuardarButton_Click">
+                Width="100" HorizontalAlignment="Left" Margin="15,22,0,47" Click="GuardarButton_Click" ToolTip="Presione para guardar producto">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Margin="15,22,0,28" Click="EliminarButton_Click_1">
+                Width="100" HorizontalAlignment="Left" Margin="15,22,0,47" Click="EliminarButton_Click_1" ToolTip="Presione para eliminar producto">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" >
+                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" ToolTip="Presione para buscar un producto">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>

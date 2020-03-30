@@ -22,7 +22,7 @@ namespace ProyectoFinal_PA1.Entidades
         public int CategoriaId { get; set; }
 
         [ForeignKey("Usuarios")]
-        public int UsuarioId { get; set; }
+        public int UsuariosId { get; set; }
 
         public Productos()
         {
@@ -31,6 +31,10 @@ namespace ProyectoFinal_PA1.Entidades
             MarcaProducto = string.Empty;
             Inventario = 0;
             FechaIngreso = DateTime.Now;
+            UsuariosId = 0;
+            SuplidorId = 0;
+            CategoriaId = 0;
+
         }
 
     }

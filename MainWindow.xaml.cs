@@ -14,17 +14,22 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProyectoFinal_PA1.UI.Registros;
 using ProyectoFinal_PA1.UI.Consultas;
+using ProyectoFinal_PA1.Entidades;
+using ProyectoFinal_PA1.BLL;
 
 namespace ProyectoFinal_PA1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
+      
         public MainWindow()
         {
             InitializeComponent();
+            Usuarios usuarios = new Usuarios();
         }
 
 

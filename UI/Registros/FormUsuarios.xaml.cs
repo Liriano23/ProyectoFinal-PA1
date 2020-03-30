@@ -22,6 +22,8 @@ namespace ProyectoFinal_PA1.UI.Registros
         public FormUsuarios()
         {
             InitializeComponent();
+            this.DataContext = usuario;
+
             UsuarioIdTextBox.Text = "0";
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             
@@ -30,15 +32,13 @@ namespace ProyectoFinal_PA1.UI.Registros
             SexoComboBox.Items.Add("Otro");
 
             TipoUsuarioComboBox.Items.Add("Empleado");
-            TipoUsuarioComboBox.Items.Add("Administrador");
-
-            this.DataContext = usuario;
+            TipoUsuarioComboBox.Items.Add("Administrador");           
         }
 
         private void Limpiar()
         {
             UsuarioIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
+            NombresTextBox.Text = "N/A";
             ApellidosTextBox.Text = string.Empty;
             CedulaTextBox.Text = string.Empty;
             SexoComboBox.SelectedItem = "";

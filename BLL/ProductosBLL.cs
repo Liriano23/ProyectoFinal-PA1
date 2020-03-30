@@ -114,5 +114,38 @@ namespace ProyectoFinal_PA1.BLL
             }
             return lista;
         }
+
+        public static bool DisminuirInventario(int id, int cantidad) //Metodo para disminuir del inventario cuando se realice una venta
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+            Productos producto = new Productos();
+            producto = db.Productos.Find(id);
+
+            if (producto != null)
+            {
+                try
+                {
+                    if (producto.Inventario > 0)
+                        producto.Inventario = (producto.Inventario - cantidad);
+
+
+                    db.Entry(producto).State = EntityState.Modified;
+                    paso = (db.SaveChanges() > 0);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+            }
+
+            return paso;
+
+
+        }
     }
 }

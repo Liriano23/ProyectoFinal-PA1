@@ -198,9 +198,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             ProductoIdTexBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
-            ProductoIdTexBox.Text = "0";
-            PrecioTextBox.Text = "0";
-            CantidadTextBox.Text = "0";
+           
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)

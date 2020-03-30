@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormUsuarios" Height="451" Width="528" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="FormUsuarios" Height="468" Width="528" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -36,7 +36,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5">
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5" ToolTip="El Id del nuevo usuario debe estar en 0 para agregar un nuevo usuario">
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -83,7 +83,7 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            
+
             <ComboBox x:Name="SexoComboBox" Margin="0,8" ToolTip="Elija el sexo del usuario">
                 <ComboBox.SelectedItem>
                     <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -111,7 +111,6 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="CellPhoneValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar numero celular"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -134,7 +133,6 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="EmailValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un email"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -168,7 +166,6 @@
             </TextBox>
 
 
-
             <TextBox x:Name="ContrasenaTextBox">
                 <TextBox.Text>
                     <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -182,28 +179,28 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="37,19,0,31" ToolTip="Presiona para limpiar campos">
+                Width="100" Height="50" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="32,8,0,42" ToolTip="Presiona para limpiar campos">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="8,19,0,31" ToolTip="Presione para Guardar datos">
+                Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="18,11,0,39" ToolTip="Presione para Guardar datos">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="8,19,0,31" ToolTip="Presione para eliminar usuario"> 
+                Width="100" Height="50" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="22,14,0,36" ToolTip="Presione para eliminar usuario">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click"  ToolTip="Presione para buscar usuario">
+                Width="100" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BuscarButton_Click"  ToolTip="Presione para buscar usuario" Margin="11,6,0,0">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>

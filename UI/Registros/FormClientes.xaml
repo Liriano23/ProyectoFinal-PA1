@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="FormClientes" Height="454" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="FormClientes" Height="436" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -37,7 +37,7 @@
 
             <TextBox x:Name="ClienteIdTextBox" Margin="0,5"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del cliente debe de ser 0 para agregar nuevo cliente">
                 <TextBox.Text>
-                    <Binding Path="ClienteId1" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:NumberValidation></local:NumberValidation>
@@ -162,7 +162,7 @@
 
             <TextBox x:Name="UsuarioIdTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del cliente">
                 <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"></local:TextValidation>
@@ -173,33 +173,32 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="29,18,0,32">
+                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="43,16,0,47" ToolTip="Presione para limpiar campos">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="0,18,0,32">
+                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="13,17,0,42" ToolTip="Presione para Guadar un nuevo cliente">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" Height="50" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="0,18,0,32">
+                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="11,18,0,43" ToolTip="Presione para eliminar un cliente">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
 
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="0,5,0,0">
+                Width="100" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="0,5,0,0" ToolTip="Presione para Buscar un cliente">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left" />
             </Button.Background>
         </Button>
-
 
     </Grid>
 </Window>

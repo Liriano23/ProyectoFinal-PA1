@@ -37,8 +37,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <Label Content="Menu Principal" HorizontalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="Bold"/>
 
         <Label Content="Registros" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" FontWeight="Bold"/>
@@ -61,5 +61,7 @@
         <Button x:Name="ConsultarCategoriasButton"  Content="consulta Categorias" FontSize="16" Grid.Row="12" Grid.Column="2" Click="ConsultarCategoriasButton_Click" Background="#FF3081E2"/>
         <Button x:Name="ConsultarVentasButton"  Content="Consultas Ventas" FontSize="16" Grid.Row="14" Grid.Column="2" Click="ConsultarVentasButton_Click" Background="#FF3081E2"/>
         <Button x:Name="ConsultarComprasButton"  Content="Consultas Compras" FontSize="16" Grid.Row="16" Grid.Column="2" Click="ConsultarComprasButton_Click"  Background="#FF3081E2"/>
+        
+        
     </Grid>
 </Window>

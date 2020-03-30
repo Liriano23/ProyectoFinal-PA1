@@ -27,9 +27,6 @@ namespace ProyectoFinal_PA1.Entidades
         public ICollection<Empleados> Empleados { get; set; }
         public ICollection<Productos> Productos { get; set; }
         public ICollection<Suplidores> Suplidores { get; set; }
-        //public ICollection<Ventas> Suplidores { get; set; }
-
-
         public Usuarios()
         {
             UsuarioId = 0;

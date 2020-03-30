@@ -13,7 +13,7 @@ namespace ProyectoFinal_PA1.Entidades
         public int SuplidorId { get; set; }
 
         [ForeignKey("Usuarios")]
-        public int UsuarioId { get; set; }
+        public int UsuariosId { get; set; }
         public DateTime FechaDeCompra { get; set; }
         public decimal SubTotal { get; set; }
         public double ITBIS { get; set; }
@@ -27,7 +27,7 @@ namespace ProyectoFinal_PA1.Entidades
         {
             CompraId = 0;
             SuplidorId = 0;
-            UsuarioId = 0;
+            UsuariosId = 0;
             FechaDeCompra = DateTime.Now;
             SubTotal = 0;
             ITBIS = 0;

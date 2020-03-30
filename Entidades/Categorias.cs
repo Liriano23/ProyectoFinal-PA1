@@ -13,7 +13,7 @@ namespace ProyectoFinal_PA1.Entidades
         public string NombreCategoria { get; set; }
 
         [ForeignKey("Usuarios")]
-        public int UsuarioId { get; set; }
+        public int UsuariosId { get; set; }
         public ICollection<Productos> Productos { get; set; }
 
 
@@ -21,7 +21,7 @@ namespace ProyectoFinal_PA1.Entidades
         {
             CategoriaId = 0;
             NombreCategoria = string.Empty;
-            UsuarioId = 0;
+            UsuariosId = 0;
         }
     }
 }
