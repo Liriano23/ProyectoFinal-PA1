@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProyectoFinal_PA1.BLL;
 using ProyectoFinal_PA1.Entidades;
+using ProyectoFinal_PA1.UI.Consultas;
 
 namespace ProyectoFinal_PA1.UI.Registros
 {
@@ -322,14 +323,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             int id;
             int.TryParse(CompraIDTextBox.Text, out id);
 
-            if (ComprasBLL.Eliminar(id))
+            try
             {
-                MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (ComprasBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -375,6 +383,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 return;
             }
+        }
+
+        private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
+            consultarSuplidor.Show();
         }
     }
 }

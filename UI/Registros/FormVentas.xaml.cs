@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProyectoFinal_PA1.BLL;
 using ProyectoFinal_PA1.Entidades;
+using ProyectoFinal_PA1.UI.Consultas;
 
 namespace ProyectoFinal_PA1.UI.Registros
 {
@@ -230,14 +231,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             int id;
             int.TryParse(VentaIdTextBox.Text, out id);
 
-            if (VentasBLL.Eliminar(id))
+            try
             {
-                MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (VentasBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -350,6 +358,18 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 return;
             }
+        }
+
+        private void ConsualarClienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarClientes consultarClientes = new ConsultarClientes();
+            consultarClientes.Show();
+        }
+
+        private void ConsultarEmpleadoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
+            consultaEmpleado.Show();
         }
     }
 }

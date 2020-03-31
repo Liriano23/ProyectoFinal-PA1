@@ -197,14 +197,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             int id;
             int.TryParse(ClienteIdTextBox.Text, out id);
 
-            if (ClientesBLL.Eliminar(id))
+            try
             {
-                MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (ClientesBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

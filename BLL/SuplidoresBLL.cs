@@ -23,7 +23,7 @@ namespace ProyectoFinal_PA1.BLL
             catch (Exception)
             {
 
-                throw;
+                    throw;
             }
             finally
             {

@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-         Title="Formulario Suplidores" Height="380" Width="576" Background="LightGray" WindowStartupLocation="CenterScreen">
+         Title="Formulario Suplidores" Height="380" Width="410" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
@@ -148,28 +148,28 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="29,18,0,87" ToolTip="Limpiar Formulario">
+                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="23,18,0,87" ToolTip="Limpiar Formulario" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="0,18,0,87" ToolTip="Guardar Suplidor">
+                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="27,18,0,87" ToolTip="Guardar Suplidor">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="0,18,0,87" ToolTip="Eliminar Suplidor">
+                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="10,18,0,87" ToolTip="Eliminar Suplidor">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminar.png" />
             </Button.Background>
         </Button>
 
-        <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
-                Width="100" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="0,5,0,0" ToolTip="Buscar Suplidor">
+        <Button x:Name="BuscarButton" Content="Buscar " HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
+                Width="85" Height="29" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BuscarButton_Click" Margin="10,3,0,0" ToolTip="Buscar Suplidor">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscar.png" />
             </Button.Background>

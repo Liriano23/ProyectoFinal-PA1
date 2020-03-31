@@ -170,12 +170,25 @@
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminarr.png" />
             </Button.Background>
         </Button>
-        <Button x:Name="BuscarButton" Content="Buscar" Grid.Row="0" Grid.Column="2" Margin="20,4,0,148" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="102" Click="BuscarButton_Click" ToolTip="Presione para buscar una venta">
+
+        <Button x:Name="BuscarButton" Content="Buscar Venta" Grid.Row="0" Grid.Column="2" Margin="20,3,0,159" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="BuscarButton_Click" ToolTip="Presione para buscar una venta">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
-        
+
+        <Button x:Name="ConsualarClienteButton" Content="Consualar Cliente" Grid.Row="0" Grid.Column="2" Margin="20,26,0,136" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsualarClienteButton_Click" ToolTip="Presione para consultar un Clinte">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="ConsultarEmpleadoButton" Content="Consultar Empleado" Grid.Row="0" Grid.Column="2" Margin="20,50,0,112" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarEmpleadoButton_Click" ToolTip="Presione para consultar un Empleado">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
+            </Button.Background>
+        </Button>
+
         <Button x:Name="RemoverButton" Content="Remover" Grid.Row="2" Margin="3,57,0,16" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="139" Grid.ColumnSpan="2" Click="RemoverButton_Click" ToolTip="Presione para remover un producto de la lista">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/remover.png" />
