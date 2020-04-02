@@ -59,13 +59,11 @@ namespace ProyectoFinal_PA1.UI.Registros
         }
         public static bool NumeroValido(string telefono)
         {
-            return Regex.Match(telefono,
-                @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
+            return Regex.Match(telefono, @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
         }
         public static bool CedulaValida(string cedula)
         {
-            return Regex.Match(cedula,
-                @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
+            return Regex.Match(cedula, @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
         }
         private void Limpiar()
         {

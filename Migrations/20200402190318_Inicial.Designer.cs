@@ -9,8 +9,8 @@ using ProyectoFinal_PA1.DAL;
 namespace ProyectoFinal_PA1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200330170013_inicial")]
-    partial class inicial
+    [Migration("20200402190318_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -47,7 +47,6 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule></ExceptionValidationRule>
                             <local:NumberValidation></local:NumberValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -110,9 +109,8 @@
         <Label  Content="Cantidad: " Style="{StaticResource Labels}" Width="72" Grid.Column="2" Grid.Row="1" Margin="56,0,0,0"></Label>
         <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" 
                  ToolTip="Ingrese la cantidad del producto" Text="0">
-
         </TextBox>
-
+        
         <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" 
                   ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la venta">
             <DataGrid.ItemsSource>
@@ -129,8 +127,7 @@
 
         <TextBox x:Name="TotalTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" Margin="223,93,113,-21"  
                  Style="{StaticResource TextBoxValidation}" 
-                 ToolTip="Presione espacio para mostrar el monto total de la venta" TextChanged="TotalTextBox_TextChanged"
-                 >
+                 ToolTip="Presione espacio para mostrar el monto total de la venta" TextChanged="TotalTextBox_TextChanged">
             <TextBox.Text>
                 <Binding Path="Total" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

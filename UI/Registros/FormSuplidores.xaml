@@ -22,9 +22,9 @@
             <Label Content="SuplidorId:" Style="{StaticResource Labels}"/>
             <Label Content="Nombres: " Style="{StaticResource Labels}"/>
             <Label Content="Apellidos: " Style="{StaticResource Labels}"/>
-            <Label Content="NombreCompania: " Style="{StaticResource Labels}"/>
+            <Label Content="NombreCompania: " Style="{StaticResource Labels}" Width="124"/>
             <Label Content="Direccion: " Style="{StaticResource Labels}"/>
-            <Label Content="Telefono: " Style="{StaticResource Labels}"/>
+            <Label Content="Telefono: " Style="{StaticResource Labels}" Width="118"/>
             <Label Content="Celular:" Style="{StaticResource Labels}"/>
             <Label Content="Email:" Style="{StaticResource Labels}"/>
             <Label Content="Ciudad:" Style="{StaticResource Labels}"/>
@@ -96,7 +96,7 @@
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CompanyPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Telefono de la compañia en la que trabaja el Suplidor"/>
+                            <local:PhoneValidation x:Name="CompanyPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero de telefono correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -107,7 +107,7 @@
                     <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Celular del Empleado"/>
+                            <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el celular correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -118,7 +118,7 @@
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email del Suplidor"/>
+                            <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -141,6 +141,7 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"/>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

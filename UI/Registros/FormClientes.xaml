@@ -77,16 +77,18 @@
                     <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Cedula"></local:TextValidation>
+                            <local:CedulaValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una cedula correcta"></local:CedulaValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+            
             <ComboBox x:Name="SexoComboBox" Margin="0,8">
                 <ComboBox.SelectedItem>
                     <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="SexoComboBoxValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el sexo del cliente"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </ComboBox.SelectedItem>
@@ -109,7 +111,7 @@
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Telefono"></local:TextValidation>
+                            <local:PhoneValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero de telefono correcto"></local:PhoneValidation>
 
                         </Binding.ValidationRules>
                     </Binding>
@@ -121,7 +123,7 @@
                     <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Celular"></local:TextValidation>
+                            <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero celular correcto"></local:PhoneValidation>
 
                         </Binding.ValidationRules>
                     </Binding>
@@ -133,7 +135,7 @@
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Email"></local:TextValidation>
+                            <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el email correctamente"></local:EmailValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

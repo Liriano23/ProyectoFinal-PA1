@@ -15,9 +15,7 @@ namespace ProyectoFinal_PA1.DAL
         public DbSet<Empleados> Empleados { get; set; }
         public DbSet<Suplidores> Suplidores { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
-       
         public DbSet<Clientes> Clientes { get; set; }
-
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Ventas> Ventas { get; set; }
 
@@ -25,5 +23,13 @@ namespace ProyectoFinal_PA1.DAL
         {
             optionsBuilder.UseSqlite(@"Data source = Data/RepuestoRafa");
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    //Usuario por Defecto
+        //    modelBuilder.Entity<Usuarios>.HasData(new Usuarios{
+
+        //    });
+        //}
     }
 }

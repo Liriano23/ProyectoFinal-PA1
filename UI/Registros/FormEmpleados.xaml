@@ -23,10 +23,10 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
             <Label Content="EmpleadoId:" Style="{StaticResource Labels}"/>
             <Label Content="Nombres: " Style="{StaticResource Labels}"/>
             <Label Content="Apellidos: " Style="{StaticResource Labels}"/>
-            <Label Content="Cédula: " Style="{StaticResource Labels}"/>
+            <Label Content="Cédula: " Style="{StaticResource Labels}" Width="130"/>
             <Label Content="Direccion: " Style="{StaticResource Labels}"/>
             <Label Content="Telefono: " Style="{StaticResource Labels}"/>
-            <Label Content="Celular:" Style="{StaticResource Labels}"/>
+            <Label Content="Celular:" Style="{StaticResource Labels}" Width="124"/>
             <Label Content="Email:" Style="{StaticResource Labels}"/>
             <Label Content="Cargo:" Style="{StaticResource Labels}"/>
             <Label Content="Sueldo:" Style="{StaticResource Labels}"/>
@@ -78,7 +78,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
                     <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Cedula"/>
+                            <local:CedulaValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cedula correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -100,7 +100,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Telefono del Empleado"/>
+                            <local:PhoneValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero de telefono correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -111,7 +111,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
                     <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Celular del Empleado"/>
+                            <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero celular correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -122,7 +122,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email del Empleado"/>
+                            <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email correctamente"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -177,6 +177,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"/>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

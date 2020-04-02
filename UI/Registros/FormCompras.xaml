@@ -22,7 +22,7 @@
         <StackPanel Orientation="Vertical" Height="auto"  Width="auto" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0">
             <Label Style="{StaticResource Labels}" Width="80" Content="CompraId: " HorizontalAlignment="Left"></Label>
             <Label Style="{StaticResource Labels}" Width="87" Content="SuplidorId: " HorizontalAlignment="Left"></Label>
-            <Label Style="{StaticResource Labels}" Width="129" Content="Fecha Compra:" HorizontalAlignment="Left"></Label>
+            <Label Style="{StaticResource Labels}" Width="97" Content="Fecha Compra:" HorizontalAlignment="Left"></Label>
             <Label Style="{StaticResource Labels}" Width="73" Content="ITBIS:" HorizontalAlignment="Left"></Label>
             <Label Style="{StaticResource Labels}" Width="73" Content="Descuento:" HorizontalAlignment="Left"></Label>
         </StackPanel>
@@ -113,10 +113,10 @@
 
 
 
-        <Label Style="{StaticResource Labels}" Width="60" Content="Precio: " Grid.Column="1" Margin="70,179,0,1" Grid.RowSpan="2"/>
+        <Label Style="{StaticResource Labels}" Width="60" Content="Precio: " Grid.Column="1" Margin="70,179,0,71" Grid.RowSpan="2"/>
         <TextBox x:Name="PrecioTextBox" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="119,0,446,78" ToolTip="Ingrese el precio del producto"/>
 
-        <Label Style="{StaticResource Labels}" Width="72" Content="Cantidad: " Grid.Column="2" Grid.Row="1" Margin="56,0,0,0"/>
+        <Label Style="{StaticResource Labels}" Width="72" Content="Cantidad: " Grid.Column="2" Grid.Row="1" Margin="56,0,0,70"/>
         <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" ToolTip="Ingrese la cantidad del producto"/>
 
         <DataGrid x:Name="CompraDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la compra">

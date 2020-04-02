@@ -18,16 +18,16 @@
             <RowDefinition Height="289"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,0,0,46">
             <Label Content="CategotriaId:" Style="{StaticResource Labels}"/>
             <Label Content="Nombre Categoria: " Style="{StaticResource Labels}"/>
 
-            <Label Content="Usuario Id:" Style="{StaticResource Labels}" />
+            <Label Content="Usuario Id:" Style="{StaticResource Labels}" Width="118" Margin="0,10"></Label>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,0,0,45"  >
 
-            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="ID Tienen que ser igual a 0">
+            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="ID Tienen que ser igual a 0" Width="149">
                 <TextBox.Text>
                     <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

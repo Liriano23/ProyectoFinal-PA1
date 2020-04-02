@@ -75,6 +75,7 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="InventaryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad de productos que iran al inventario"></local:TextValidation>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -96,6 +97,7 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="SupplierValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar SuplidorId"></local:TextValidation>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -107,6 +109,7 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="CategoryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar CategoriaId"></local:TextValidation>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -118,6 +121,7 @@
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserIDValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuariosId"></local:TextValidation>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
