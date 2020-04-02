@@ -120,32 +120,41 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
-
-            if (!Validar())
-                return;
-
-            if (String.IsNullOrEmpty(ProductoIdTextBox.Text) || ProductoIdTextBox.Text == "0")
-                paso = ProductosBLL.Guardar(producto);
-            else
+            try
             {
-                if (!ExisteEnDB())
-                {
-                    MessageBox.Show("No existe el cliente en la base de " +
-                        "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+                bool paso = false;
+
+                if (!Validar())
                     return;
-                }
-                paso = ProductosBLL.Modificar(producto);
-            }
 
-            if (paso)
-            {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (String.IsNullOrEmpty(ProductoIdTextBox.Text) || ProductoIdTextBox.Text == "0")
+                    paso = ProductosBLL.Guardar(producto);
+                else
+                {
+                    if (!ExisteEnDB())
+                    {
+                        MessageBox.Show("No existe el cliente en la base de " +
+                            "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    paso = ProductosBLL.Modificar(producto);
+                }
+
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show(" Usuario Id no valido!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
         }
 

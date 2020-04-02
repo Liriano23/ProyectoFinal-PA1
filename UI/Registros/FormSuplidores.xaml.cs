@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -33,6 +34,36 @@ namespace ProyectoFinal_PA1.UI.Registros
             return (suplidor != null);
         }
 
+        private Boolean EmailValido(String email)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool NumeroValido(string telefono)
+        {
+            return Regex.Match(telefono,
+                @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
+        }
+        public static bool CedulaValida(string cedula)
+        {
+            return Regex.Match(cedula,
+                @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
+        }
         private void Actualizar()
         {
             this.DataContext = null;
@@ -68,21 +99,24 @@ namespace ProyectoFinal_PA1.UI.Registros
                 CiudadTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(EmailTextBox.Text))
+            if (!EmailValido(EmailTextBox.Text))
             {
                 paso = false;
+                MessageBox.Show("Email No Valido !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 EmailTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(CelularTextBox.Text.Replace("-", "")))
+            if (!NumeroValido(CelularTextBox.Text))
             {
                 paso = false;
+                MessageBox.Show("Celular No Valido, Debe introducir solo números !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 CelularTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(TelefonoTextBox.Text.Replace("-", "")))
+            if (!NumeroValido(TelefonoTextBox.Text))
             {
                 paso = false;
+                MessageBox.Show("Teléfono No Valido, Debe introducir solo números !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 TelefonoTextBox.Focus();
             }
 
@@ -135,32 +169,39 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
-
-            if (!Validar())
-                return;
-
-            if (String.IsNullOrEmpty(SuplidorIdTextBox.Text) || SuplidorIdTextBox.Text == "0")
-                paso = SuplidoresBLL.Guardar(suplidor);
-            else
+            try
             {
-                if (!ExisteEnDB())
-                {
-                    MessageBox.Show("No existe el Empleado en la base de " +
-                        "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                bool paso = false;
+
+                if (!Validar())
                     return;
-                }
-                paso = SuplidoresBLL.Modificar(suplidor);
-            }
 
-            if (paso)
-            {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (String.IsNullOrEmpty(SuplidorIdTextBox.Text) || SuplidorIdTextBox.Text == "0")
+                    paso = SuplidoresBLL.Guardar(suplidor);
+                else
+                {
+                    if (!ExisteEnDB())
+                    {
+                        MessageBox.Show("No existe el Empleado en la base de " +
+                            "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    paso = SuplidoresBLL.Modificar(suplidor);
+                }
+
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show(" Usuario Id no valido!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
         }
 

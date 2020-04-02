@@ -54,7 +54,6 @@ namespace ProyectoFinal_PA1
                     main.Show();
                     paso = true;
                     this.Close();
-                    MessageBox.Show("Sesion Iniciada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
                 }
             }

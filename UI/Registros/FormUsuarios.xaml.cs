@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProyectoFinal_PA1.Entidades;
 using ProyectoFinal_PA1.BLL;
+using System.Text.RegularExpressions;
+
 namespace ProyectoFinal_PA1.UI.Registros
 {
     /// <summary>
@@ -35,6 +37,36 @@ namespace ProyectoFinal_PA1.UI.Registros
             TipoUsuarioComboBox.Items.Add("Administrador");           
         }
 
+        private Boolean EmailValido(String email)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool NumeroValido(string telefono)
+        {
+            return Regex.Match(telefono,
+                @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
+        }
+        public static bool CedulaValida(string cedula)
+        {
+            return Regex.Match(cedula,
+                @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
+        }
         private void Limpiar()
         {
             UsuarioIdTextBox.Text = "0";
@@ -104,32 +136,33 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             }
 
-            if (string.IsNullOrEmpty(CedulaTextBox.Text.Replace("-", "")))
+            if (!CedulaValida(CedulaTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Cedula no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cédula No Valida, Debe introducir solo números !!!\n Introducca la Cédula sin guiones.", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 CedulaTextBox.Focus();
             }
 
-            if(SexoComboBox.SelectedItem == null)
+
+            if (SexoComboBox.SelectedItem == null)
             {
                 paso = false;
                 MessageBox.Show("El campo Cedula no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 SexoComboBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(TelefonoTextBox.Text.Replace("-", "")))
+            if (!NumeroValido(CelularTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Telefono no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                TelefonoTextBox.Focus();
+                MessageBox.Show("Celular No Valido, Debe introducir solo números !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CelularTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(CelularTextBox.Text.Replace("-","")))
+            if (!NumeroValido(TelefonoTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Celular no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                CelularTextBox.Focus();
+                MessageBox.Show("Teléfono No Valido, Debe introducir solo números !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                TelefonoTextBox.Focus();
             }
 
             if (string.IsNullOrEmpty(DireccionTextBox.Text))
@@ -139,10 +172,10 @@ namespace ProyectoFinal_PA1.UI.Registros
                 DireccionTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(EmailTextBox.Text))
+            if (!EmailValido(EmailTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo email no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Email No Valido !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 EmailTextBox.Focus();
             }
 
@@ -168,32 +201,41 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
-
-            if (!Validar())
-                return;
-
-            if (String.IsNullOrEmpty(UsuarioIdTextBox.Text) || UsuarioIdTextBox.Text == "0")
-                paso = UsuariosBLL.Guardar(usuario);
-            else
+            try
             {
-                if (!ExisteEnDB())
-                {
-                    MessageBox.Show("No existe el cliente en la base de " +
-                        "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+                bool paso = false;
+
+                if (!Validar())
                     return;
-                }
-                paso = UsuariosBLL.Modificar(usuario);
-            }
 
-            if (paso)
-            {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                if (String.IsNullOrEmpty(UsuarioIdTextBox.Text) || UsuarioIdTextBox.Text == "0")
+                    paso = UsuariosBLL.Guardar(usuario);
+                else
+                {
+                    if (!ExisteEnDB())
+                    {
+                        MessageBox.Show("No existe el cliente en la base de " +
+                            "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    paso = UsuariosBLL.Modificar(usuario);
+                }
+
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show(" Usuario Id no valido!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
         }
 
