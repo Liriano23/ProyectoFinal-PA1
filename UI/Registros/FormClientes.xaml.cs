@@ -20,12 +20,14 @@ namespace ProyectoFinal_PA1.UI.Registros
     /// </summary>
     public partial class FormClientes : Window
     {
-        Clientes cliente = new Clientes();
+       
+         Clientes cliente = new Clientes();
         public FormClientes()
         {
             InitializeComponent();
             this.DataContext = cliente;
             ClienteIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             SexoComboBox.Items.Add("Masculino");
             SexoComboBox.Items.Add("Femenino");
@@ -76,7 +78,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             EmailTextBox.Text = "N/A";
             FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            UsuarioIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = MainWindow.usuarioSiempreActivoId.ToString();
 
             Clientes cliente = new Clientes();
             Actualizar();

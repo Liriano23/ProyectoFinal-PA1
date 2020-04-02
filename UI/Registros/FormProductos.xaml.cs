@@ -24,6 +24,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         public FormProductos()
         {
             InitializeComponent();
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             ProductoIdTextBox.Text = "0";
             this.DataContext = producto;
         }
@@ -37,7 +38,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             SuplidorIdTextBox.Text = "0";
             CategoriaIdTextBox.Text = "0";
-            UsuarioIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Productos producto = new Productos();
             Actualizar();

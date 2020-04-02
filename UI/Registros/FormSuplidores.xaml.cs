@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProyectoFinal_PA1.BLL;
-using ProyectoFinal_PA1.DAL;
 using ProyectoFinal_PA1.Entidades;
 
 namespace ProyectoFinal_PA1.UI.Registros
@@ -26,6 +25,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             InitializeComponent();
             this.DataContext = suplidor;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             SuplidorIdTextBox.Text = "0";
         }
         private bool ExisteEnDB()
@@ -81,7 +81,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CelularTextBox.Text = "N/A";
             EmailTextBox.Text = "N/A";
             CiudadTextBox.Text = "N/A";
-            UsuarioIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Suplidores suplidor = new Suplidores();
             Actualizar();

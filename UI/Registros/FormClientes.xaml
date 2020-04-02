@@ -30,7 +30,7 @@
             <Label Content="Email:" Style="{StaticResource Labels}"></Label>
             <Label Content="Fecha Nacimiento:" Style="{StaticResource Labels}" Width="125"></Label>
             <Label Content="Fecha Ingreso: "  Width="95" Style="{StaticResource Labels}"></Label>
-            <Label Content="Usuario Id:" Style="{StaticResource Labels}" ></Label>
+            <Label Content="Usuario Id:" Style="{StaticResource Labels}" Width="118" ></Label>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
@@ -167,8 +167,8 @@
                     <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"></local:TextValidation>
-                        </Binding.ValidationRules>
+                            <local:NumberValidation></local:NumberValidation>
+                            </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>

@@ -100,7 +100,8 @@
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:PhoneValidation x:Name="PhoneValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar numero de telefono correcto"></local:PhoneValidation>
+                            <local:TextValidation></local:TextValidation>
+                            <local:PhoneValidation x:Name="PhoneValitation" Message="Debe ingresar numero de telefono correcto"></local:PhoneValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

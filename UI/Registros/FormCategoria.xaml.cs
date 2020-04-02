@@ -25,8 +25,11 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             InitializeComponent();
             this.DataContext = categoria;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             CategoriaIdTextBox.Text = "0";
+
         }
+
         private bool ExisteEnDB()
         {
             Categorias categoria = CategoriasBLL.Buscar(Convert.ToInt32(CategoriaIdTextBox.Text));
@@ -43,7 +46,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaTextBox.Text= "N/A";
-            UsuarioIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Categorias categoria = new Categorias();
             Actualizar();

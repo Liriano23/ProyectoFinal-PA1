@@ -25,13 +25,15 @@ namespace ProyectoFinal_PA1
     
     public partial class MainWindow : Window
     {
-      
-        public MainWindow()
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public MainWindow(int UsuarioId)
         {
             InitializeComponent();
-            Usuarios usuarios = new Usuarios();
+            usuarioSiempreActivoId = UsuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
+            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.Nombres.ToString());
         }
-
 
         //Boton registrar usuarios
         private void UsuarioButton_Click(object sender, RoutedEventArgs e)

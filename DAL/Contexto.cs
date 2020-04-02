@@ -24,12 +24,25 @@ namespace ProyectoFinal_PA1.DAL
             optionsBuilder.UseSqlite(@"Data source = Data/RepuestoRafa");
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    //Usuario por Defecto
-        //    modelBuilder.Entity<Usuarios>.HasData(new Usuarios{
-
-        //    });
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Usuario por Defecto
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios
+            {
+                UsuarioId = 1,
+                Nombres = "Admin",
+                Apellidos = "Admin",
+                Cedula= "88888888888",
+                Sexo = "Femenino",
+                Telefono = "8888888888",
+                Celular="8888888888",
+                Direccion = "SFM",
+                Email = "admin123@gmail.com",
+                TipoUsuario = "Administrador",
+                FechaIngreso=DateTime.Now,
+                NombreUsuario = "Admin",
+                Contrasena = "Admin"
+            });
+        }
     }
 }

@@ -264,6 +264,11 @@ namespace ProyectoFinal_PA1.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "UsuarioId", "Apellidos", "Cedula", "Celular", "Contrasena", "Direccion", "Email", "FechaIngreso", "NombreUsuario", "Nombres", "Sexo", "Telefono", "TipoUsuario" },
+                values: new object[] { 1, "Admin", "88888888888", "8888888888", "Admin", "SFM", "admin123@gmail.com", new DateTime(2020, 4, 2, 16, 53, 24, 120, DateTimeKind.Local).AddTicks(1343), "Admin", "Admin", "Femenino", "8888888888", "Administrador" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Categorias_UsuariosId",
                 table: "Categorias",

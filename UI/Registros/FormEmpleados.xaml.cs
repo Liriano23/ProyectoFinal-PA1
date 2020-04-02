@@ -26,6 +26,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             InitializeComponent();
             this.DataContext = empleado;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             EmpleadoIdTextBox.Text = "0";
         }
         private bool ExisteEnDB()
@@ -83,7 +84,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             SueldoTextBox.Text = "0";
             FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            UsuarioIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Empleados empleados= new Empleados();
             Actualizar();

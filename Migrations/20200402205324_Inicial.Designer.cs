@@ -9,7 +9,7 @@ using ProyectoFinal_PA1.DAL;
 namespace ProyectoFinal_PA1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200402190318_Inicial")]
+    [Migration("20200402205324_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -320,6 +320,24 @@ namespace ProyectoFinal_PA1.Migrations
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            UsuarioId = 1,
+                            Apellidos = "Admin",
+                            Cedula = "88888888888",
+                            Celular = "8888888888",
+                            Contrasena = "Admin",
+                            Direccion = "SFM",
+                            Email = "admin123@gmail.com",
+                            FechaIngreso = new DateTime(2020, 4, 2, 16, 53, 24, 120, DateTimeKind.Local).AddTicks(1343),
+                            NombreUsuario = "Admin",
+                            Nombres = "Admin",
+                            Sexo = "Femenino",
+                            Telefono = "8888888888",
+                            TipoUsuario = "Administrador"
+                        });
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.Ventas", b =>

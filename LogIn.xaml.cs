@@ -20,10 +20,8 @@ namespace ProyectoFinal_PA1
     public partial class LogIn : Window
     {
         List<Usuarios> lista = new List<Usuarios>();
-        public static int UsuarioId;
+        public int UsuarioId;
 
-        private static string userName = "Admin";
-        private static string password = "Admin";
         public LogIn()
         {
             InitializeComponent();
@@ -31,26 +29,17 @@ namespace ProyectoFinal_PA1
 
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-
+            
             lista = UsuariosBLL.GetList(p => true);
             bool paso = false;
             
-            //Usuario por defecto
-            if(NombreUsuarioTextBox.Text == userName && contrasenaBox.Password == password)
-            {
-                main.Show();
-                paso = true;
-                this.Close();
-                return;
-
-            }
             //Si existe usuario en base de datos
             foreach (var item in lista)
             {
                 if ((item.NombreUsuario == NombreUsuarioTextBox.Text) && (item.Contrasena == contrasenaBox.Password))
                 {
-                    UsuarioId = item.UsuarioId;
+                    UsuarioId = Convert.ToInt32(item.UsuarioId);
+                    MainWindow main = new MainWindow(UsuarioId);
                     main.Show();
                     paso = true;
                     this.Close();
