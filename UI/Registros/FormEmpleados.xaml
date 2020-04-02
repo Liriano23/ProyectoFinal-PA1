@@ -192,6 +192,29 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
                 Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="18,18,0,-4" ToolTip="Guardar Empleado">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=EmpleadoIdTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ApellidosTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CedulaTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TelefonoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CelularTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CargoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=SueldoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>

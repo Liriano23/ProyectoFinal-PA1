@@ -207,5 +207,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        
     }
 }

@@ -137,6 +137,27 @@
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" Grid.Row="2" Grid.Column="1" Margin="0,141,462,-91" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="102" Grid.ColumnSpan="2" Click="GuardarButton_Click" ToolTip="Guardar Compra">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=CompraIDTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=SuplidorIdTextbox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ITBISTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=DescuentoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ProductoIdTexBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=PrecioTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=SubTotalTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TotalTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>

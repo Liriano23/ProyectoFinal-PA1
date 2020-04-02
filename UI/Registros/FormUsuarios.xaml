@@ -140,7 +140,12 @@
 
             <ComboBox x:Name="TipoUsuarioComboBox" Margin="0,5" ToolTip="Aqui se ingresa el tipo de usuario. 'Administrador' o 'Empleado' ">
                 <ComboBox.SelectedItem>
-                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"></Binding>
+                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+          
                 </ComboBox.SelectedItem>
             </ComboBox>
 
@@ -186,6 +191,30 @@
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
                 Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="11,11,0,39" ToolTip="Presione para Guardar datos">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ApellidosTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CedulaTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=SexoComboBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TipoUsuarioComboBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TelefonoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CelularTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=NombreUsuarioTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ContrasenaTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>

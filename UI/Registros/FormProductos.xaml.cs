@@ -200,5 +200,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             ConsultarCategoria consultarCategoria = new ConsultarCategoria();
             consultarCategoria.Show();
         }
+
+      
     }
 }
