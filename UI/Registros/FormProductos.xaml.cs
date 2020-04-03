@@ -25,16 +25,17 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             InitializeComponent();
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             ProductoIdTextBox.Text = "0";
             this.DataContext = producto;
         }
         private void Limpiar()
         {
 
-            ProductoIdTextBox.Text = "N/A";
-            NombreProductoTextBox.Text = "N/A";
-            MarcaProductoTextBox.Text = "N/A";
-            InventarioTextBox.Text = "N/A";
+            ProductoIdTextBox.Text = "0";
+            NombreProductoTextBox.Clear();
+            MarcaProductoTextBox.Clear();
+            InventarioTextBox.Clear();
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             SuplidorIdTextBox.Text = "0";
             CategoriaIdTextBox.Text = "0";
@@ -46,8 +47,8 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private bool ExisteEnDB()
         {
-            Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            return (producto != null);
+            Productos productos = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+            return (productos != null);
         }
 
         private void Actualizar()
@@ -112,8 +113,6 @@ namespace ProyectoFinal_PA1.UI.Registros
             return paso;
         }
 
-
-
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
@@ -123,8 +122,6 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-
-
                 bool paso = false;
 
                 if (!Validar())
@@ -161,28 +158,36 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Productos productos = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
 
-
-            if (producto != null)
+            try
             {
-                producto = productos;
-                Actualizar();
+                Productos productos = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+                if (producto != null)
+                {
+                    producto = productos;
+                    Actualizar();
+                }
+                else
+                {
+                    MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
 
+                MessageBox.Show("Error en base de datos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+
         }
 
         private void EliminarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(ProductoIdTextBox.Text, out id);
-
             try
             {
+                int id;
+                int.TryParse(ProductoIdTextBox.Text, out id);
+
                 if (ProductosBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -210,7 +215,5 @@ namespace ProyectoFinal_PA1.UI.Registros
             ConsultarCategoria consultarCategoria = new ConsultarCategoria();
             consultarCategoria.Show();
         }
-
-      
     }
 }

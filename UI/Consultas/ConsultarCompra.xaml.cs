@@ -39,13 +39,6 @@ namespace ProyectoFinal_PA1.UI.Consultas
                         id = int.Parse(CriterioTextBox.Text);
                         listado = ComprasBLL.GetList(o => o.CompraId == id);
                         break;
-
-                    case 2:
-                        int usuarioId;
-                        //usuarioId = int.Parse(CriterioTextBox.Text);
-                        //listado = ComprasBLL.GetList(o => o.UsuariosId == usuarioId);
-                        break;
-                    
                 }
             }
             else

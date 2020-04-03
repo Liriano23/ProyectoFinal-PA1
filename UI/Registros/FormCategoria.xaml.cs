@@ -45,7 +45,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             CategoriaIdTextBox.Text = "0";
-            NombreCategoriaTextBox.Text= "N/A";
+            NombreCategoriaTextBox.Clear();
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Categorias categoria = new Categorias();
@@ -130,7 +130,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             int id;
             int.TryParse(CategoriaIdTextBox.Text, out id);
-            
+
             try
             {
                 if (CategoriasBLL.Eliminar(id))

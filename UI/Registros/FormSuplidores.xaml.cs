@@ -30,14 +30,15 @@ namespace ProyectoFinal_PA1.UI.Registros
         }
         private bool ExisteEnDB()
         {
-            Suplidores suplidor = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
-            return (suplidor != null);
+            Suplidores suplidores = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
+            return (suplidores != null);
         }
 
         private Boolean EmailValido(String email)
         {
             String expresion;
             expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+
             if (Regex.IsMatch(email, expresion))
             {
                 if (Regex.Replace(email, expresion, String.Empty).Length == 0)
@@ -54,16 +55,19 @@ namespace ProyectoFinal_PA1.UI.Registros
                 return false;
             }
         }
+
         public static bool NumeroValido(string telefono)
         {
             return Regex.Match(telefono,
                 @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
         }
+
         public static bool CedulaValida(string cedula)
         {
             return Regex.Match(cedula,
                 @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
         }
+
         private void Actualizar()
         {
             this.DataContext = null;
@@ -73,14 +77,14 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             SuplidorIdTextBox.Text = "0";
-            NombreSuplidorTextBox.Text = "N/A";
-            ApellidosTextBox.Text = "N/A";
-            NombreCompaniaTextBox.Text ="N/A";
-            DireccionTextBox.Text ="N/A";
-            TelefonoTextBox.Text = "N/A";
-            CelularTextBox.Text = "N/A";
-            EmailTextBox.Text = "N/A";
-            CiudadTextBox.Text = "N/A";
+            NombreSuplidorTextBox.Clear();
+            ApellidosTextBox.Clear();
+            NombreCompaniaTextBox.Clear();
+            DireccionTextBox.Clear();
+            TelefonoTextBox.Clear();
+            CelularTextBox.Clear();
+            EmailTextBox.Clear();
+            CiudadTextBox.Clear();
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Suplidores suplidor = new Suplidores();
@@ -91,9 +95,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             bool paso = true;
 
-            
-
-            if (string.IsNullOrEmpty(CiudadTextBox.Text.Replace("-", "")))
+            if (string.IsNullOrEmpty(CiudadTextBox.Text))
             {
                 paso = false;
                 CiudadTextBox.Focus();
@@ -143,24 +145,32 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 paso = false;
                 NombreSuplidorTextBox.Focus();
-
             }
             return paso;
         }
+
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Suplidores suplidores = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
-
-            if (suplidores != null)
+            try
             {
-                suplidor = suplidores;
-                Actualizar();
-            }
-            else
-            {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Suplidores suplidores = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
 
+                if (suplidores != null)
+                {
+                    suplidor = suplidores;
+                    Actualizar();
+                }
+                else
+                {
+                    MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show(" Error en base de datos !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -182,8 +192,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 {
                     if (!ExisteEnDB())
                     {
-                        MessageBox.Show("No existe el Empleado en la base de " +
-                            "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("No existe el Empleado en la base de datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
                     paso = SuplidoresBLL.Modificar(suplidor);
@@ -207,11 +216,11 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(SuplidorIdTextBox.Text, out id);
-
             try
             {
+                int id;
+                int.TryParse(SuplidorIdTextBox.Text, out id);
+
                 if (SuplidoresBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);

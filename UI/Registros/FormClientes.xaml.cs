@@ -20,22 +20,39 @@ namespace ProyectoFinal_PA1.UI.Registros
     /// </summary>
     public partial class FormClientes : Window
     {
-       
-         Clientes cliente = new Clientes();
+
+        Clientes cliente = new Clientes();
         public FormClientes()
         {
             InitializeComponent();
             this.DataContext = cliente;
-            ClienteIdTextBox.Text = "0";
-            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
+            ClienteIdTextBox.Text = "0";
             SexoComboBox.Items.Add("Masculino");
             SexoComboBox.Items.Add("Femenino");
             SexoComboBox.Items.Add("Otro");
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-
         }
-        private Boolean EmailValido(String email)
+        private void Limpiar()
+        {
+            ClienteIdTextBox.Text = "0";
+            NombresTextBox.Clear();
+            ApellidosTextBox.Clear();
+            CedulaTextBox.Clear();
+            SexoComboBox.SelectedItem = "";
+            DireccionTextBox.Clear();
+            TelefonoTextBox.Clear();
+            CelularTextBox.Clear();
+            EmailTextBox.Clear();
+            FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+            UsuarioIdTextBox.Text = "0";
+
+            Clientes cliente = new Clientes();
+            Actualizar();
+        }
+
+        private Boolean EmailValido(String email) //Metodo que valida los Emails
         {
             String expresion;
             expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
@@ -65,24 +82,6 @@ namespace ProyectoFinal_PA1.UI.Registros
             return Regex.Match(cedula,
                 @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
         }
-        private void Limpiar()
-        {
-            ClienteIdTextBox.Text = "0";
-            NombresTextBox.Text = "N/A";
-            ApellidosTextBox.Text = "N/A";
-            CedulaTextBox.Text = "N/A";
-            SexoComboBox.SelectedItem = "";
-            DireccionTextBox.Text = "N/A";
-            TelefonoTextBox.Text = "N/A";
-            CelularTextBox.Text = "N/A";
-            EmailTextBox.Text = "N/A";
-            FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
-            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            UsuarioIdTextBox.Text = MainWindow.usuarioSiempreActivoId.ToString();
-
-            Clientes cliente = new Clientes();
-            Actualizar();
-        }
 
         private void LlenaCampo(Clientes clientes)
         {
@@ -99,6 +98,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             FechaIngresoDateTimePicker.SelectedDate = clientes.FechaIngreso;
             UsuarioIdTextBox.Text = Convert.ToString(clientes.UsuariosId);
         }
+
         private bool ExisteEnDB()
         {
             Clientes cliente = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
@@ -127,7 +127,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 paso = false;
                 MessageBox.Show("El campo Apellidos no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                NombresTextBox.Focus();
+                ApellidosTextBox.Focus();
 
             }
 
@@ -138,9 +138,9 @@ namespace ProyectoFinal_PA1.UI.Registros
                 CedulaTextBox.Focus();
             }
 
-
             if (SexoComboBox.SelectedItem == null)
             {
+                paso = false;
                 MessageBox.Show("Debe completar el campo sexo", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 SexoComboBox.Focus();
             }
@@ -209,8 +209,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 {
                     if (!ExisteEnDB())
                     {
-                        MessageBox.Show("No existe el cliente en la base de " +
-                            "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("No existe el cliente en la base de datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
                     paso = ClientesBLL.Modificar(cliente);
@@ -228,17 +227,17 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
             catch
             {
-
+                MessageBox.Show("Ingrese un usuarioId valido");
             }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(ClienteIdTextBox.Text, out id);
 
             try
             {
+                int id;
+                int.TryParse(ClienteIdTextBox.Text, out id);
                 if (ClientesBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -251,26 +250,32 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
             catch
             {
-                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(" Error en base de datos, Intentelo de nuevo", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            Clientes client = new Clientes();
-            int.TryParse(ClienteIdTextBox.Text, out id);
-            Limpiar();
-            client = ClientesBLL.Buscar(id);
-
-            if (client != null)
+            try
             {
-                LlenaCampo(client);
+                int id;
+                Clientes client = new Clientes();
+                int.TryParse(ClienteIdTextBox.Text, out id);
+                Limpiar();
+                client = ClientesBLL.Buscar(id);
+
+                if (client != null)
+                {
+                    LlenaCampo(client);
+                }
+                else
+                {
+                    MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                MessageBox.Show("Error en base de datos intente de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

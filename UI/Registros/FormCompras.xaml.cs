@@ -126,9 +126,8 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             SubTotal = compra.SubTotal;
             Total = compra.Total;
-            SubTotalTextBox.Text = Convert.ToString(SubTotal);
-            TotalTextBox.Text = Convert.ToString(Total);
-
+            SubTotalTextBox.Text = Convert.ToString(compra.SubTotal);
+            TotalTextBox.Text = Convert.ToString(compra.Total);
 
             this.Detalle = compra.Detalle;
             CargarGrid();
@@ -239,37 +238,35 @@ namespace ProyectoFinal_PA1.UI.Registros
             PrecioTextBox.Text = string.Empty;
            
         }
-        //Metodo para aumentar el subTotal
-        private void AumentarSubTotal() 
+
+        private void AumentarSubTotal() //Metodo para aumentar el subTotal
         {
             Cantidad = Convert.ToInt32(CantidadTextBox.Text);
             Porcentaje = Convert.ToDouble(Convert.ToDouble(ITBISTextBox.Text) / 100);
-           
+            Itbis = (decimal)Porcentaje;
             Precio = Convert.ToDecimal(PrecioTextBox.Text);
-            
+            Bandera = Convert.ToDecimal(Precio * Cantidad);
             AplicaPorcentaje = (Bandera * Itbis);
-            SubTotal += (Bandera + AplicaPorcentaje);
-        }
-        //Metodo para Remover cantidad del Subtotal si se elimina un producto del Grid
-        private void RemoveFromSubTotal() 
-        {
-            SubTotal -= Bandera;
+            SubTotal += (Bandera );
         }
 
-        //Metodo para Remover cantidad del Total si se elimina un producto del Grid
-        private void RemoveFromTotal() 
+        private void RemoveFromSubTotal() //Metodo para Remover cantidad del Subtotal si se elimina un producto del Grid
+        {
+            SubTotal -= (Bandera );
+        }
+
+        private void RemoveFromTotal() //Metodo para Remover cantidad del Total si se elimina un producto del Grid
         {
             Total = SubTotal;
         }
 
+        public decimal TotalAlterno;
+
         private void AumentarTotal()
         {
-            Itbis = (decimal)Porcentaje;
-            Bandera = Convert.ToDecimal(SubTotal * Itbis);
             Descuento = Convert.ToDecimal(DescuentoTextBox.Text);
-            Total = SubTotal - Descuento;
+            Total = (SubTotal + AplicaPorcentaje) - Descuento;
         }
-
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
             if (CompraDetalleDataGrid.Items.Count > 0 && CompraDetalleDataGrid.SelectedItem != null)
@@ -279,7 +276,6 @@ namespace ProyectoFinal_PA1.UI.Registros
                 RemoveFromTotal();
                 CargarGrid();
             }
-
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -359,12 +355,20 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
         }
 
+
+        private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
+            consultarSuplidor.Show();
+        }
+
+
         private void SubTotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
-            {
-
-                SubTotalTextBox.Text = SubTotal.ToString();
+            {   
+                SubTotalTextBox.Text = Convert.ToString(SubTotal);
+                compra.SubTotal = SubTotal;
             }
             catch (Exception)
             {
@@ -376,19 +380,13 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-
-                TotalTextBox.Text = Total.ToString();
+                TotalTextBox.Text = Convert.ToString(Total);
+                compra.Total = Total;
             }
             catch (Exception)
             {
                 return;
             }
-        }
-
-        private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
-            consultarSuplidor.Show();
         }
     }
 }

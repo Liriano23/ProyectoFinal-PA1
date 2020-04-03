@@ -19,16 +19,16 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-            <Label Content="ClienteId:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Nombres: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Apellidos: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Cédula: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Sexo: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Direccion: " Style="{StaticResource Labels}"></Label>
-            <Label Content="Telefono:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Celular:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Email:" Style="{StaticResource Labels}"></Label>
-            <Label Content="Fecha Nacimiento:" Style="{StaticResource Labels}" Width="125"></Label>
+            <Label Content="ClienteId:" Style="{StaticResource Labels}" Width="120"></Label>
+            <Label Content="Nombres: " Style="{StaticResource Labels}" Width="116"></Label>
+            <Label Content="Apellidos: " Style="{StaticResource Labels}" Width="116"></Label>
+            <Label Content="Cédula: " Style="{StaticResource Labels}" Width="120"></Label>
+            <Label Content="Sexo: " Style="{StaticResource Labels}" Width="118"></Label>
+            <Label Content="Direccion: " Style="{StaticResource Labels}" Width="118"></Label>
+            <Label Content="Telefono:" Style="{StaticResource Labels}" Width="120"></Label>
+            <Label Content="Celular:" Style="{StaticResource Labels}" Width="118"></Label>
+            <Label Content="Email:" Style="{StaticResource Labels}" Width="118"></Label>
+            <Label Content="Fecha Nacimiento:" Style="{StaticResource Labels}" Width="116"></Label>
             <Label Content="Fecha Ingreso: "  Width="95" Style="{StaticResource Labels}"></Label>
             <Label Content="Usuario Id:" Style="{StaticResource Labels}" Width="118" ></Label>
         </StackPanel>
@@ -40,7 +40,6 @@
                     <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -49,7 +48,7 @@
 
             <TextBox x:Name="NombresTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el nombre del cliente">
                 <TextBox.Text>
-                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre"></local:TextValidation>
@@ -61,7 +60,7 @@
 
             <TextBox x:Name="ApellidosTextBox" Margin="0,8"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el apellido del cliente">
                 <TextBox.Text>
-                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="LastNameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellido(os)"></local:TextValidation>
@@ -74,7 +73,7 @@
 
             <TextBox x:Name="CedulaTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la cedula del cliente">
                 <TextBox.Text>
-                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:CedulaValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una cedula correcta"></local:CedulaValidation>
@@ -82,10 +81,10 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            
+
             <ComboBox x:Name="SexoComboBox" Margin="0,8">
                 <ComboBox.SelectedItem>
-                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="SexoComboBoxValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el sexo del cliente"></local:TextValidation>
@@ -96,11 +95,10 @@
 
             <TextBox x:Name="DireccionTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion del cliente">
                 <TextBox.Text>
-                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="AddressValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Direccion"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -108,11 +106,10 @@
 
             <TextBox x:Name="TelefonoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono del cliente">
                 <TextBox.Text>
-                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:PhoneValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero de telefono correcto"></local:PhoneValidation>
-
+                            <local:TextValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero de telefono correcto"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -120,11 +117,10 @@
 
             <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el celular del cliente">
                 <TextBox.Text>
-                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero celular correcto"></local:PhoneValidation>
-
+                            <local:TextValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un numero celular correcto"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -132,10 +128,10 @@
 
             <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del cliente">
                 <TextBox.Text>
-                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el email correctamente"></local:EmailValidation>
+                            <local:TextValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el email correctamente"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -144,7 +140,7 @@
 
             <DatePicker x:Name="FechaNacimientoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de nacimiento del cliente">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -154,7 +150,7 @@
 
             <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de ingreso al sistema del cliente">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -167,8 +163,7 @@
                     <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                            <local:NumberValidation></local:NumberValidation>
-                            </Binding.ValidationRules>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -205,7 +200,7 @@
                     </Style.Triggers>
                 </Style>
             </Button.Style>
-            
+
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
             </Button.Background>

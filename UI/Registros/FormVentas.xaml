@@ -110,7 +110,7 @@
         <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" 
                  ToolTip="Ingrese la cantidad del producto" Text="0">
         </TextBox>
-        
+
         <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" 
                   ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la venta">
             <DataGrid.ItemsSource>
@@ -171,7 +171,7 @@
                                 <Condition Binding="{Binding ElementName=DescuentoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
                                 <Condition Binding="{Binding ElementName=SubTotalTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
                                 <Condition Binding="{Binding ElementName=TotalTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
-                                </MultiDataTrigger.Conditions>
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"></Setter>
                         </MultiDataTrigger>
                     </Style.Triggers>

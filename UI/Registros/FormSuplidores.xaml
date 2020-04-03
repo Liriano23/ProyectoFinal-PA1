@@ -28,7 +28,6 @@
             <Label Content="Celular:" Style="{StaticResource Labels}"/>
             <Label Content="Email:" Style="{StaticResource Labels}"/>
             <Label Content="Ciudad:" Style="{StaticResource Labels}"/>
-
             <Label Content="Usuario Id:" Style="{StaticResource Labels}" />
         </StackPanel>
 
@@ -48,7 +47,7 @@
 
             <TextBox x:Name="NombreSuplidorTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Nombres del Suplidor">
                 <TextBox.Text>
-                    <Binding Path="NombreSuplidor" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreSuplidor" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre"/>
@@ -59,7 +58,7 @@
 
             <TextBox x:Name="ApellidosTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Apellidos del Suplidor">
                 <TextBox.Text>
-                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="LastNameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellido(s)"/>
@@ -68,10 +67,9 @@
                 </TextBox.Text>
             </TextBox>
 
-
             <TextBox x:Name="NombreCompaniaTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Nombre de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
-                    <Binding Path="NombreCompania" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreCompania" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation  x:Name="NameCompaniValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Nombre de la compañia en la que trabaja el Suplidor"/>
@@ -82,7 +80,7 @@
 
             <TextBox x:Name="DireccionTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
-                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="CompanyAddressValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la Direccion de la compañia en la que trabaja el Suplidor"/>
@@ -93,7 +91,7 @@
 
             <TextBox x:Name="TelefonoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
-                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:PhoneValidation x:Name="CompanyPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero de telefono correctamente"/>
@@ -104,7 +102,7 @@
 
             <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}"  ToolTip="Aqui va el celular del Suplidor">
                 <TextBox.Text>
-                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el celular correctamente"/>
@@ -115,7 +113,7 @@
 
             <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del Suplidor">
                 <TextBox.Text>
-                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email correctamente"/>
@@ -126,7 +124,7 @@
 
             <TextBox x:Name="CiudadTextBox" Margin="0,5"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Ciudad en la que Se localiza la Compañia">
                 <TextBox.Text>
-                    <Binding Path="Ciudad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Ciudad" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="CityValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la Ciudad en la que Se localiza la Compañia"/>

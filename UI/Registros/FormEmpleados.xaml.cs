@@ -73,21 +73,37 @@ namespace ProyectoFinal_PA1.UI.Registros
         private void Limpiar()
         {
             EmpleadoIdTextBox.Text = "0";
-            NombresTextBox.Text = "N/A";
-            ApellidosTextBox.Text = "N/A";
-            CedulaTextBox.Text = "N/A";
-            DireccionTextBox.Text = "N/A";
-            TelefonoTextBox.Text = "N/A";
-            CelularTextBox.Text = "N/A";
-            EmailTextBox.Text = "N/A";
-            CargoTextBox.Text = "N/A";
+            NombresTextBox.Clear();
+            ApellidosTextBox.Clear();
+            CedulaTextBox.Clear();
+            DireccionTextBox.Clear();
+            TelefonoTextBox.Clear();
+            CelularTextBox.Clear();
+            EmailTextBox.Clear();
+            CargoTextBox.Clear();
             SueldoTextBox.Text = "0";
             FechaNacimientoDateTimePicker.SelectedDate = DateTime.Now;
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
-            Empleados empleados= new Empleados();
+            Empleados empleado = new Empleados();
             Actualizar();
+        }
+        private void LlenaCampo(Empleados empleados)
+        {
+            EmpleadoIdTextBox.Text = Convert.ToString(empleados.EmpleadoId);
+            NombresTextBox.Text = empleados.Nombres;
+            ApellidosTextBox.Text = empleados.Apellidos;
+            CedulaTextBox.Text = empleados.Cedula;
+            DireccionTextBox.Text = empleados.Direccion;
+            TelefonoTextBox.Text = empleados.Telefono;
+            CelularTextBox.Text = empleados.Celular;
+            EmailTextBox.Text = empleados.Email;
+            CargoTextBox.Text = empleados.Cargo;
+            SueldoTextBox.Text = Convert.ToString(empleados.Sueldo);
+            FechaNacimientoDateTimePicker.SelectedDate = empleados.FechaNacimiento;
+            FechaIngresoDateTimePicker.SelectedDate = empleados.FechaIngreso;
+            UsuarioIdTextBox.Text = Convert.ToString(empleados.UsuariosId);
         }
         private bool Validar()
         {
@@ -170,19 +186,31 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Empleados empleados = EmpleadosBLL.Buscar(Convert.ToInt32(EmpleadoIdTextBox.Text));
-
-            if (empleados != null)
+            try
             {
-                empleado = empleados;
-                Actualizar();
+                int id;
+                Empleados empleados = new Empleados();
+                int.TryParse(EmpleadoIdTextBox.Text, out id);
+
+                Limpiar();
+                empleados = EmpleadosBLL.Buscar(id);
+
+                if (empleados != null)
+                {
+                    LlenaCampo(empleados);
+                }
+                else
+                {
+                    MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                MessageBox.Show("Error en base de datos intente de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
@@ -192,8 +220,6 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-
-
                 bool paso = false;
 
                 if (!Validar())
@@ -231,11 +257,10 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(EmpleadoIdTextBox.Text, out id);
-
             try
             {
+                int id;
+                int.TryParse(EmpleadoIdTextBox.Text, out id);
                 if (EmpleadosBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -251,7 +276,5 @@ namespace ProyectoFinal_PA1.UI.Registros
                 MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
-        
     }
 }

@@ -28,15 +28,34 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             UsuarioIdTextBox.Text = "0";
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            
+
             SexoComboBox.Items.Add("Masculino");
             SexoComboBox.Items.Add("Femenino");
             SexoComboBox.Items.Add("Otro");
 
             TipoUsuarioComboBox.Items.Add("Empleado");
-            TipoUsuarioComboBox.Items.Add("Administrador");           
+            TipoUsuarioComboBox.Items.Add("Administrador");
         }
 
+        private void Limpiar()
+        {
+            UsuarioIdTextBox.Text = "0";
+            NombresTextBox.Clear();
+            ApellidosTextBox.Clear();
+            CedulaTextBox.Clear();
+            SexoComboBox.SelectedItem = "";
+            TelefonoTextBox.Clear();
+            CelularTextBox.Clear(); ;
+            DireccionTextBox.Clear(); ;
+            EmailTextBox.Clear(); ;
+            TipoUsuarioComboBox.SelectedItem = "";
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+            NombreUsuarioTextBox.Clear();
+            ContrasenaTextBox.Clear();
+
+            Usuarios usuario = new Usuarios();
+            Actualizar();
+        }
         private Boolean EmailValido(String email)
         {
             String expresion;
@@ -65,25 +84,25 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             return Regex.Match(cedula, @"^([\+]?1[-]?|[0])?[1-9][0-9]{10}$").Success;
         }
-        private void Limpiar()
-        {
-            UsuarioIdTextBox.Text = "0";
-            NombresTextBox.Text = "N/A";
-            ApellidosTextBox.Text = "N/A";
-            CedulaTextBox.Text = "N/A";
-            SexoComboBox.SelectedItem = "";
-            TelefonoTextBox.Text = "N/A";
-            CelularTextBox.Text = "N/A";
-            DireccionTextBox.Text = "N/A";
-            EmailTextBox.Text = "N/A";
-            TipoUsuarioComboBox.SelectedItem = "";
-            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
-            NombreUsuarioTextBox.Text = "N/A";
-            ContrasenaTextBox.Text = "N/A";
+        //private void Limpiar()
+        //{
+        //    UsuarioIdTextBox.Text = "0";
+        //    NombresTextBox.Text = "N/A";
+        //    ApellidosTextBox.Text = "N/A";
+        //    CedulaTextBox.Text = "N/A";
+        //    SexoComboBox.SelectedItem = "";
+        //    TelefonoTextBox.Text = "N/A";
+        //    CelularTextBox.Text = "N/A";
+        //    DireccionTextBox.Text = "N/A";
+        //    EmailTextBox.Text = "N/A";
+        //    TipoUsuarioComboBox.SelectedItem = "";
+        //    FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
+        //    NombreUsuarioTextBox.Text = "N/A";
+        //    ContrasenaTextBox.Text = "N/A";
 
-            Usuarios usuario = new Usuarios();
-            Actualizar();
-        }
+        //    Usuarios usuario = new Usuarios();
+        //    Actualizar();
+        //}
 
         private void LlenaCampo(Usuarios usuario)
         {
@@ -201,8 +220,6 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-
-
                 bool paso = false;
 
                 if (!Validar())
@@ -239,11 +256,11 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(UsuarioIdTextBox.Text, out id);
 
             try
             {
+                int id;
+                int.TryParse(UsuarioIdTextBox.Text, out id);
                 if (UsuariosBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -262,21 +279,29 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            Usuarios usuarios = new Usuarios();
-            int.TryParse(UsuarioIdTextBox.Text, out id);
-            
-            Limpiar();
-
-            usuarios = UsuariosBLL.Buscar(id);
-
-            if (usuarios != null)
+            try
             {
-                LlenaCampo(usuarios);
+                int id;
+                Usuarios usuarios = new Usuarios();
+                int.TryParse(UsuarioIdTextBox.Text, out id);
+
+                Limpiar();
+
+                usuarios = UsuariosBLL.Buscar(id);
+
+                if (usuarios != null)
+                {
+                    LlenaCampo(usuarios);
+                }
+                else
+                {
+                    MessageBox.Show("No encontrado!!!", "Informacion", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("No encontrado!!!", "Informacion", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                MessageBox.Show("Error en base de datos, intente de nuevo.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

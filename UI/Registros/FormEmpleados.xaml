@@ -51,7 +51,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="NombresTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Nombres del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre"/>
@@ -63,7 +63,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="ApellidosTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Apellidos del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="LastNameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellido(os)"/>
@@ -75,7 +75,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="CedulaTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la cedula del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:CedulaValidation x:Name="CedulaValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cedula correctamente"/>
@@ -86,7 +86,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="DireccionTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="AddressValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Direccion"/>
@@ -97,7 +97,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="TelefonoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:PhoneValidation x:Name="PhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero de telefono correctamente"/>
@@ -108,7 +108,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}"  ToolTip="Aqui va el celular del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:PhoneValidation x:Name="CellPhoneValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el numero celular correctamente"/>
@@ -119,7 +119,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:EmailValidation x:Name="EmailValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Email correctamente"/>
@@ -130,7 +130,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="CargoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Cargo del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Cargo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Cargo" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="CargoValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el Cargo del Empleado"/>
@@ -142,7 +142,7 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
 
             <TextBox x:Name="SueldoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}"  ToolTip="Aqui va el Sueldo del Empleado">
                 <TextBox.Text>
-                    <Binding Path="Sueldo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Sueldo" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:DecimalValidation/>
@@ -174,11 +174,6 @@ Title="Formulario Empleados" Height="470" Width="430" Background="LightGray" Win
             <TextBox x:Name="UsuarioIdTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del Empleado">
                 <TextBox.Text>
                     <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                            <local:TextValidation x:Name="UserIdValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuarioId"/>
-                            <local:NumberValidation></local:NumberValidation>
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>

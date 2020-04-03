@@ -256,7 +256,6 @@ namespace ProyectoFinal_PA1.UI.Registros
                 this.Detalle = (List<VentasDetalles>)VentaDetalleDataGrid.ItemsSource;
             }
 
-            //Agregar un nuevo detalle con los datos introducidos
             this.Detalle.Add(new VentasDetalles
             {
                 Id = 0,
@@ -265,12 +264,14 @@ namespace ProyectoFinal_PA1.UI.Registros
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text)
 
             });
+
             CargarGrid();
             AumentarSubTotal();
             AumentarTotal();
             int valor = Convert.ToInt32(CantidadTextBox.Text);
             int id = Convert.ToInt32(ProductoIdTextBox.Text);
             ProductosBLL.DisminuirInventario(id, valor);
+
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
@@ -284,36 +285,34 @@ namespace ProyectoFinal_PA1.UI.Registros
             Precio = Convert.ToDecimal(PrecioTextBox.Text);
             Bandera = Convert.ToDecimal(Precio * Cantidad);
             AplicaPorcentaje = (Bandera * Itbis);
-            SubTotal +=(Bandera + AplicaPorcentaje);
+            SubTotal += (Bandera);
         }
 
         private void RemoveFromSubTotal() //Metodo para Remover cantidad del Subtotal si se elimina un producto del Grid
         {
-            SubTotal -= Bandera;
+            SubTotal -= (Bandera);
         }
 
         private void RemoveFromTotal() //Metodo para Remover cantidad del Total si se elimina un producto del Grid
         {
-                Total = SubTotal;
+            Total = SubTotal;
         }
 
         private void AumentarTotal()
         {
-           Descuento = Convert.ToDecimal(DescuentoTextBox.Text);
-           Total = SubTotal - Descuento;
+            Descuento = Convert.ToDecimal(DescuentoTextBox.Text);
+            Total = (SubTotal + AplicaPorcentaje) - Descuento;
         }
-
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
             if (VentaDetalleDataGrid.Items.Count > 0 && VentaDetalleDataGrid.SelectedItem != null)
             {
                 Detalle.RemoveAt(VentaDetalleDataGrid.SelectedIndex);
-                
                 RemoveFromSubTotal();
                 RemoveFromTotal();
                 CargarGrid();
             }
-           
+
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -338,8 +337,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-
-                TotalTextBox.Text = Total.ToString();
+                TotalTextBox.Text = Convert.ToString(Total);
             }
             catch (Exception)
             {
@@ -351,8 +349,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-               
-                SubTotalTextBox.Text = SubTotal.ToString();
+                SubTotalTextBox.Text = Convert.ToString(SubTotal);
             }
             catch (Exception)
             {

@@ -46,7 +46,7 @@
 
             <TextBox x:Name="NombreProductoTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el nombre del producto">
                 <TextBox.Text>
-                    <Binding Path="NombreProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreProducto" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre del producto"></local:TextValidation>
@@ -56,10 +56,9 @@
                 </TextBox.Text>
             </TextBox>
 
-
             <TextBox x:Name="MarcaProductoTextBox" Margin="0,8"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
                 <TextBox.Text>
-                    <Binding Path="MarcaProducto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="MarcaProducto" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="BrandValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad del producto que ira al inventario cuando este se registre"></local:TextValidation>
@@ -71,7 +70,7 @@
 
             <TextBox x:Name="InventarioTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
                 <TextBox.Text>
-                    <Binding Path="Inventario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Inventario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="InventaryValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar la cantidad de productos que iran al inventario"></local:TextValidation>

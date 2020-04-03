@@ -16,7 +16,6 @@
         <ComboBox Name="FiltrarComboBox" Margin="65,4,625,17" Grid.Row="0">
             <ComboBoxItem Content="TODO"/>
             <ComboBoxItem Content="CompraID"/>
-            <ComboBoxItem Content="EmpleadoId"/>
         </ComboBox>
 
         <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>

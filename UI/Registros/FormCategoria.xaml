@@ -31,8 +31,8 @@
                 <TextBox.Text>
                     <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                            <local:NumberValidation/>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                            <local:NumberValidation></local:NumberValidation>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -40,7 +40,7 @@
 
             <TextBox x:Name="NombreCategoriaTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese el Nombre de la Categoria">
                 <TextBox.Text>
-                    <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Nombre de Categoria"/>

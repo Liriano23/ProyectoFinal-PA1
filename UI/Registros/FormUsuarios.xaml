@@ -50,7 +50,7 @@
 
             <TextBox x:Name="NombresTextBox" Style="{ StaticResource TextBoxValidation}" ToolTip="Ingrese el o los nombres del usuario">
                 <TextBox.Text>
-                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar nombre"></local:TextValidation>
@@ -62,11 +62,10 @@
 
             <TextBox x:Name="ApellidosTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese el o los apellidos del usuario">
                 <TextBox.Text>
-                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="LastNamesValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellidos"></local:TextValidation>
-
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -75,7 +74,7 @@
 
             <TextBox x:Name="CedulaTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese la cedula del usuario">
                 <TextBox.Text>
-                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:CedulaValidation x:Name="CedulaValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una cedula"></local:CedulaValidation>
@@ -86,7 +85,7 @@
 
             <ComboBox x:Name="SexoComboBox" Margin="0,8" ToolTip="Elija el sexo del usuario">
                 <ComboBox.SelectedItem>
-                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="SexoComboBoxValdiation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el sexo del usuario"></local:TextValidation>
@@ -97,7 +96,7 @@
 
             <TextBox x:Name="TelefonoTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el Telefono del usuario">
                 <TextBox.Text>
-                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation></local:TextValidation>
@@ -109,7 +108,7 @@
 
             <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el celular del usuario">
                 <TextBox.Text>
-                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:PhoneValidation x:Name="CellPhoneValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar numero celular"></local:PhoneValidation>
@@ -120,7 +119,7 @@
 
             <TextBox x:Name="DireccionTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa la direccion de el usuario">
                 <TextBox.Text>
-                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="AddressValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una  Direccion"></local:TextValidation>
@@ -131,7 +130,7 @@
 
             <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el email del usuario">
                 <TextBox.Text>
-                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource" >
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:EmailValidation x:Name="EmailValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un email correcto"></local:EmailValidation>
@@ -142,19 +141,19 @@
 
             <ComboBox x:Name="TipoUsuarioComboBox" Margin="0,5" ToolTip="Aqui se ingresa el tipo de usuario. 'Administrador' o 'Empleado' ">
                 <ComboBox.SelectedItem>
-                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule></ExceptionValidationRule>
                             <local:TextValidation x:Name="TipoUsuarioComboBoxValdiation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el tipo de usuario"></local:TextValidation>
                         </Binding.ValidationRules>
                     </Binding>
-          
+
                 </ComboBox.SelectedItem>
             </ComboBox>
 
             <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" SelectedDateFormat="Short">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -164,7 +163,7 @@
 
             <TextBox x:Name="NombreUsuarioTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el nombre de usuario para poder inicar sesion">
                 <TextBox.Text>
-                    <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="UserNameValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un nombre de usuario"></local:TextValidation>
@@ -176,7 +175,7 @@
 
             <TextBox x:Name="ContrasenaTextBox">
                 <TextBox.Text>
-                    <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                             <local:TextValidation x:Name="PasswordValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una contrasena"></local:TextValidation>
