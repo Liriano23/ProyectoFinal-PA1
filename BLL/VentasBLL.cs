@@ -68,7 +68,7 @@ namespace ProyectoFinal_PA1.BLL
             {
                 var eliminar = db.Ventas.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
-                paso = db.SaveChanges() > 0;
+                paso = (db.SaveChanges() > 0);
             }
             catch (Exception)
             {

@@ -45,6 +45,16 @@ namespace ProyectoFinal_PA1.UI.Registros
             Actualizar();
         }
 
+        private void LlenaCampo(Productos productos)
+        {
+            ProductoIdTextBox.Text = Convert.ToString(productos.ProductoId);
+            NombreProductoTextBox.Text = productos.NombreProducto;
+            MarcaProductoTextBox.Text = productos.MarcaProducto;
+            InventarioTextBox.Text = Convert.ToString(productos.Inventario);
+            SuplidorIdTextBox.Text = Convert.ToString(productos.SuplidorId);
+            CategoriaIdTextBox.Text = Convert.ToString(productos.CategoriaId);
+            UsuarioIdTextBox.Text = Convert.ToString(productos.UsuariosId);
+        }
         private bool ExisteEnDB()
         {
             Productos productos = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
@@ -158,14 +168,17 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                Productos productos = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-                if (producto != null)
+                int id;
+                Productos products = new Productos();
+                int.TryParse(ProductoIdTextBox.Text, out id);
+                Limpiar();
+                products = ProductosBLL.Buscar(id);
+
+                if (products != null)
                 {
-                    producto = productos;
-                    Actualizar();
+                    LlenaCampo(products);
                 }
                 else
                 {
@@ -174,13 +187,9 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Error en base de datos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error en base de datos intente de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
-
         private void EliminarButton_Click_1(object sender, RoutedEventArgs e)
         {
             try

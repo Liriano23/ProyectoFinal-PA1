@@ -111,15 +111,7 @@
                  ToolTip="Ingrese la cantidad del producto" Text="0">
         </TextBox>
 
-        <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" 
-                  ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la venta">
-            <DataGrid.ItemsSource>
-                <Binding Path="Detalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <ExceptionValidationRule></ExceptionValidationRule>
-                    </Binding.ValidationRules>
-                </Binding>
-            </DataGrid.ItemsSource>
+        <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2">
         </DataGrid>
 
         <Label Content="Total: " HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" 
@@ -194,7 +186,7 @@
             </Button.Background>
         </Button>
 
-        <Button x:Name="ConsualarClienteButton" Content="Consualar Cliente" Grid.Row="0" Grid.Column="2" Margin="20,26,0,136" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsualarClienteButton_Click" ToolTip="Presione para consultar un Clinte">
+        <Button x:Name="ConsultarClienteButton" Content="Consualar Cliente" Grid.Row="0" Grid.Column="2" Margin="20,26,0,136" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarClienteButton_Click" ToolTip="Presione para consultar un Clinte">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>

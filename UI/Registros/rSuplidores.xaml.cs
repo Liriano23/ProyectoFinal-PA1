@@ -62,6 +62,19 @@ namespace ProyectoFinal_PA1.UI.Registros
                 @"^([\+]?1[-]?|[0])?[1-9][0-9]{9}$").Success;
         }
 
+        private void LlenaCampo(Suplidores suplidores)
+        {
+            SuplidorIdTextBox.Text = Convert.ToString(suplidores.SuplidorId);
+            NombreSuplidorTextBox.Text = suplidores.NombreSuplidor;
+            ApellidosTextBox.Text = suplidores.Apellidos;
+            NombreCompaniaTextBox.Text = suplidores.NombreCompania;
+            DireccionTextBox.Text = suplidores.Direccion;
+            TelefonoTextBox.Text = suplidores.Telefono;
+            CelularTextBox.Text = suplidores.Celular;
+            EmailTextBox.Text = suplidores.Email;
+            CiudadTextBox.Text = suplidores.Ciudad;
+            UsuarioIdTextBox.Text = Convert.ToString(suplidores.UsuariosId);
+        }
         public static bool CedulaValida(string cedula)
         {
             return Regex.Match(cedula,
@@ -153,22 +166,24 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             try
             {
-                Suplidores suplidores = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdTextBox.Text));
+                int id;
+                Suplidores supplier = new Suplidores();
+                int.TryParse(SuplidorIdTextBox.Text, out id);
+                Limpiar();
+                supplier = SuplidoresBLL.Buscar(id);
 
-                if (suplidores != null)
+                if (supplier != null)
                 {
-                    suplidor = suplidores;
-                    Actualizar();
+                    LlenaCampo(supplier);
                 }
                 else
                 {
                     MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show(" Error en base de datos !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Error en base de datos intente de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

@@ -16,13 +16,12 @@ using ProyectoFinal_PA1.UI.Consultas;
 namespace ProyectoFinal_PA1.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for FormVentas.xaml
+    /// Lógica de interacción para FormCompras.xaml
     /// </summary>
     public partial class rVentas : Window
     {
-        /// <summary>
-        /// </summary>
-        //Atributos Auxiliares
+
+        // Variables Auxiliares
         private decimal SubTotal;
         private decimal Total;
         private int Cantidad;
@@ -32,50 +31,52 @@ namespace ProyectoFinal_PA1.UI.Registros
         private decimal AplicaPorcentaje;
         private double Porcentaje;
         private decimal Descuento;
-
         Ventas venta = new Ventas();
         public List<VentasDetalles> Detalle { get; set; }
-
         public rVentas()
         {
+
             InitializeComponent();
-            
-            this.DataContext = venta;
 
             VentaIdTextBox.Text = "0";
             ClienteIdTextbox.Text = "0";
-            ProductoIdTextBox.Text = "0";
             EmpleadoIdTextbox.Text = "0";
             SubTotalTextBox.Text = "0";
             ITBISTextBox.Text = "18";
-            TotalTextBox.Text = "0";
-
-            this.Detalle = new List<VentasDetalles>();
-
-            Cantidad = (Cantidad < 0) ? Cantidad = 0 : Cantidad;
-            Precio = (Precio < 0) ? Precio = 0 : Precio;
-            Itbis = (Bandera < 0) ? Itbis = 0 : Itbis;
-            Bandera = (Bandera < 0) ? Bandera = 0 : Bandera;
-            Porcentaje = (Porcentaje < 0) ? Porcentaje = 0 : Porcentaje;
-            AplicaPorcentaje = (Total < 0) ? AplicaPorcentaje = 0 : AplicaPorcentaje;
-            SubTotal = (SubTotal < 0) ? SubTotal = 0 : SubTotal;
-            Total = (Total < 0) ? Total = 0 : Total;
-        }
-
-        private void Limpiar()
-        {
-
-            VentaIdTextBox.Text = "0";
-            ClienteIdTextbox.Text = "0";
-            ProductoIdTextBox.Text = "0";
-            EmpleadoIdTextbox.Text = "0";
-            ITBISTextBox.Text = "18";
-            SubTotalTextBox.Text = "0";
             DescuentoTextBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
+
+            this.DataContext = venta;
+            this.Detalle = new List<VentasDetalles>();
+            CargarGrid();
+
+            Cantidad = 0;
+            Precio = 0;
+            Itbis = 0;
+            Bandera = 0;
+            Porcentaje = 0;
+            AplicaPorcentaje = 0;
+            SubTotal = 0;
+            Total = 0;
+        }
+        private void Limpiar()
+        {
+            VentaIdTextBox.Text = "0";
+            ClienteIdTextbox.Text = "0";
+            EmpleadoIdTextbox.Text = "0";
+            SubTotalTextBox.Text = "0";
+            ITBISTextBox.Text = "18";
+            DescuentoTextBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
+            PrecioTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
+            TotalTextBox.Text = "0";
+            FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
+
             SubTotal = 0;
             Total = 0;
             Cantidad = 0;
@@ -84,42 +85,17 @@ namespace ProyectoFinal_PA1.UI.Registros
             Bandera = 0;
             AplicaPorcentaje = 0;
             Porcentaje = 0;
+
+            Ventas venta = new Ventas();
             this.Detalle = new List<VentasDetalles>();
             CargarGrid();
-            Ventas venta = new Ventas();
-
             Actualizar();
-        }
-
-
-        private void LlenaCampo(Ventas ventas)
-        {
-            VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
-            ClienteIdTextbox.Text = Convert.ToString(ventas.ClienteId);
-            EmpleadoIdTextbox.Text = Convert.ToString(ventas.EmpleadoId);
-            FechaVentaDateTimePicker.SelectedDate = ventas.FechaEmision;
-            ITBISTextBox.Text = Convert.ToString(ventas.ITBIS);
-            DescuentoTextBox.Text = Convert.ToString(ventas.Descuento);
-            
-            SubTotal = ventas.SubTotal;
-            Total = ventas.Total;
-            SubTotalTextBox.Text = Convert.ToString(SubTotal);
-            TotalTextBox.Text = Convert.ToString(Total);
-            
-            this.Detalle = ventas.Detalle;
-            CargarGrid();
         }
 
         private bool ExisteEnDB()
         {
-            Ventas ventas = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
-            return (ventas != null);
-        }
-
-        private void Actualizar()
-        {
-            this.DataContext = null;
-            this.DataContext = venta;
+            Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
+            return (venta != null);
         }
 
         private void CargarGrid()
@@ -128,22 +104,98 @@ namespace ProyectoFinal_PA1.UI.Registros
             VentaDetalleDataGrid.ItemsSource = this.Detalle;
         }
 
+        private Ventas LlenaClase()
+        {
+            Ventas ventas = new Ventas();
+            ventas.VentaId = int.Parse(VentaIdTextBox.Text);
+            ventas.ClienteId = int.Parse(ClienteIdTextbox.Text);
+            ventas.EmpleadoId = int.Parse(EmpleadoIdTextbox.Text);
+            ventas.FechaEmision = (DateTime)FechaVentaDateTimePicker.SelectedDate;
+            ventas.SubTotal = decimal.Parse(SubTotalTextBox.Text);
+            ventas.ITBIS = double.Parse(ITBISTextBox.Text);
+            ventas.Descuento = decimal.Parse(DescuentoTextBox.Text);
+            ventas.Total = decimal.Parse(TotalTextBox.Text);
+            ventas.Detalle = this.Detalle;
+
+            return ventas;
+        }
+
+        private void LlenaCampo(Ventas venta)
+        {
+            VentaIdTextBox.Text = Convert.ToString(venta.VentaId);
+            ClienteIdTextbox.Text = Convert.ToString(venta.ClienteId);
+            EmpleadoIdTextbox.Text = Convert.ToString(venta.EmpleadoId);
+            FechaVentaDateTimePicker.SelectedDate = venta.FechaEmision;
+            ITBISTextBox.Text = Convert.ToString(venta.ITBIS);
+            DescuentoTextBox.Text = Convert.ToString(venta.Descuento);
+
+            SubTotal = venta.SubTotal;
+            Total = venta.Total;
+            SubTotalTextBox.Text = Convert.ToString(venta.SubTotal);
+            TotalTextBox.Text = Convert.ToString(venta.Total);
+
+            this.Detalle = venta.Detalle;
+            CargarGrid();
+
+        }
+
+
+        private void Actualizar()
+        {
+            this.DataContext = null;
+            this.DataContext = venta;
+        }
         private bool Validar()
         {
             bool paso = true;
 
-            if (string.IsNullOrEmpty(VentaIdTextBox.Text))
+            if (string.IsNullOrEmpty(TotalTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Venta Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                VentaIdTextBox.Focus();
+                TotalTextBox.Focus();
 
             }
+
+            if (string.IsNullOrEmpty(SubTotalTextBox.Text))
+            {
+                paso = false;
+                SubTotalTextBox.Focus();
+
+            }
+
+
+            if (string.IsNullOrEmpty(DescuentoTextBox.Text))
+            {
+                paso = false;
+                DescuentoTextBox.Focus();
+
+            }
+
+            if (string.IsNullOrEmpty(ITBISTextBox.Text))
+            {
+                paso = false;
+                ITBISTextBox.Focus();
+
+            }
+
+            if (string.IsNullOrEmpty(SubTotalTextBox.Text))
+            {
+                paso = false;
+                SubTotalTextBox.Focus();
+
+            }
+
+            if (string.IsNullOrEmpty(FechaVentaDateTimePicker.Text))
+            {
+                paso = false;
+                FechaVentaDateTimePicker.Focus();
+
+            }
+
 
             if (string.IsNullOrEmpty(ClienteIdTextbox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Cliente Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 ClienteIdTextbox.Focus();
 
             }
@@ -151,100 +203,21 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (string.IsNullOrEmpty(EmpleadoIdTextbox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Empleado Id no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 EmpleadoIdTextbox.Focus();
-            }
 
-            if (SubTotalTextBox.Text == "0" || string.IsNullOrEmpty(SubTotalTextBox.Text))
-            {
-                MessageBox.Show("Debe completar el capo SubTotal", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                SubTotalTextBox.Focus();
             }
-           
-            if (string.IsNullOrEmpty(DescuentoTextBox.Text))
+            if (string.IsNullOrEmpty(VentaIdTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Descuento no puede estar vacio o debe ser 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                DescuentoTextBox.Focus();
+                VentaIdTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(FechaVentaDateTimePicker.Text))
-            {
-                paso = false;
-                MessageBox.Show("El campo Fecha Venta no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                FechaVentaDateTimePicker.Focus();
-            }
-
-            if(string.IsNullOrEmpty(TotalTextBox.Text))
-            {
-                paso = false;
-                MessageBox.Show("El campo Total no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                TotalTextBox.Focus();
-            }
             if (this.Detalle.Count == 0)
             {
                 MessageBox.Show("La venta debe tener un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 paso = false;
             }
             return paso;
-        }
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
-        {
-            bool paso = false;
-
-            if (!Validar())
-                return;
-
-            if (String.IsNullOrEmpty(VentaIdTextBox.Text) || VentaIdTextBox.Text == "0")
-                paso = VentasBLL.Guardar(venta);
-            else
-            {
-                if (!ExisteEnDB())
-                {
-                    MessageBox.Show("No existe el cliente en la base de " +
-                        "datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                    return;
-                }
-                paso = VentasBLL.Modificar(venta);
-            }
-
-            if (paso)
-            {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
-            }
-            else
-            {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-            }
-        }
-
-        private void ElimnarButton_Click(object sender, RoutedEventArgs e)
-        {
-            int id;
-            int.TryParse(VentaIdTextBox.Text, out id);
-
-            try
-            {
-                if (VentasBLL.Eliminar(id))
-                {
-                    MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Limpiar();
-                }
-                else
-                {
-                    MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-            }
-            catch
-            {
-                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
@@ -268,11 +241,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             AumentarTotal();
             int valor = Convert.ToInt32(CantidadTextBox.Text);
             int id = Convert.ToInt32(ProductoIdTextBox.Text);
-            ProductosBLL.DisminuirInventario(id, valor);
+            ProductosBLL.AumentarInventario(id, valor);
 
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
+
         }
 
         private void AumentarSubTotal() //Metodo para aumentar el subTotal
@@ -310,24 +284,103 @@ namespace ProyectoFinal_PA1.UI.Registros
                 RemoveFromTotal();
                 CargarGrid();
             }
+        }
 
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool paso = false;
+            Ventas venta;
+
+            if (!Validar())
+                return;
+
+            venta = LlenaClase();
+
+            if (string.IsNullOrEmpty(VentaIdTextBox.Text) || VentaIdTextBox.Text == "0")
+                paso = VentasBLL.Guardar(venta);
+            else
+            {
+                if (!ExisteEnDB())
+                {
+                    MessageBox.Show("Persona No Encontrada", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                paso = VentasBLL.Modificar(venta);
+            }
+            if (paso)
+            {
+                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            }
+        }
+
+        private void ElimnarButton_Click(object sender, RoutedEventArgs e)
+        {
+            int id;
+            int.TryParse(VentaIdTextBox.Text, out id);
+
+            try
+            {
+                if (VentasBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            Ventas sale = new Ventas();
+            Ventas venta = new Ventas();
             int.TryParse(VentaIdTextBox.Text, out id);
 
-            sale = VentasBLL.Buscar(id);
+            venta = VentasBLL.Buscar(id);
 
-            if (sale != null)
+            if (venta != null)
             {
-                LlenaCampo(sale);
+                LlenaCampo(venta);
             }
             else
             {
                 MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
+        private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
+        {
+            cSuplidores consultarSuplidor = new cSuplidores();
+            consultarSuplidor.Show();
+        }
+
+
+        private void SubTotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                SubTotalTextBox.Text = Convert.ToString(SubTotal);
+                venta.SubTotal = SubTotal;
+            }
+            catch (Exception)
+            {
+                return;
             }
         }
 
@@ -336,6 +389,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             try
             {
                 TotalTextBox.Text = Convert.ToString(Total);
+                venta.Total = Total;
             }
             catch (Exception)
             {
@@ -343,28 +397,16 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
         }
 
-        private void SubTotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ConsultarClienteButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                SubTotalTextBox.Text = Convert.ToString(SubTotal);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
-
-        private void ConsualarClienteButton_Click(object sender, RoutedEventArgs e)
-        {
-            cClientes consultarClientes = new cClientes();
-            consultarClientes.Show();
+            cClientes cClientes = new cClientes();
+            cClientes.Show();
         }
 
         private void ConsultarEmpleadoButton_Click(object sender, RoutedEventArgs e)
         {
-            cEmpleados consultaEmpleado = new cEmpleados();
-            consultaEmpleado.Show();
+            cEmpleados cEmpleados = new cEmpleados();
+            cEmpleados.Show();
         }
     }
 }

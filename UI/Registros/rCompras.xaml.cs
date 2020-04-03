@@ -355,7 +355,6 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
         }
 
-
         private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
         {
             cSuplidores consultarSuplidor = new cSuplidores();

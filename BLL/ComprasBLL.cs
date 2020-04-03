@@ -122,7 +122,6 @@ namespace ProyectoFinal_PA1.BLL
             {
                 db.Dispose();
             }
-
             return lista;
         }
     }

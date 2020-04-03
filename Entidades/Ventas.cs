@@ -19,7 +19,7 @@ namespace ProyectoFinal_PA1.Entidades
         public decimal Total { get; set; }
 
         [ForeignKey("VentaId")]
-        public List<VentasDetalles> Detalle { get; set; }
+        public virtual List<VentasDetalles> Detalle { get; set; }
 
         public Ventas()
         {
@@ -31,7 +31,7 @@ namespace ProyectoFinal_PA1.Entidades
             ITBIS = 0;
             Descuento = 0;
             Total = 0;
-            this.Detalle = new List<VentasDetalles>();
+            Detalle = new List<VentasDetalles>();
         }
     }
 }
