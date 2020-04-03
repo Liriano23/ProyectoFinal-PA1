@@ -1,0 +1,240 @@
+﻿<Window x:Class="ProyectoFinal_PA1.UI.Registros.rUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
+        mc:Ignorable="d"
+        Title="Formulario Usuarios" Height="468" Width="410" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Content="UsuarioId:" Style="{StaticResource Labels}"></Label>
+            <Label Content="Nombres: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Apellidos: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Cédula: " Style="{StaticResource Labels}" Width="131"></Label>
+            <Label Content="Sexo: " Style="{StaticResource Labels}" Width="129"></Label>
+            <Label Content="Teléfono: " Style="{StaticResource Labels}" Width="132"></Label>
+            <Label Content="Celular:" Style="{StaticResource Labels}" Width="128"></Label>
+            <Label Content="Dirección:" Style="{StaticResource Labels}" Width="130"></Label>
+            <Label Content="Email:" Style="{StaticResource Labels}" Width="130"></Label>
+            <Label Content="TipoEmpleado: " Style="{StaticResource Labels}" Width="129"></Label>
+            <Label Content="Fecha Ingreso:" Style="{StaticResource Labels}" Width="92"></Label>
+            <Label Content="Nombre de usuario: "  Width="129" Style="{StaticResource Labels}"></Label>
+            <Label Content="Contraseña" Style="{StaticResource Labels}" Width="129" ></Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,5" ToolTip="El Id del nuevo usuario debe estar en 0 para agregar un nuevo usuario">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:NumberValidation></local:NumberValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="NombresTextBox" Style="{ StaticResource TextBoxValidation}" ToolTip="Ingrese el o los nombres del usuario">
+                <TextBox.Text>
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="NameValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar nombre"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="ApellidosTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese el o los apellidos del usuario">
+                <TextBox.Text>
+                    <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="LastNamesValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar Apellidos"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="CedulaTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese la cedula del usuario">
+                <TextBox.Text>
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:CedulaValidation x:Name="CedulaValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una cedula"></local:CedulaValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <ComboBox x:Name="SexoComboBox" Margin="0,8" ToolTip="Elija el sexo del usuario">
+                <ComboBox.SelectedItem>
+                    <Binding Path="Sexo" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="SexoComboBoxValdiation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el sexo del usuario"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <TextBox x:Name="TelefonoTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el Telefono del usuario">
+                <TextBox.Text>
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation></local:TextValidation>
+                            <local:PhoneValidation x:Name="PhoneValitation" Message="Debe ingresar numero de telefono correcto"></local:PhoneValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el celular del usuario">
+                <TextBox.Text>
+                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:PhoneValidation x:Name="CellPhoneValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar numero celular"></local:PhoneValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="DireccionTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa la direccion de el usuario">
+                <TextBox.Text>
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="AddressValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una  Direccion"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el email del usuario">
+                <TextBox.Text>
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:EmailValidation x:Name="EmailValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un email correcto"></local:EmailValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <ComboBox x:Name="TipoUsuarioComboBox" Margin="0,5" ToolTip="Aqui se ingresa el tipo de usuario. 'Administrador' o 'Empleado' ">
+                <ComboBox.SelectedItem>
+                    <Binding Path="TipoUsuario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                            <local:TextValidation x:Name="TipoUsuarioComboBoxValdiation" ValidatesOnTargetUpdated="True" Message="Debe ingresar el tipo de usuario"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" SelectedDateFormat="Short">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+            <TextBox x:Name="NombreUsuarioTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui se ingresa el nombre de usuario para poder inicar sesion">
+                <TextBox.Text>
+                    <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="UserNameValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar un nombre de usuario"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox x:Name="ContrasenaTextBox">
+                <TextBox.Text>
+                    <Binding Path="Contrasena" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="PasswordValitation" ValidatesOnTargetUpdated="True" Message="Debe ingresar una contrasena"></local:TextValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1" Height="50" Click="NuevoButton_Click" Margin="14,8,16,42" ToolTip="Presiona para limpiar campos">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="11,11,0,39" ToolTip="Presione para Guardar datos">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ApellidosTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CedulaTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=SexoComboBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TipoUsuarioComboBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=TelefonoTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=CelularTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=NombreUsuarioTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=ContrasenaTextBox, Path=(Validation.HasError)}" Value="false"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/guardar.png" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
+                Width="100" Height="50" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="1,14,0,36" ToolTip="Presione para eliminar usuario">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminar.png" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="0"
+                Width="100" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BuscarButton_Click"  ToolTip="Presione para buscar usuario" Margin="8,5,0,0">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscar.png" />
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

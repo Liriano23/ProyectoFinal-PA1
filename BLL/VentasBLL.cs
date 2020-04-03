@@ -38,7 +38,6 @@ namespace ProyectoFinal_PA1.BLL
             Contexto db = new Contexto();
             try
             {
-
                 db.Database.ExecuteSqlRaw($"Delete FROM VentasDetalles where VentaId = {venta.VentaId}");
                 foreach (var item in venta.Detalle)
                 {

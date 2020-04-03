@@ -62,6 +62,6 @@
         <Button x:Name="ConsultarVentasButton"  Content="Consultas Ventas" FontSize="16" Grid.Row="16" Grid.Column="2"  Background="#FF3081E2" Click="ConsultarVentasButton_Click"/>
         <Button x:Name="ConsultarComprasButton"  Content="Consultas Compras" FontSize="16" Grid.Row="18" Grid.Column="2" Background="#FF3081E2" Click="ConsultarComprasButton_Click"  />
         <Button x:Name="CerrarSecion"  Content=" Cerrar Sesión" FontSize="16" Grid.Row="20" Grid.Column="1" Background="#FFE02A2A" Click="CerrarSecion_Click"  />
-        <TextBox x:Name="UsuarioActivoTextBox" Grid.Column="2" Margin="0,1,0,72" IsReadOnly="True" Foreground="Red" BorderBrush="Red"></TextBox>
+        <TextBox x:Name="UsuarioActivoTextBox" Grid.Column="2" Margin="0,1,0,62" IsReadOnly="True" Foreground="Red" BorderBrush="Red"></TextBox>
     </Grid>
 </Window>

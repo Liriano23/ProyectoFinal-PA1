@@ -32,132 +32,131 @@ namespace ProyectoFinal_PA1
             InitializeComponent();
             usuarioSiempreActivoId = UsuarioId;
             usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
-            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.Nombres.ToString());
+            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.Nombres.ToString() +"\nID Usuario activo: "+usuario.UsuarioId.ToString());
         }
 
         //Boton registrar usuarios
         private void UsuarioButton_Click(object sender, RoutedEventArgs e)
         {
-            FormUsuarios fu = new FormUsuarios();
-            fu.Show();
+            rUsuarios rUsuario = new rUsuarios();
+            rUsuario.Show();
         }
 
         //Boton registrar clientes
         private void ClientesButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            FormClientes formularioClientes = new FormClientes();
-            formularioClientes.Show();
+
+            rClientes rCliente = new rClientes();
+            rCliente.Show();
         }
 
         //Boton registrar Empleados
         private void EmpleadosButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            FormEmpleados formularioEmpleados = new FormEmpleados();
+
+            rEmpleados formularioEmpleados = new rEmpleados();
             formularioEmpleados.Show();
         }
 
         //Boton registrar Suplidores
         private void SuplidoresrButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            FormSuplidores formularioSuplidores = new FormSuplidores();
-            formularioSuplidores.Show();
+
+            rSuplidores rSuplidore = new rSuplidores();
+            rSuplidore.Show();
         }
 
         //Boton registrar Productos
         private void ProductosButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            FormProductos formProductos = new FormProductos();
-            formProductos.Show();
+
+            rProductos rProducto = new rProductos();
+            rProducto.Show();
         }
 
         //Boton registrar Categorias
         private void CategoriasButton_Click(object sender, RoutedEventArgs e)
         {
-            FormCategoria formCategoria = new FormCategoria();
-            formCategoria.Show();
+            rCategorias rCategoria = new rCategorias();
+            rCategoria.Show();
             
         }
 
         //Boton registrar Ventas
         private void VentasButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            FormVentas formVentas = new FormVentas();
-            formVentas.Show();
+            rVentas rVenta = new rVentas();
+            rVenta.Show();
         }
 
         //Boton registrar Compras
         private void ComprasButton_Click(object sender, RoutedEventArgs e)
         {
-            FormCompras formCompras = new FormCompras();
-            formCompras.Show();
+            rCompras rCompra = new rCompras();
+            rCompra.Show();
         }
 
         //Boton consultar usuarios
         private void ConsultarUsuarioButton_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarUsuarios consultarUsuarios = new ConsultarUsuarios();
-            consultarUsuarios.Show();
+            cUsuarios cUsuario = new cUsuarios();
+            cUsuario.Show();
         }
 
         //Boton consultar Cliente
         private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
         {
             
-            ConsultarClientes consultarClientes = new ConsultarClientes();
-            consultarClientes.Show();
+            cClientes cCliente = new cClientes();
+            cCliente.Show();
         }
 
         //Boton consultar Empleados
         private void ConsultarEmpleadosButton_Click(object sender, RoutedEventArgs e)
         {
            
-            ConsultaEmpleado consultaEmpleado = new ConsultaEmpleado();
-            consultaEmpleado.Show();
+            cEmpleados cEmpleado = new cEmpleados();
+            cEmpleado.Show();
         }
 
         //Boton consultar Suplidores
         private void ConsultarSuplidoresrButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            ConsultarSuplidor consultarSuplidor = new ConsultarSuplidor();
+
+            cSuplidores consultarSuplidor = new cSuplidores();
             consultarSuplidor.Show();
         }
 
         //Boton consultar Productos
         private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            ConsultarProductos consultarProductos = new ConsultarProductos();
-            consultarProductos.Show();
+
+            cProductos cProducto = new cProductos();
+            cProducto.Show();
         }
 
         //Boton consultar Categorias
         private void ConsultarCategoriasButton_Click(object sender, RoutedEventArgs e)
         {
             
-            ConsultarCategoria consultarCategoria = new ConsultarCategoria();
-            consultarCategoria.Show();
+            cCategorias cCategoria = new cCategorias();
+            cCategoria.Show();
         }
 
         //Boton consultar Ventas
         private void ConsultarVentasButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            ConsultarVentas consultarVentas = new ConsultarVentas();
-            consultarVentas.Show();
+
+            cVentas cVenta = new cVentas();
+            cVenta.Show();
             
         }
 
         //Boton consultar compras
         private void ConsultarComprasButton_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarCompra consultarCompra = new ConsultarCompra();
-            consultarCompra.Show();
+            cCompras cCompra = new cCompras();
+            cCompra.Show();
         }
 
         private void CerrarSecion_Click(object sender, RoutedEventArgs e)
