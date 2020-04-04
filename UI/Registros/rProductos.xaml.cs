@@ -21,14 +21,51 @@ namespace ProyectoFinal_PA1.UI.Registros
     public partial class rProductos : Window
     {
         Productos producto = new Productos();
+        List<Suplidores> lista = new List<Suplidores>();
+        List<Categorias> lista2 = new List<Categorias>();
         public rProductos()
         {
             InitializeComponent();
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             ProductoIdTextBox.Text = "0";
+            PrecioDeCompraTextBox.Text = "0";
+            PrecioDeVentaTextBox.Text = "0";
             this.DataContext = producto;
         }
+        
+        private bool ValidarSuplidorId(int id)
+        {
+            lista = SuplidoresBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in lista)
+            {
+                if (item.SuplidorId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
+        }
+
+        private bool ValidarCategoriaId(int id)
+        {
+            lista2 = CategoriasBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in lista2)
+            {
+                if (item.CategoriaId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
+        }
+
         private void Limpiar()
         {
 
@@ -36,6 +73,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             NombreProductoTextBox.Clear();
             MarcaProductoTextBox.Clear();
             InventarioTextBox.Clear();
+            PrecioDeVentaTextBox.Text = "0";
+            PrecioDeCompraTextBox.Text = "0";
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             SuplidorIdTextBox.Text = "0";
             CategoriaIdTextBox.Text = "0";
@@ -51,6 +90,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             NombreProductoTextBox.Text = productos.NombreProducto;
             MarcaProductoTextBox.Text = productos.MarcaProducto;
             InventarioTextBox.Text = Convert.ToString(productos.Inventario);
+            PrecioDeCompraTextBox.Text = Convert.ToString(productos.PrecioDeCompra);
+            PrecioDeVentaTextBox.Text = Convert.ToString(productos.PrecioDeVenta);
             SuplidorIdTextBox.Text = Convert.ToString(productos.SuplidorId);
             CategoriaIdTextBox.Text = Convert.ToString(productos.CategoriaId);
             UsuarioIdTextBox.Text = Convert.ToString(productos.UsuariosId);
@@ -91,6 +132,20 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 paso = false;
                 MessageBox.Show("El campo Inventario no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                InventarioTextBox.Focus();
+            }
+
+            if (string.IsNullOrEmpty(PrecioDeCompraTextBox.Text))
+            {
+                paso = false;
+                MessageBox.Show("El campo Precio de Compra no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                InventarioTextBox.Focus();
+            }
+
+            if (string.IsNullOrEmpty(PrecioDeVentaTextBox.Text))
+            {
+                paso = false;
+                MessageBox.Show("El campo Precio de Venta no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 InventarioTextBox.Focus();
             }
 
@@ -136,6 +191,18 @@ namespace ProyectoFinal_PA1.UI.Registros
 
                 if (!Validar())
                     return;
+
+                if (!ValidarSuplidorId(Convert.ToInt32(SuplidorIdTextBox.Text)))
+                {
+                    MessageBox.Show("Suplidor Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                if (!ValidarCategoriaId(Convert.ToInt32(CategoriaIdTextBox.Text)))
+                {
+                    MessageBox.Show("Categoria Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
 
                 if (String.IsNullOrEmpty(ProductoIdTextBox.Text) || ProductoIdTextBox.Text == "0")
                     paso = ProductosBLL.Guardar(producto);

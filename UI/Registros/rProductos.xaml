@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-        Title="Formulario Productos" Height="300" Width="450" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="Formulario Productos" Height="350" Width="450" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -14,8 +14,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="210"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="265"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
@@ -23,6 +23,8 @@
             <Label Content="Nombre Producto: " Style="{StaticResource Labels}"></Label>
             <Label Content="Marca Producto: " Style="{StaticResource Labels}"></Label>
             <Label Content="Inventario: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Precio de Compra: " Style="{StaticResource Labels}"></Label>
+            <Label Content="Precio de venta: " Style="{StaticResource Labels}"></Label>
             <Label Content="Fecha Ingreso: " Style="{StaticResource Labels}" Width="99"></Label>
 
             <Label Content="Suplidor Id: " Style="{StaticResource Labels}"></Label>
@@ -68,7 +70,7 @@
             </TextBox>
 
 
-            <TextBox x:Name="InventarioTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
+            <TextBox x:Name="InventarioTextBox" Margin="0,3"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar la marca del producto">
                 <TextBox.Text>
                     <Binding Path="Inventario" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -80,7 +82,31 @@
                 </TextBox.Text>
             </TextBox>
 
-            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,7" ToolTip="Aqui debe ingresar la fecha en la que fue agregado el producto">
+            <TextBox x:Name="PrecioDeCompraTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el precio por el cual se compra producto">
+                <TextBox.Text>
+                    <Binding Path="PrecioDeCompra" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="PriceBuyValidation" ValidatesOnTargetUpdated="True" Message="Aqui debe ingresar el precio por el cual se compra producto"></local:TextValidation>
+                            <local:DecimalValidation></local:DecimalValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="PrecioDeVentaTextBox" Margin="0,3" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el precio por el cual se vendera producto">
+                <TextBox.Text>
+                    <Binding Path="PrecioDeVenta" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <local:TextValidation x:Name="PriceSaleValidation" ValidatesOnTargetUpdated="True" Message="Aqui debe ingresar el precio por el cual se vendera producto"></local:TextValidation>
+                            <local:DecimalValidation></local:DecimalValidation>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,2" ToolTip="Aqui debe ingresar la fecha en la que fue agregado el producto">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -90,7 +116,7 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
 
-            <TextBox x:Name="SuplidorIdTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del suplidor que distribuye el producto">
+            <TextBox x:Name="SuplidorIdTextBox" Margin="0,5"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del suplidor que distribuye el producto">
                 <TextBox.Text>
                     <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -102,7 +128,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id de la categoria que pertenece el producto">
+            <TextBox x:Name="CategoriaIdTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id de la categoria que pertenece el producto">
                 <TextBox.Text>
                     <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -128,14 +154,14 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Margin="12,17,0,50" Click="NuevoButton_Click" ToolTip="Presione para Limpiar los campos">
+                Width="100" HorizontalAlignment="Left" Margin="15,5,0,0" Click="NuevoButton_Click" ToolTip="Presione para Limpiar los campos">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Margin="15,17,0,52" Click="GuardarButton_Click" ToolTip="Presione para guardar producto">
+                Width="100" HorizontalAlignment="Left" Margin="18,5,0,0" Click="GuardarButton_Click" ToolTip="Presione para guardar producto">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="False"></Setter>
@@ -161,7 +187,7 @@
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Margin="15,17,0,52" Click="EliminarButton_Click_1" ToolTip="Presione para eliminar producto">
+                Width="100" HorizontalAlignment="Left" Margin="18,5,0,0" Click="EliminarButton_Click_1" ToolTip="Presione para eliminar producto">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminarr.png" />
             </Button.Background>
@@ -174,13 +200,13 @@
             </Button.Background>
         </Button>
 
-        <Button x:Name="ConsultarCategoriaeButton" Content="Consultar Categorias" Grid.Row="0" Grid.Column="2" Margin="13,159,1,32" HorizontalContentAlignment="Right" Click="ConsultarCategoriaeButton_Click" ToolTip="Presione para consultar categorias" >
+        <Button x:Name="ConsultarCategoriaeButton" Content="Consultar Categorias" Grid.Row="0" Grid.Column="2" Margin="14,214,0,29" HorizontalContentAlignment="Right" Click="ConsultarCategoriaeButton_Click" ToolTip="Presione para consultar categorias" >
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
 
-        <Button x:Name="ConsultarSuplidorButton" Content="Consultar Suplidorres" Grid.Row="0" Grid.Column="2" Margin="13,134,0,57" HorizontalContentAlignment="Right" Click="ConsultarSuplidorButton_Click" ToolTip="Presione para consultar Suplidores">
+        <Button x:Name="ConsultarSuplidorButton" Content="Consultar Suplidores" Grid.Row="0" Grid.Column="2" Margin="13,185,0,58" HorizontalContentAlignment="Right" Click="ConsultarSuplidorButton_Click" ToolTip="Presione para consultar Suplidores">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>

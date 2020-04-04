@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinal_PA1.Migrations
 {
-    public partial class FirtsMigration : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -234,6 +234,8 @@ namespace ProyectoFinal_PA1.Migrations
                     NombreProducto = table.Column<string>(nullable: true),
                     MarcaProducto = table.Column<string>(nullable: true),
                     Inventario = table.Column<int>(nullable: false),
+                    PrecioDeVenta = table.Column<decimal>(nullable: false),
+                    PrecioDeCompra = table.Column<decimal>(nullable: false),
                     FechaIngreso = table.Column<DateTime>(nullable: false),
                     SuplidorId = table.Column<int>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false),
@@ -267,7 +269,7 @@ namespace ProyectoFinal_PA1.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Cedula", "Celular", "Contrasena", "Direccion", "Email", "FechaIngreso", "NombreUsuario", "Nombres", "Sexo", "Telefono", "TipoUsuario" },
-                values: new object[] { 1, "Admin", "88888888888", "8888888888", "Admin", "SFM", "admin123@gmail.com", new DateTime(2020, 4, 3, 14, 57, 14, 755, DateTimeKind.Local).AddTicks(9796), "Admin", "Admin", "Femenino", "8888888888", "Administrador" });
+                values: new object[] { 1, "Admin", "88888888888", "8888888888", "Admin", "SFM", "admin123@gmail.com", new DateTime(2020, 4, 3, 20, 10, 34, 741, DateTimeKind.Local).AddTicks(9682), "Admin", "Admin", "Femenino", "8888888888", "Administrador" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categorias_UsuariosId",

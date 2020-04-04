@@ -109,7 +109,7 @@
         </TextBox>
 
         <Label Style="{StaticResource Labels}" Width="81" Content="ProductoId: " Grid.Column="0" Grid.Row="1" Margin="0,0,0,58"/>
-        <TextBox x:Name="ProductoIdTexBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="83,0,90,66" HorizontalContentAlignment="Center" ToolTip="Ingrese el Id del producto"/>
+        <TextBox x:Name="ProductoIdTexBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="83,0,90,75" HorizontalContentAlignment="Center" ToolTip="Ingrese el Id del producto"/>
 
 
 
@@ -117,16 +117,13 @@
         <TextBox x:Name="PrecioTextBox" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="119,0,446,78" ToolTip="Ingrese el precio del producto"/>
 
         <Label Style="{StaticResource Labels}" Width="72" Content="Cantidad: " Grid.Column="2" Grid.Row="1" Margin="56,0,0,70"/>
-        <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" ToolTip="Ingrese la cantidad del producto"/>
+        <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,76" Grid.RowSpan="2" ToolTip="Ingrese la cantidad del producto"/>
 
-        <DataGrid x:Name="CompraDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la compra">
-            <DataGrid.ItemsSource>
-                <Binding Path="Detalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </DataGrid.ItemsSource>
+        <DataGrid x:Name="CompraDetalleDataGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2" ToolTip="Esta area esta destinada para mostrarle los productos que ha agregado a la compra">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" Cantidad" Binding="{Binding Cantidad}"/>
+                <DataGridTextColumn Header=" Precio" Binding="{Binding Precio}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
 
@@ -186,11 +183,18 @@
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/agregar.png" />
             </Button.Background>
         </Button>
+        
         <Button x:Name="ConsultarSuplidorButton" Content="Consultar Suplidores" Grid.Row="0" Grid.Column="2" Margin="20,27,0,132" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="135" Click="ConsultarSuplidorButton_Click" ToolTip="Consultar Suplidores">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
-
+        <Button x:Name="ConsultarProductosButton" Content="Consultar Productos" Grid.Row="0" Grid.Column="
+                0" Margin="24,157,0,5" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarProductosButton_Click" ToolTip="Presione para consultar un Empleado" Grid.ColumnSpan="2">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
+            </Button.Background>
+        </Button>
+    
     </Grid>
 </Window>

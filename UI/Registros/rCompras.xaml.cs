@@ -32,6 +32,9 @@ namespace ProyectoFinal_PA1.UI.Registros
         private double Porcentaje;
         private decimal Descuento;
         Compras compra = new Compras();
+        List<Productos> lista = new List<Productos>();
+
+        List<Suplidores> lista2 = new List<Suplidores>();
         public List<ComprasDetalle> Detalle { get; set; }
         public rCompras()
         {
@@ -60,6 +63,36 @@ namespace ProyectoFinal_PA1.UI.Registros
             AplicaPorcentaje = (Total < 0) ? AplicaPorcentaje = 0 : AplicaPorcentaje;
             SubTotal = (SubTotal < 0) ? SubTotal = 0 : SubTotal;
             Total = (Total < 0) ? Total = 0 : Total;
+        }
+        private bool ValidarProductosId(int id)
+        {
+            lista = ProductosBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in lista)
+            {
+                if (item.ProductoId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
+        }
+        private bool ValidarSuplidorId(int id)
+        {
+            lista2 = SuplidoresBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in lista2)
+            {
+                if (item.SuplidorId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
         }
         private void Limpiar()
         {
@@ -217,6 +250,12 @@ namespace ProyectoFinal_PA1.UI.Registros
                 this.Detalle = (List<ComprasDetalle>)CompraDetalleDataGrid.ItemsSource;
             }
 
+            if(!ValidarProductosId(Convert.ToInt32(ProductoIdTexBox.Text)))
+            {
+                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             this.Detalle.Add(new ComprasDetalle
             {
                 Id = 0,
@@ -289,6 +328,11 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             if (!Validar())
                 return;
+            if (!ValidarSuplidorId(Convert.ToInt32(SuplidorIdTextbox.Text)))
+            {
+                MessageBox.Show("Suplidor Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
             compra = LlenaClase();
 
@@ -386,6 +430,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 return;
             }
+        }
+
+        private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
+        {
+            cProductos cProducto = new cProductos();
+            cProducto.Show();
         }
     }
 }

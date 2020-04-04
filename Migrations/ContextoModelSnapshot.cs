@@ -213,6 +213,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("NombreProducto")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("PrecioDeCompra")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PrecioDeVenta")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("SuplidorId")
                         .HasColumnType("INTEGER");
 
@@ -329,7 +335,7 @@ namespace ProyectoFinal_PA1.Migrations
                             Contrasena = "Admin",
                             Direccion = "SFM",
                             Email = "admin123@gmail.com",
-                            FechaIngreso = new DateTime(2020, 4, 3, 14, 57, 14, 755, DateTimeKind.Local).AddTicks(9796),
+                            FechaIngreso = new DateTime(2020, 4, 3, 20, 10, 34, 741, DateTimeKind.Local).AddTicks(9682),
                             NombreUsuario = "Admin",
                             Nombres = "Admin",
                             Sexo = "Femenino",

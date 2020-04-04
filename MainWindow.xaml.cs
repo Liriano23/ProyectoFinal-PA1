@@ -32,7 +32,7 @@ namespace ProyectoFinal_PA1
             InitializeComponent();
             usuarioSiempreActivoId = UsuarioId;
             usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
-            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.Nombres.ToString() +"\nID Usuario activo: "+usuario.UsuarioId.ToString());
+            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.NombreUsuario.ToString() +"\nID Usuario activo: "+usuario.UsuarioId.ToString());
         }
 
         //Boton registrar usuarios

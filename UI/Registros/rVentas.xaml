@@ -97,21 +97,24 @@
         </StackPanel>
 
         <Label Style="{StaticResource Labels}" Width="81" Content="ProductoId: " Grid.Column="0" Grid.Row="1" Margin="0,0,0,58"></Label>
-        <TextBox x:Name="ProductoIdTextBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="83,0,90,66" HorizontalContentAlignment="Center" 
+        <TextBox x:Name="ProductoIdTextBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="83,1,90,76" HorizontalContentAlignment="Center" 
                  ToolTip="Ingrese el Id del producto" Text="0">
         </TextBox>
 
         <Label Style="{StaticResource Labels}" Width="60" Content="Precio: " Grid.Column="1" Margin="70,179,0,1" Grid.RowSpan="2"></Label>
-        <TextBox x:Name="PrecioTextBox" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="119,0,446,78" 
+        <TextBox x:Name="PrecioTextBox" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="119,1,446,77" 
                  ToolTip="Ingrese el precio del producto" Text="0">
         </TextBox>
 
         <Label  Content="Cantidad: " Style="{StaticResource Labels}" Width="72" Grid.Column="2" Grid.Row="1" Margin="56,0,0,0"></Label>
-        <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,179,265,70" Grid.RowSpan="2" 
-                 ToolTip="Ingrese la cantidad del producto" Text="0">
-        </TextBox>
+        <TextBox x:Name="CantidadTextBox" HorizontalContentAlignment="Center" Grid.Column="2" Margin="128,0,265,76" 
+                 ToolTip="Ingrese la cantidad del producto" Text="0" Grid.Row="1"/>
 
-        <DataGrid x:Name="VentaDetalleDataGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2">
+        <DataGrid x:Name="VentaDetalleDataGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="3" Margin="1,31,139,50" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" Cantidad" Binding="{Binding Cantidad}"/>
+                <DataGridTextColumn Header=" Precio" Binding="{Binding Precio}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
         <Label Content="Total: " HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="2" 
@@ -193,6 +196,13 @@
         </Button>
 
         <Button x:Name="ConsultarEmpleadoButton" Content="Consultar Empleado" Grid.Row="0" Grid.Column="2" Margin="20,50,0,112" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarEmpleadoButton_Click" ToolTip="Presione para consultar un Empleado">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="ConsultarProductosButton" Content="Consultar Productos" Grid.Row="0" Grid.Column="
+                0" Margin="24,157,0,5" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarProductosButton_Click" ToolTip="Presione para consultar un Empleado" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>

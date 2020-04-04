@@ -32,7 +32,11 @@ namespace ProyectoFinal_PA1.UI.Registros
         private double Porcentaje;
         private decimal Descuento;
         Ventas venta = new Ventas();
+        List<Productos> lista = new List<Productos>();
         public List<VentasDetalles> Detalle { get; set; }
+        List<Clientes> listaCliente = new List<Clientes>();
+        List<Empleados> listaEmpleados = new List<Empleados>();
+
         public rVentas()
         {
 
@@ -62,6 +66,51 @@ namespace ProyectoFinal_PA1.UI.Registros
             AplicaPorcentaje = 0;
             SubTotal = 0;
             Total = 0;
+        }
+        
+        private bool ValidarProductosId(int id)
+        {
+            lista = ProductosBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in lista)
+            {
+                if (item.ProductoId == id)
+                {
+                    return paso = true;
+                }
+            }
+            return paso;
+        }
+        private bool ValidarClienteId(int id)
+        {
+            listaCliente = ClientesBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in listaCliente)
+            {
+                if (item.ClienteId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
+        }
+        private bool ValidarEmpleadoId(int id)
+        {
+            listaEmpleados = EmpleadosBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in listaEmpleados)
+            {
+                if (item.EmpleadoId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
         }
         private void Limpiar()
         {
@@ -225,6 +274,22 @@ namespace ProyectoFinal_PA1.UI.Registros
             if (VentaDetalleDataGrid.ItemsSource != null)
             {
                 this.Detalle = (List<VentasDetalles>)VentaDetalleDataGrid.ItemsSource;
+            }
+
+            if (!ValidarProductosId(Convert.ToInt32(ProductoIdTextBox.Text)))
+            {
+                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            if (!ValidarClienteId(Convert.ToInt32(ClienteIdTextbox.Text)))
+            {
+                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            if (!ValidarEmpleadoId(Convert.ToInt32(EmpleadoIdTextbox.Text)))
+            {
+                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
             }
 
             this.Detalle.Add(new VentasDetalles
@@ -405,8 +470,14 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void ConsultarEmpleadoButton_Click(object sender, RoutedEventArgs e)
         {
-            cEmpleados cEmpleados = new cEmpleados();
-            cEmpleados.Show();
+            cEmpleados cEmpleado = new cEmpleados();
+            cEmpleado.Show();
+        }
+
+        private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
+        {
+            cProductos cProducto = new cProductos();
+            cProducto.Show();
         }
     }
 }

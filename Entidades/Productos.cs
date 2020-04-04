@@ -14,6 +14,9 @@ namespace ProyectoFinal_PA1.Entidades
         public string MarcaProducto { get; set; }
 
         public int Inventario { get; set; }
+
+        public decimal PrecioDeVenta { get; set; }
+        public decimal PrecioDeCompra { get; set; }
         public DateTime FechaIngreso { get; set; }
         [ForeignKey("Suplidores")]
         public int SuplidorId { get; set; }
@@ -34,6 +37,8 @@ namespace ProyectoFinal_PA1.Entidades
             UsuariosId = 0;
             SuplidorId = 0;
             CategoriaId = 0;
+            PrecioDeCompra = 0;
+            PrecioDeVenta = 0;
 
         }
 
