@@ -281,16 +281,7 @@ namespace ProyectoFinal_PA1.UI.Registros
                 MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-            if (!ValidarClienteId(Convert.ToInt32(ClienteIdTextbox.Text)))
-            {
-                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            if (!ValidarEmpleadoId(Convert.ToInt32(EmpleadoIdTextbox.Text)))
-            {
-                MessageBox.Show("Producto Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+            
 
             this.Detalle.Add(new VentasDetalles
             {
@@ -359,6 +350,17 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             bool paso = false;
             Ventas venta;
+
+            if (!ValidarClienteId(Convert.ToInt32(ClienteIdTextbox.Text)))
+            {
+                MessageBox.Show("Cliente Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            if (!ValidarEmpleadoId(Convert.ToInt32(EmpleadoIdTextbox.Text)))
+            {
+                MessageBox.Show("Empleado Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
             if (!Validar())
                 return;
