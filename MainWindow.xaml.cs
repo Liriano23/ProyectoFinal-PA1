@@ -99,7 +99,7 @@ namespace ProyectoFinal_PA1
         //Boton consultar usuarios
         private void ConsultarUsuarioButton_Click(object sender, RoutedEventArgs e)
         {
-            cUsuarios cUsuario = new cUsuarios();
+            cUsuarios cUsuario = new cUsuarios(usuarioSiempreActivoId);
             cUsuario.Show();
         }
 

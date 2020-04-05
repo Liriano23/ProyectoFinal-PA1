@@ -46,7 +46,15 @@ namespace ProyectoFinal_PA1.UI.Consultas
                     case 3:
                         listado = ProductosBLL.GetList(x => x.MarcaProducto == CriterioTextBox.Text);
                         break;
+                    case 4:
+                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = ProductosBLL.GetList(x => x.FechaIngreso.Date >= fecha.Date && x.FechaIngreso.Date <= fecha.Date);
+                        break;
                 }
+            }
+            else if (FiltrarComboBox.SelectedIndex == 4)
+            {
+                listado = ProductosBLL.GetList(x => x.FechaIngreso.Date >= DesdeDateTimePicker.SelectedDate && x.FechaIngreso.Date <= HastaDateTimePicker.SelectedDate);
             }
             else
             {

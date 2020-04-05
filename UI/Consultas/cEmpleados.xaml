@@ -6,33 +6,67 @@
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
          Title="Consulta Empleado" Height="500" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+
     <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Filtrar" Width="auto" Grid.Row="0" RenderTransformOrigin="0,0.484" Margin="2,4,710,10"/>
+        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <DatePicker x:Name="DesdeDateTimePicker"  Height="34" Grid.Row="1" Grid.Column ="0" VerticalAlignment="Top" HorizontalAlignment="Left"></DatePicker>
+        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1"></TextBlock>
+        <DatePicker x:Name="HastaDateTimePicker"  Height="34" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" ></DatePicker>
 
-        <ComboBox Name="FiltrarComboBox" Grid.Row="0" Margin="92,6,512,14">
-            <ComboBoxItem Content="TODO"/>
-            <ComboBoxItem Content="ID"/>
-            <ComboBoxItem Content="Nombre"/>
-            <ComboBoxItem Content="Cedula"/>
+        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" ></TextBlock>
+        <ComboBox Name="FiltrarComboBox" Height="34" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top">
+            <ComboBoxItem Content="TODO"></ComboBoxItem>
+            <ComboBoxItem Content="ID"></ComboBoxItem>
+            <ComboBoxItem Content="Nombre"></ComboBoxItem>
+            <ComboBoxItem Content="Cedula"></ComboBoxItem>
+            <ComboBoxItem Content="Fecha Ingreso"></ComboBoxItem>
         </ComboBox>
 
-        <TextBlock Text="Criterio"  Grid.Row="0" Margin="320,6,350,-6"/>
-        <TextBox Name="CriterioTextBox" Height="20" Margin="375,8,317,16"/>
+        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3"></TextBlock>
+        <TextBox Name="CriterioTextBox" Grid.Column="3" BorderBrush="Black" Grid.Row="1" VerticalAlignment="Top" Height="34"></TextBox>
 
-        <Button Name="ConsultarButton" Height="25" 
-                 HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click" Margin="516,6,182,14">
+        <Button Name="ConsultarButton" Height="34" Width="146"
+               HorizontalContentAlignment="Right" Grid.Row="1" 
+                Click="ConsultarButton_Click" Grid.Column="4" VerticalAlignment="Top"
+                HorizontalAlignment="Center">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/Buscarr.png" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/Buscarr.png"/>
             </Button.Background>
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="6,44,-4,-435" RenderTransformOrigin="0.5,0.5">
-           
+        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-36,-200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Empleado Id" Binding="{Binding EmpleadoId}"/>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
+                <DataGridTextColumn Header="Cedula" Binding="{Binding Cedula}"/>
+                <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
+                <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
+                <DataGridTextColumn Header="Direccion" Binding="{Binding Direccion}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo}"/>
+                <DataGridTextColumn Header="Sueldo" Binding="{Binding Sueldo}"/>
+                <DataGridTextColumn Header="Fecha Nacimiento" Binding="{Binding FechaNacimiento}"/>
+                <DataGridTextColumn Header="Fecha Ingreso" Binding="{Binding FechaIngreso}"/>
+                <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuariosId}"/>
+            </DataGrid.Columns>
         </DataGrid>
+        
     </Grid>
 </Window>

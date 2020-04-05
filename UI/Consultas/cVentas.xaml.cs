@@ -51,7 +51,16 @@ namespace ProyectoFinal_PA1.UI.Consultas
                         total = int.Parse(CriterioTextBox.Text);
                         listado = VentasBLL.GetList(o => o.Total == total);
                         break;
+
+                    case 4:
+                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = VentasBLL.GetList(x => x.FechaEmision.Date >= fecha.Date && x.FechaEmision.Date <= fecha.Date);
+                        break;
                 }
+            }
+            else if (FiltrarComboBox.SelectedIndex == 4)
+            {
+                listado = VentasBLL.GetList(x => x.FechaEmision.Date >= DesdeDateTimePicker.SelectedDate && x.FechaEmision.Date <= HastaDateTimePicker.SelectedDate);
             }
             else
             {

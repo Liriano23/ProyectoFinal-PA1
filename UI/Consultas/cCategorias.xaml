@@ -5,32 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consultar Categorias" Height="365" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="Consultar Categorias" Height="500" Width="828" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Filtrar" Width="auto" Margin="10,5,735,14" Grid.Row="0" RenderTransformOrigin="0,0.484"></TextBlock>
+        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <DatePicker x:Name="DesdeDateTimePicker"  Height="34" Grid.Row="1" Grid.Column ="0" VerticalAlignment="Top" HorizontalAlignment="Left"></DatePicker>
+        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1"></TextBlock>
+        <DatePicker x:Name="HastaDateTimePicker"  Height="34" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" ></DatePicker>
 
-        <ComboBox Name="FiltrarComboBox" Margin="65,4,625,17" Grid.Row="0">
-            <ComboBoxItem Content="TODO"/>
-            <ComboBoxItem Content="ID"/>
-            <ComboBoxItem Content="Nombre"/>
+        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" ></TextBlock>
+        <ComboBox Name="FiltrarComboBox" Height="34" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top">
+            <ComboBoxItem Content="TODO"></ComboBoxItem>
+            <ComboBoxItem Content="ID"></ComboBoxItem>
+            <ComboBoxItem Content="Nombre"></ComboBoxItem>
+            <ComboBoxItem Content="Fecha Ingreso"></ComboBoxItem>
         </ComboBox>
 
-        <TextBlock Text="Criterio" Margin="245,4,495,19" Grid.Row="0"/>
-        <TextBox Name="CriterioTextBox" Height="20" Margin="310,4,373,19"/>
+        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3"></TextBlock>
+        <TextBox Name="CriterioTextBox" Grid.Column="3" BorderBrush="Black" Grid.Row="1" VerticalAlignment="Top" Height="34"></TextBox>
 
-        <Button Name="ConsultarButton" Height="25" 
-                Margin="480,4,230,14" HorizontalContentAlignment="Right" Grid.Row="0" Click="ConsultarButton_Click">
+        <Button Name="ConsultarButton" Height="34" Width="146"
+               HorizontalContentAlignment="Right" Grid.Row="1" 
+                Click="ConsultarButton_Click" Grid.Column="4" VerticalAlignment="Top"
+                HorizontalAlignment="Center">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/Buscarr.png" />
+                <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="/Resources/Buscarr.png"/>
             </Button.Background>
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" Margin="0,44,0,-304"/>
+        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-36,-134">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CategoriaId" Binding="{Binding CategoriaId}"/>
+                <DataGridTextColumn Header="Nombre Categorioa" Binding="{Binding NombreCategoria}"/>
+                <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuariosId}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
     </Grid>
 </Window>
 

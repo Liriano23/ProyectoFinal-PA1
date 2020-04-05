@@ -153,7 +153,7 @@
 
             <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" SelectedDateFormat="Short">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>

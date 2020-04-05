@@ -39,7 +39,15 @@ namespace ProyectoFinal_PA1.UI.Consultas
                         id = int.Parse(CriterioTextBox.Text);
                         listado = ComprasBLL.GetList(o => o.CompraId == id);
                         break;
+                    case 2:
+                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = ComprasBLL.GetList(x => x.FechaDeCompra.Date >= fecha.Date && x.FechaDeCompra.Date <= fecha.Date);
+                        break;
                 }
+            }
+            else if (FiltrarComboBox.SelectedIndex == 2)
+            {
+                listado = ComprasBLL.GetList(x => x.FechaDeCompra.Date >= DesdeDateTimePicker.SelectedDate && x.FechaDeCompra.Date <= HastaDateTimePicker.SelectedDate);
             }
             else
             {

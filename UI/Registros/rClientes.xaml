@@ -140,7 +140,7 @@
 
             <DatePicker x:Name="FechaNacimientoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de nacimiento del cliente">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                    <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
@@ -150,7 +150,7 @@
 
             <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,5" ToolTip="Aqui va la fecha de ingreso al sistema del cliente">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
                         </Binding.ValidationRules>
