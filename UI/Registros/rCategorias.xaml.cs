@@ -27,6 +27,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             this.DataContext = categoria;
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             CategoriaIdTextBox.Text = "0";
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
 
         }
 
@@ -46,6 +47,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaTextBox.Clear();
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Categorias categoria = new Categorias();
@@ -56,6 +58,7 @@ namespace ProyectoFinal_PA1.UI.Registros
         {
             CategoriaIdTextBox.Text = Convert.ToString(categorias.CategoriaId);
             NombreCategoriaTextBox.Text = categorias.NombreCategoria;
+            FechaIngresoDateTimePicker.SelectedDate = categorias.FechaIngreso;
             UsuarioIdTextBox.Text = Convert.ToString(categorias.UsuariosId);
         }
 
@@ -67,7 +70,12 @@ namespace ProyectoFinal_PA1.UI.Registros
             {
                 paso = false;
                 NombreCategoriaTextBox.Focus();
+            }
 
+            if (string.IsNullOrEmpty(FechaIngresoDateTimePicker.Text))
+            {
+                paso = false;
+                FechaIngresoDateTimePicker.Focus();
             }
             return paso;
         }

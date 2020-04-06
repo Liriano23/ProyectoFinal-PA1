@@ -21,6 +21,10 @@ namespace ProyectoFinal_PA1.Entidades
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalles> Detalle { get; set; }
 
+        [ForeignKey("Usuarios")]
+
+        public int UsuariosId { get; set; }
+
         public Ventas()
         {
             VentaId = 0;
@@ -32,6 +36,7 @@ namespace ProyectoFinal_PA1.Entidades
             Descuento = 0;
             Total = 0;
             Detalle = new List<VentasDetalles>();
+            UsuariosId = 0;
         }
     }
 }

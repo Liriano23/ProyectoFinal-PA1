@@ -1,28 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ProyectoFinal_PA1.UI.Registros;
-using ProyectoFinal_PA1.UI.Consultas;
+﻿using ProyectoFinal_PA1.BLL;
 using ProyectoFinal_PA1.Entidades;
-using ProyectoFinal_PA1.BLL;
+using ProyectoFinal_PA1.UI.Consultas;
+using ProyectoFinal_PA1.UI.Registros;
+using System.Windows;
 
 namespace ProyectoFinal_PA1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
         public static int usuarioSiempreActivoId;
@@ -32,7 +19,7 @@ namespace ProyectoFinal_PA1
             InitializeComponent();
             usuarioSiempreActivoId = UsuarioId;
             usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
-            UsuarioActivoTextBox.Text = ("Usuario activo: "+usuario.NombreUsuario.ToString() +"\nID Usuario activo: "+usuario.UsuarioId.ToString());
+            UsuarioActivoTextBox.Text = ("Usuario activo: " + usuario.NombreUsuario.ToString() + "\nID Usuario activo: " + usuario.UsuarioId.ToString());
         }
 
         //Boton registrar usuarios
@@ -70,7 +57,7 @@ namespace ProyectoFinal_PA1
         private void ProductosButton_Click(object sender, RoutedEventArgs e)
         {
 
-            rProductos rProducto = new rProductos();
+            rProductos rProducto = new rProductos(usuarioSiempreActivoId);
             rProducto.Show();
         }
 
@@ -79,20 +66,20 @@ namespace ProyectoFinal_PA1
         {
             rCategorias rCategoria = new rCategorias();
             rCategoria.Show();
-            
+
         }
 
         //Boton registrar Ventas
         private void VentasButton_Click(object sender, RoutedEventArgs e)
         {
-            rVentas rVenta = new rVentas();
+            rVentas rVenta = new rVentas(usuarioSiempreActivoId);
             rVenta.Show();
         }
 
         //Boton registrar Compras
         private void ComprasButton_Click(object sender, RoutedEventArgs e)
         {
-            rCompras rCompra = new rCompras();
+            rCompras rCompra = new rCompras(usuarioSiempreActivoId);
             rCompra.Show();
         }
 
@@ -106,16 +93,16 @@ namespace ProyectoFinal_PA1
         //Boton consultar Cliente
         private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            cClientes cCliente = new cClientes();
+
+            cClientes cCliente = new cClientes(usuarioSiempreActivoId);
             cCliente.Show();
         }
 
         //Boton consultar Empleados
         private void ConsultarEmpleadosButton_Click(object sender, RoutedEventArgs e)
         {
-           
-            cEmpleados cEmpleado = new cEmpleados();
+
+            cEmpleados cEmpleado = new cEmpleados(usuarioSiempreActivoId);
             cEmpleado.Show();
         }
 
@@ -123,7 +110,7 @@ namespace ProyectoFinal_PA1
         private void ConsultarSuplidoresrButton_Click(object sender, RoutedEventArgs e)
         {
 
-            cSuplidores consultarSuplidor = new cSuplidores();
+            cSuplidores consultarSuplidor = new cSuplidores(usuarioSiempreActivoId);
             consultarSuplidor.Show();
         }
 
@@ -131,15 +118,15 @@ namespace ProyectoFinal_PA1
         private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
         {
 
-            cProductos cProducto = new cProductos();
+            cProductos cProducto = new cProductos(usuarioSiempreActivoId);
             cProducto.Show();
         }
 
         //Boton consultar Categorias
         private void ConsultarCategoriasButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            cCategorias cCategoria = new cCategorias();
+
+            cCategorias cCategoria = new cCategorias(usuarioSiempreActivoId);
             cCategoria.Show();
         }
 
@@ -147,15 +134,15 @@ namespace ProyectoFinal_PA1
         private void ConsultarVentasButton_Click(object sender, RoutedEventArgs e)
         {
 
-            cVentas cVenta = new cVentas();
+            cVentas cVenta = new cVentas(usuarioSiempreActivoId);
             cVenta.Show();
-            
+
         }
 
         //Boton consultar compras
         private void ConsultarComprasButton_Click(object sender, RoutedEventArgs e)
         {
-            cCompras cCompra = new cCompras();
+            cCompras cCompra = new cCompras(usuarioSiempreActivoId);
             cCompra.Show();
         }
 

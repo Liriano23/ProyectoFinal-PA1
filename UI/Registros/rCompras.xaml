@@ -108,6 +108,21 @@
             </TextBox.Text>
         </TextBox>
 
+        <Label Content="Usuario Id:" Margin="226,32,0,119" Style="{StaticResource Labels}" Width="75" Grid.Column="2" />
+
+        <TextBox x:Name="UsuarioIdTextBox" Margin="220,57,186,102" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui debe ingresar el id del usuario que registro el producto al sistema" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                        <local:TextValidation x:Name="UserIDValidation" ValidatesOnTargetUpdated="True" Message="Debe ingresar UsuariosId"></local:TextValidation>
+                        <local:NumberValidation></local:NumberValidation>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
         <Label Style="{StaticResource Labels}" Width="81" Content="ProductoId: " Grid.Column="0" Grid.Row="1" Margin="0,0,0,58"/>
         <TextBox x:Name="ProductoIdTexBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="83,0,90,75" HorizontalContentAlignment="Center" ToolTip="Ingrese el Id del producto"/>
 
@@ -177,7 +192,6 @@
             </Button.Background>
         </Button>
 
-
         <Button x:Name="AgregarButton" Content="Agregar" Margin="245,0,0,70" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="107" Grid.Column="2" Grid.Row="1" Height="30" VerticalAlignment="Bottom" Click="AgregarButton_Click" ToolTip="Agregar al Detalle Producto">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/agregar.png" />
@@ -189,12 +203,14 @@
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
+        
         <Button x:Name="ConsultarProductosButton" Content="Consultar Productos" Grid.Row="0" Grid.Column="
                 0" Margin="24,157,0,5" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="125" Click="ConsultarProductosButton_Click" ToolTip="Presione para consultar un Empleado" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/buscarr.png" />
             </Button.Background>
         </Button>
+        
     
     </Grid>
 </Window>

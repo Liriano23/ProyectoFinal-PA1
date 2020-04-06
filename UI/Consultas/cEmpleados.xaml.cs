@@ -19,9 +19,15 @@ namespace ProyectoFinal_PA1.UI.Consultas
     /// </summary>
     public partial class cEmpleados : Window
     {
-        public cEmpleados()
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public cEmpleados(int usuarioId)
         {
             InitializeComponent();
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
+            UserActive.Text = ("Usuario activo: " + usuario.NombreUsuario.ToString() + "\nID Usuario activo: " + usuario.UsuarioId.ToString());
+
         }
 
 
@@ -44,16 +50,63 @@ namespace ProyectoFinal_PA1.UI.Consultas
                     case 2:
                         listado = EmpleadosBLL.GetList(x => x.Nombres == CriterioTextBox.Text);
                         break;
+
                     case 3:
+                        listado = EmpleadosBLL.GetList(x => x.Apellidos == CriterioTextBox.Text);
+                        break;
+
+                    case 4:
                         listado = EmpleadosBLL.GetList(x => x.Cedula == CriterioTextBox.Text);
                         break;
-                    case 4:
-                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
-                        listado = EmpleadosBLL.GetList(x => x.FechaIngreso.Date >= fecha.Date && x.FechaIngreso.Date <= fecha.Date);
+
+                    case 5:
+                        listado = EmpleadosBLL.GetList(x => x.Direccion == CriterioTextBox.Text);
+                        break;
+
+                    case 6:
+                        listado = EmpleadosBLL.GetList(x => x.Telefono == CriterioTextBox.Text);
+                        break;
+
+                    case 7:
+                        listado = EmpleadosBLL.GetList(x => x.Celular == CriterioTextBox.Text);
+                        break;
+
+                    case 8:
+                        listado = EmpleadosBLL.GetList(x => x.Email == CriterioTextBox.Text);
+                        break;
+
+                    case 9:
+                        listado = EmpleadosBLL.GetList(x => x.Cargo == CriterioTextBox.Text);
+                        break;
+
+                    case 10:
+                        decimal s;
+                        s = int.Parse(CriterioTextBox.Text);
+                        listado = EmpleadosBLL.GetList(x => x.Sueldo == s);
+                        break;
+
+                    case 11:
+                        DateTime fechaN = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = EmpleadosBLL.GetList(x => x.FechaNacimiento.Date >= fechaN.Date && x.FechaIngreso.Date <= fechaN.Date);
+                        break;
+
+                    case 12:
+                        DateTime fechaI = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = EmpleadosBLL.GetList(x => x.FechaIngreso.Date >= fechaI.Date && x.FechaIngreso.Date <= fechaI.Date);
+                        break;
+
+                    case 13:
+                        int idU;
+                        idU = int.Parse(CriterioTextBox.Text);
+                        listado = EmpleadosBLL.GetList(x => x.UsuariosId == idU);
                         break;
                 }
             }
-            else if (FiltrarComboBox.SelectedIndex == 4)
+            else if (FiltrarComboBox.SelectedIndex == 11)
+            {
+                listado = EmpleadosBLL.GetList(x => x.FechaNacimiento.Date >= DesdeDateTimePicker.SelectedDate && x.FechaNacimiento.Date <= HastaDateTimePicker.SelectedDate);
+            }
+            else if (FiltrarComboBox.SelectedIndex == 12)
             {
                 listado = EmpleadosBLL.GetList(x => x.FechaIngreso.Date >= DesdeDateTimePicker.SelectedDate && x.FechaIngreso.Date <= HastaDateTimePicker.SelectedDate);
             }

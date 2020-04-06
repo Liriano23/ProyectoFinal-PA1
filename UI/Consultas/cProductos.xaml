@@ -5,38 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-        Title="ConsultarProductos"  Height="500" Width="827" Background="LightGray" WindowStartupLocation="CenterScreen">
+        Title="ConsultarProductos"  Height="500" Width="1100" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="150"/> 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <DatePicker x:Name="DesdeDateTimePicker"  Height="34" Grid.Row="1" Grid.Column ="0" VerticalAlignment="Top" HorizontalAlignment="Left"></DatePicker>
-        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1"></TextBlock>
+        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <DatePicker x:Name="HastaDateTimePicker"  Height="34" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" ></DatePicker>
+        <TextBox x:Name="UserActive"  IsReadOnly="True" Grid.Row="0" Grid.Column="4" BorderBrush="Black" />
 
-        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" ></TextBlock>
+        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <ComboBox Name="FiltrarComboBox" Height="34" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top">
-            <ComboBoxItem Content="TODO"></ComboBoxItem>
-            <ComboBoxItem Content="ID"></ComboBoxItem>
-            <ComboBoxItem Content="Nombre Producto"></ComboBoxItem>
-            <ComboBoxItem Content="Marca Producto"></ComboBoxItem>
-            <ComboBoxItem Content="Fecha Ingreso"></ComboBoxItem>
+            <ComboBoxItem Content="TODO"/>
+            <ComboBoxItem Content="ProductoId"/>
+            <ComboBoxItem Content="Nombre Producto"/>
+            <ComboBoxItem Content="Marca Producto"/>
+            <ComboBoxItem Content="Fecha Ingreso"/>
+            <ComboBoxItem Content="Categoria Id"/>
+            <ComboBoxItem Content="Suplidor Id"/>
+            <ComboBoxItem Content="Usuario Id"/>
+            
         </ComboBox>
 
-        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3"></TextBlock>
+        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <TextBox Name="CriterioTextBox" Grid.Column="3" BorderBrush="Black" Grid.Row="1" VerticalAlignment="Top" Height="34"></TextBox>
 
         <Button Name="ConsultarButton" Height="34" Width="149"
@@ -49,7 +54,7 @@
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-72,-233">
+        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-336,-233" SelectionChanged="ConsultarDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto Id" Binding="{Binding ProductoId}"/>
                 <DataGridTextColumn Header="Nombre producto" Binding="{Binding NombreProducto}"/>
@@ -58,8 +63,8 @@
                 <DataGridTextColumn Header="Precio de venta" Binding="{Binding PrecioDeVenta}"/>
                 <DataGridTextColumn Header="Precio de compra" Binding="{Binding PrecioDeCompra}"/>
                 <DataGridTextColumn Header="Fecha Ingreso" Binding="{Binding FechaIngreso}"/>
-                <DataGridTextColumn Header="SuplidorId" Binding="{Binding SuplidorId}"/>
                 <DataGridTextColumn Header="CategoriaId" Binding="{Binding CategoriaId}"/>
+                <DataGridTextColumn Header="SuplidorId" Binding="{Binding SuplidorId}"/>
                 <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuariosId}"/>
             </DataGrid.Columns>
         </DataGrid>

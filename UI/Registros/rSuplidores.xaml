@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Registros"
         mc:Ignorable="d"
-         Title="Formulario Suplidores" Height="380" Width="410" Background="LightGray" WindowStartupLocation="CenterScreen">
+         Title="Formulario Suplidores" Height="400" Width="410" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -14,8 +14,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="275"/>
-            <RowDefinition Height="145"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
@@ -28,6 +28,7 @@
             <Label Content="Celular:" Style="{StaticResource Labels}"/>
             <Label Content="Email:" Style="{StaticResource Labels}"/>
             <Label Content="Ciudad:" Style="{StaticResource Labels}"/>
+            <Label Content="Fecha Ingreso: "  Style="{StaticResource Labels}" />
             <Label Content="Usuario Id:" Style="{StaticResource Labels}" />
         </StackPanel>
 
@@ -45,7 +46,7 @@
             </TextBox>
 
 
-            <TextBox x:Name="NombreSuplidorTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Nombres del Suplidor">
+            <TextBox x:Name="NombreSuplidorTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Nombres del Suplidor">
                 <TextBox.Text>
                     <Binding Path="NombreSuplidor" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -56,7 +57,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="ApellidosTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Apellidos del Suplidor">
+            <TextBox x:Name="ApellidosTextBox" Margin="0,6" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui van los Apellidos del Suplidor">
                 <TextBox.Text>
                     <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -67,7 +68,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="NombreCompaniaTextBox"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Nombre de la compañia en la que trabaja el Suplidor">
+            <TextBox x:Name="NombreCompaniaTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Nombre de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
                     <Binding Path="NombreCompania" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -78,7 +79,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="DireccionTextBox" Margin="0,8" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion de la compañia en la que trabaja el Suplidor">
+            <TextBox x:Name="DireccionTextBox" Margin="0,6" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Direccion de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
                     <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -89,7 +90,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="TelefonoTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono de la compañia en la que trabaja el Suplidor">
+            <TextBox x:Name="TelefonoTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el telefono de la compañia en la que trabaja el Suplidor">
                 <TextBox.Text>
                     <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -100,7 +101,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="CelularTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}"  ToolTip="Aqui va el celular del Suplidor">
+            <TextBox x:Name="CelularTextBox" Margin="0,7" Style="{StaticResource TextBoxValidation}"  ToolTip="Aqui va el celular del Suplidor">
                 <TextBox.Text>
                     <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -111,7 +112,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del Suplidor">
+            <TextBox x:Name="EmailTextBox" Margin="0,1" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Email del Suplidor">
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -122,7 +123,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="CiudadTextBox" Margin="0,5"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Ciudad en la que Se localiza la Compañia">
+            <TextBox x:Name="CiudadTextBox" Margin="0,7"  Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va la Ciudad en la que Se localiza la Compañia">
                 <TextBox.Text>
                     <Binding Path="Ciudad" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
                         <Binding.ValidationRules>
@@ -133,7 +134,18 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,2" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del Suplidor">
+            <DatePicker x:Name="FechaIngresoDateTimePicker"  ToolTip="Aqui va la fecha de ingreso al sistema de la categoria">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,4" Style="{StaticResource TextBoxValidation}" ToolTip="Aqui va el Id del usuario que esta ingresando los datos del Suplidor">
                 <TextBox.Text>
                     <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -147,14 +159,14 @@
         </StackPanel>
 
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="23,18,0,87" ToolTip="Limpiar Formulario" Grid.ColumnSpan="2">
+                Width="100" HorizontalAlignment="Left" Click="NuevoButton_Click" Margin="23,19,0,61" ToolTip="Limpiar Formulario" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/nuevo.png" />
             </Button.Background>
         </Button>
 
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="27,18,0,87" ToolTip="Guardar Suplidor">
+                Width="100" HorizontalAlignment="Left" Click="GuardarButton_Click" Margin="27,19,0,61" ToolTip="Guardar Suplidor">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="False"></Setter>
@@ -183,7 +195,7 @@
         </Button>
 
         <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="1"
-                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="10,18,0,87" ToolTip="Eliminar Suplidor">
+                Width="100" HorizontalAlignment="Left" Click="EliminarButton_Click" Margin="10,19,0,61" ToolTip="Eliminar Suplidor">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" AlignmentX="Left"  ImageSource="/Resources/eliminar.png" />
             </Button.Background>

@@ -23,6 +23,7 @@ namespace ProyectoFinal_PA1.Entidades
 
 		[ForeignKey("Usuarios")]
 		public int UsuariosId { get; set; }
+		public DateTime FechaIngreso { get; set; }
 		public ICollection<Productos> Productos { get; set; }
 
 		public Suplidores()
@@ -36,6 +37,7 @@ namespace ProyectoFinal_PA1.Entidades
 			Celular = string.Empty;
 			Ciudad = string.Empty;
 			Email = string.Empty;
+			FechaIngreso = DateTime.Now;
 			UsuariosId = 0;
 		}
 	}

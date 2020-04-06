@@ -31,12 +31,16 @@ namespace ProyectoFinal_PA1.UI.Registros
         private decimal AplicaPorcentaje;
         private double Porcentaje;
         private decimal Descuento;
+
         Compras compra = new Compras();
         List<Productos> lista = new List<Productos>();
 
         List<Suplidores> lista2 = new List<Suplidores>();
         public List<ComprasDetalle> Detalle { get; set; }
-        public rCompras()
+
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public rCompras(int usuarioId)
         {
             
             InitializeComponent();
@@ -50,10 +54,14 @@ namespace ProyectoFinal_PA1.UI.Registros
             PrecioTextBox.Text = "0";
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             this.DataContext = compra;
             this.Detalle = new List<ComprasDetalle>();
             CargarGrid();
+
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
 
             Cantidad = (Cantidad < 0) ? Cantidad = 0 : Cantidad;
             Precio = (Precio < 0) ? Precio = 0 : Precio;
@@ -106,7 +114,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaDeCompraTimePicker.SelectedDate = DateTime.Now;
-            
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
+
             SubTotal = 0;
             Total = 0;
             Cantidad = 0;
@@ -143,7 +152,8 @@ namespace ProyectoFinal_PA1.UI.Registros
             compras.SubTotal = decimal.Parse(SubTotalTextBox.Text);
             compras.ITBIS = double.Parse(ITBISTextBox.Text);
             compras.Descuento = decimal.Parse(DescuentoTextBox.Text);
-            compras.Total = decimal.Parse(TotalTextBox.Text); 
+            compras.Total = decimal.Parse(TotalTextBox.Text);
+            compras.UsuariosId = int.Parse(UsuarioIdTextBox.Text);
             compras.Detalle = this.Detalle;
 
             return compras;
@@ -161,6 +171,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             Total = compra.Total;
             SubTotalTextBox.Text = Convert.ToString(compra.SubTotal);
             TotalTextBox.Text = Convert.ToString(compra.Total);
+            UsuarioIdTextBox.Text = Convert.ToString(compra.UsuariosId);
 
             this.Detalle = compra.Detalle;
             CargarGrid();
@@ -176,6 +187,12 @@ namespace ProyectoFinal_PA1.UI.Registros
         private bool Validar()
         {
             bool paso = true;
+
+            if (string.IsNullOrEmpty(UsuarioIdTextBox.Text))
+            {
+                paso = false;
+                UsuarioIdTextBox.Focus();
+            }
 
             if (string.IsNullOrEmpty(TotalTextBox.Text))
             {
@@ -323,39 +340,47 @@ namespace ProyectoFinal_PA1.UI.Registros
         }
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
-            Compras compra;
-
-            if (!Validar())
-                return;
-            if (!ValidarSuplidorId(Convert.ToInt32(SuplidorIdTextbox.Text)))
+            try
             {
-                MessageBox.Show("Suplidor Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+                bool paso = false;
+                Compras compra;
 
-            compra = LlenaClase();
-
-            if (string.IsNullOrEmpty(CompraIDTextBox.Text) || CompraIDTextBox.Text == "0")
-                paso = ComprasBLL.Guardar(compra);
-            else
-            {
-                if (!ExisteEnDB())
+                if (!Validar())
+                    return;
+                if (!ValidarSuplidorId(Convert.ToInt32(SuplidorIdTextbox.Text)))
                 {
-                    MessageBox.Show("Persona No Encontrada", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Suplidor Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-                paso = ComprasBLL.Modificar(compra);
+
+                compra = LlenaClase();
+
+                if (string.IsNullOrEmpty(CompraIDTextBox.Text) || CompraIDTextBox.Text == "0")
+                    paso = ComprasBLL.Guardar(compra);
+                else
+                {
+                    if (!ExisteEnDB())
+                    {
+                        MessageBox.Show("Persona No Encontrada", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    paso = ComprasBLL.Modificar(compra);
+                }
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                }
             }
-            if (paso)
+            catch
             {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                MessageBox.Show(" Id no valido!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
-            else
-            {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-            }
+            
         }
 
         private void ElimnarButton_Click(object sender, RoutedEventArgs e)
@@ -398,10 +423,10 @@ namespace ProyectoFinal_PA1.UI.Registros
                 MessageBox.Show(" No encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
+        
         private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
         {
-            cSuplidores consultarSuplidor = new cSuplidores();
+            cSuplidores consultarSuplidor = new cSuplidores(usuarioSiempreActivoId);
             consultarSuplidor.Show();
         }
 
@@ -434,7 +459,7 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
         {
-            cProductos cProducto = new cProductos();
+            cProductos cProducto = new cProductos(usuarioSiempreActivoId);
             cProducto.Show();
         }
     }

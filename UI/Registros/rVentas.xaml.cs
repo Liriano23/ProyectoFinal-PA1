@@ -36,8 +36,12 @@ namespace ProyectoFinal_PA1.UI.Registros
         public List<VentasDetalles> Detalle { get; set; }
         List<Clientes> listaCliente = new List<Clientes>();
         List<Empleados> listaEmpleados = new List<Empleados>();
+        List<Usuarios> listaUsuarios = new List<Usuarios>();
 
-        public rVentas()
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+
+        public rVentas(int usuarioId)
         {
 
             InitializeComponent();
@@ -53,10 +57,14 @@ namespace ProyectoFinal_PA1.UI.Registros
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             this.DataContext = venta;
             this.Detalle = new List<VentasDetalles>();
             CargarGrid();
+
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
 
             Cantidad = 0;
             Precio = 0;
@@ -82,6 +90,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             }
             return paso;
         }
+
         private bool ValidarClienteId(int id)
         {
             listaCliente = ClientesBLL.GetList(p => true);
@@ -97,6 +106,7 @@ namespace ProyectoFinal_PA1.UI.Registros
 
             return paso;
         }
+
         private bool ValidarEmpleadoId(int id)
         {
             listaEmpleados = EmpleadosBLL.GetList(p => true);
@@ -105,6 +115,22 @@ namespace ProyectoFinal_PA1.UI.Registros
             foreach (var item in listaEmpleados)
             {
                 if (item.EmpleadoId == id)
+                {
+                    return paso = true;
+                }
+            }
+
+            return paso;
+        }
+
+        private bool ValidarUsuarioId(int id)
+        {
+            listaUsuarios = UsuariosBLL.GetList(p => true);
+            bool paso = false;
+
+            foreach (var item in listaUsuarios)
+            {
+                if (item.UsuarioId == id)
                 {
                     return paso = true;
                 }
@@ -125,6 +151,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CantidadTextBox.Text = "0";
             TotalTextBox.Text = "0";
             FechaVentaDateTimePicker.SelectedDate = DateTime.Now;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             SubTotal = 0;
             Total = 0;
@@ -164,6 +191,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             ventas.ITBIS = double.Parse(ITBISTextBox.Text);
             ventas.Descuento = decimal.Parse(DescuentoTextBox.Text);
             ventas.Total = decimal.Parse(TotalTextBox.Text);
+            ventas.UsuariosId = int.Parse(UsuarioIdTextBox.Text);
             ventas.Detalle = this.Detalle;
 
             return ventas;
@@ -178,10 +206,13 @@ namespace ProyectoFinal_PA1.UI.Registros
             ITBISTextBox.Text = Convert.ToString(venta.ITBIS);
             DescuentoTextBox.Text = Convert.ToString(venta.Descuento);
 
+
             SubTotal = venta.SubTotal;
             Total = venta.Total;
             SubTotalTextBox.Text = Convert.ToString(venta.SubTotal);
             TotalTextBox.Text = Convert.ToString(venta.Total);
+
+            UsuarioIdTextBox.Text = Convert.ToString(venta.UsuariosId);
 
             this.Detalle = venta.Detalle;
             CargarGrid();
@@ -197,6 +228,12 @@ namespace ProyectoFinal_PA1.UI.Registros
         private bool Validar()
         {
             bool paso = true;
+
+            if (string.IsNullOrEmpty(UsuarioIdTextBox.Text))
+            {
+                paso = false;
+                UsuarioIdTextBox.Focus();
+            }
 
             if (string.IsNullOrEmpty(TotalTextBox.Text))
             {
@@ -348,45 +385,61 @@ namespace ProyectoFinal_PA1.UI.Registros
         }
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
-            Ventas venta;
-
-            if (!ValidarClienteId(Convert.ToInt32(ClienteIdTextbox.Text)))
+            try
             {
-                MessageBox.Show("Cliente Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            if (!ValidarEmpleadoId(Convert.ToInt32(EmpleadoIdTextbox.Text)))
-            {
-                MessageBox.Show("Empleado Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+                
+                bool paso = false;
+                Ventas venta;
 
-            if (!Validar())
-                return;
-
-            venta = LlenaClase();
-
-            if (string.IsNullOrEmpty(VentaIdTextBox.Text) || VentaIdTextBox.Text == "0")
-                paso = VentasBLL.Guardar(venta);
-            else
-            {
-                if (!ExisteEnDB())
+                if (!ValidarClienteId(Convert.ToInt32(ClienteIdTextbox.Text)))
                 {
-                    MessageBox.Show("Persona No Encontrada", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Cliente Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-                paso = VentasBLL.Modificar(venta);
+
+                if (!ValidarEmpleadoId(Convert.ToInt32(EmpleadoIdTextbox.Text)))
+                {
+                    MessageBox.Show("Empleado Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                if (!ValidarUsuarioId(Convert.ToInt32(UsuarioIdTextBox.Text)))
+                {
+                    MessageBox.Show("Usuario Id no valido", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                if (!Validar())
+                    return;
+
+                venta = LlenaClase();
+
+                if (string.IsNullOrEmpty(VentaIdTextBox.Text) || VentaIdTextBox.Text == "0")
+                    paso = VentasBLL.Guardar(venta);
+                else
+                {
+                    if (!ExisteEnDB())
+                    {
+                        MessageBox.Show("Persona No Encontrada", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    paso = VentasBLL.Modificar(venta);
+                }
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                }
             }
-            if (paso)
+            catch
             {
-                MessageBox.Show("Guardado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
+                MessageBox.Show(" Id no valido !!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             }
-            else
-            {
-                MessageBox.Show(" No guardado!!", "Informacion", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-            }
+            
         }
 
         private void ElimnarButton_Click(object sender, RoutedEventArgs e)
@@ -433,7 +486,7 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
         {
-            cSuplidores consultarSuplidor = new cSuplidores();
+            cSuplidores consultarSuplidor = new cSuplidores(usuarioSiempreActivoId);
             consultarSuplidor.Show();
         }
 
@@ -466,19 +519,19 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void ConsultarClienteButton_Click(object sender, RoutedEventArgs e)
         {
-            cClientes cClientes = new cClientes();
+            cClientes cClientes = new cClientes(usuarioSiempreActivoId);
             cClientes.Show();
         }
 
         private void ConsultarEmpleadoButton_Click(object sender, RoutedEventArgs e)
         {
-            cEmpleados cEmpleado = new cEmpleados();
+            cEmpleados cEmpleado = new cEmpleados(usuarioSiempreActivoId);
             cEmpleado.Show();
         }
 
         private void ConsultarProductosButton_Click(object sender, RoutedEventArgs e)
         {
-            cProductos cProducto = new cProductos();
+            cProductos cProducto = new cProductos(usuarioSiempreActivoId);
             cProducto.Show();
         }
     }

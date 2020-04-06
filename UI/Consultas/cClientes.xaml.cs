@@ -19,11 +19,18 @@ namespace ProyectoFinal_PA1.UI.Consultas
     /// </summary>
     public partial class cClientes : Window
     {
-       
-        public cClientes()
+
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public cClientes(int usuarioId)
         {
             InitializeComponent();
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
+            UserActive.Text = ("Usuario activo: " + usuario.NombreUsuario.ToString() + "\nID Usuario activo: " + usuario.UsuarioId.ToString());
+
         }
+
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -44,16 +51,57 @@ namespace ProyectoFinal_PA1.UI.Consultas
                     case 2:
                         listado = ClientesBLL.GetList(x => x.Nombres == CriterioTextBox.Text);
                         break;
+
                     case 3:
+                        listado = ClientesBLL.GetList(x => x.Apellidos == CriterioTextBox.Text);
+                        break;
+
+                    case 4:
                         listado = ClientesBLL.GetList(x => x.Cedula == CriterioTextBox.Text);
                         break;
-                    case 4:
-                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
-                        listado = ClientesBLL.GetList(x => x.FechaIngreso.Date >= fecha.Date && x.FechaIngreso.Date <= fecha.Date);
+
+                    case 5:
+                        listado = ClientesBLL.GetList(x => x.Sexo == CriterioTextBox.Text);
+                        break;
+
+                    case 6:
+                        listado = ClientesBLL.GetList(x => x.Direccion == CriterioTextBox.Text);
+                        break;
+
+                    case 7:
+                        listado = ClientesBLL.GetList(x => x.Telefono == CriterioTextBox.Text);
+                        break;
+
+                    case 8:
+                        listado = ClientesBLL.GetList(x => x.Celular == CriterioTextBox.Text);
+                        break;
+
+                    case 9:
+                        listado = ClientesBLL.GetList(x => x.Email == CriterioTextBox.Text);
+                        break;
+
+                    case 10:
+                        DateTime fechaN = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = ClientesBLL.GetList(x => x.FechaNacimiento.Date >= fechaN.Date && x.FechaIngreso.Date <= fechaN.Date);
+                        break;
+
+                    case 11:
+                        DateTime fechaI = Convert.ToDateTime(CriterioTextBox.Text);
+                        listado = ClientesBLL.GetList(x => x.FechaIngreso.Date >= fechaI.Date && x.FechaIngreso.Date <= fechaI.Date);
+                        break;
+
+                    case 12:
+                        int idU;
+                        idU = int.Parse(CriterioTextBox.Text);
+                        listado = ClientesBLL.GetList(x => x.UsuariosId == idU);
                         break;
                 }
             }
-            else if (FiltrarComboBox.SelectedIndex == 4)
+            else if (FiltrarComboBox.SelectedIndex == 10)
+            {
+                listado = ClientesBLL.GetList(x => x.FechaNacimiento.Date >= DesdeDateTimePicker.SelectedDate && x.FechaNacimiento.Date <= HastaDateTimePicker.SelectedDate);
+            }
+            else if (FiltrarComboBox.SelectedIndex == 11)
             {
                 listado = ClientesBLL.GetList(x => x.FechaIngreso.Date >= DesdeDateTimePicker.SelectedDate && x.FechaIngreso.Date <= HastaDateTimePicker.SelectedDate);
             }
@@ -64,5 +112,6 @@ namespace ProyectoFinal_PA1.UI.Consultas
             ConsultarDataGrid.ItemsSource = null;
             ConsultarDataGrid.ItemsSource = listado;
         }
+
     }
 }

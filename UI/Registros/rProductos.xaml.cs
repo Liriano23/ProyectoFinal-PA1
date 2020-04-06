@@ -23,15 +23,22 @@ namespace ProyectoFinal_PA1.UI.Registros
         Productos producto = new Productos();
         List<Suplidores> lista = new List<Suplidores>();
         List<Categorias> lista2 = new List<Categorias>();
-        public rProductos()
+
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public rProductos(int usuarioId)
         {
             InitializeComponent();
-            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
+            
             FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             ProductoIdTextBox.Text = "0";
             PrecioDeCompraTextBox.Text = "0";
             PrecioDeVentaTextBox.Text = "0";
             this.DataContext = producto;
+            UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
+
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
         }
         
         private bool ValidarSuplidorId(int id)
@@ -282,13 +289,13 @@ namespace ProyectoFinal_PA1.UI.Registros
 
         private void ConsultarSuplidorButton_Click(object sender, RoutedEventArgs e)
         {
-            cSuplidores consultarSuplidor = new cSuplidores();
+            cSuplidores consultarSuplidor = new cSuplidores(usuarioSiempreActivoId);
             consultarSuplidor.Show();
         }
 
         private void ConsultarCategoriaeButton_Click(object sender, RoutedEventArgs e)
         {
-            cCategorias consultarCategoria = new cCategorias();
+            cCategorias consultarCategoria = new cCategorias(usuarioSiempreActivoId);
             consultarCategoria.Show();
         }
     }

@@ -18,14 +18,14 @@
             <RowDefinition Height="289"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,0,0,46">
-            <Label Content="CategotriaId:" Style="{StaticResource Labels}"/>
-            <Label Content="Nombre Categoria: " Style="{StaticResource Labels}"/>
-
-            <Label Content="Usuario Id:" Style="{StaticResource Labels}" Width="118" Margin="0,10"></Label>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,0,0,11">
+            <Label Content="CategotriaId:" Style="{StaticResource Labels}" Width="118" />
+            <Label Content="Nombre Categoria: " Style="{StaticResource Labels}" Width="118" Margin="0,2"/>
+            <Label Content="Fecha Ingreso: "  Style="{StaticResource Labels}" Width="118" Margin="0,2"/>
+            <Label Content="Usuario Id:" Style="{StaticResource Labels}" Width="118" Margin="0,2"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,0,0,45"  >
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,0,0,11"  >
 
             <TextBox x:Name="CategoriaIdTextBox" Margin="0,5" Style="{StaticResource TextBoxValidation}" ToolTip="ID Tienen que ser igual a 0" Width="149">
                 <TextBox.Text>
@@ -49,7 +49,17 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBox x:Name="UsuarioIdTextBox" Margin="0,10" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese su Usuario Id">
+            <DatePicker x:Name="FechaIngresoDateTimePicker" Margin="0,4" ToolTip="Aqui va la fecha de ingreso al sistema de la categoria">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaIngreso" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+            <TextBox x:Name="UsuarioIdTextBox" Margin="0,4" Style="{StaticResource TextBoxValidation}" ToolTip="Ingrese su Usuario Id">
                 <TextBox.Text>
                     <Binding Path="UsuariosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

@@ -19,9 +19,15 @@ namespace ProyectoFinal_PA1.UI.Consultas
     /// </summary>
     public partial class cVentas : Window
     {
-        public cVentas()
+        public static int usuarioSiempreActivoId;
+        Usuarios usuario = new Usuarios();
+        public cVentas(int usuarioId)
         {
             InitializeComponent();
+            usuarioSiempreActivoId = usuarioId;
+            usuario = UsuariosBLL.Buscar(usuarioSiempreActivoId);
+            UserActive.Text = ("Usuario activo: " + usuario.NombreUsuario.ToString() + "\nID Usuario activo: " + usuario.UsuarioId.ToString());
+
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +61,12 @@ namespace ProyectoFinal_PA1.UI.Consultas
                     case 4:
                         DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
                         listado = VentasBLL.GetList(x => x.FechaEmision.Date >= fecha.Date && x.FechaEmision.Date <= fecha.Date);
+                        break;
+
+                    case 5:
+                        int idU;
+                        idU = int.Parse(CriterioTextBox.Text);
+                        listado = VentasBLL.GetList(x => x.UsuariosId == idU);
                         break;
                 }
             }

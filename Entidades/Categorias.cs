@@ -14,6 +14,7 @@ namespace ProyectoFinal_PA1.Entidades
 
         [ForeignKey("Usuarios")]
         public int UsuariosId { get; set; }
+        public DateTime FechaIngreso { get; set; }
         public ICollection<Productos> Productos { get; set; }
 
 
@@ -22,6 +23,7 @@ namespace ProyectoFinal_PA1.Entidades
             CategoriaId = 0;
             NombreCategoria = string.Empty;
             UsuariosId = 0;
+            FechaIngreso = DateTime.Now;
         }
     }
 }

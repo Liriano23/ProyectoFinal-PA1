@@ -43,7 +43,8 @@ namespace ProyectoFinal_PA1.Migrations
                     SubTotal = table.Column<decimal>(nullable: false),
                     ITBIS = table.Column<double>(nullable: false),
                     Descuento = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
+                    Total = table.Column<decimal>(nullable: false),
+                    UsuariosId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +58,8 @@ namespace ProyectoFinal_PA1.Migrations
                     CategoriaId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     NombreCategoria = table.Column<string>(nullable: true),
-                    UsuariosId = table.Column<int>(nullable: false)
+                    UsuariosId = table.Column<int>(nullable: false),
+                    FechaIngreso = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,17 +113,17 @@ namespace ProyectoFinal_PA1.Migrations
                     ITBIS = table.Column<double>(nullable: false),
                     Descuento = table.Column<decimal>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
-                    UsuariosUsuarioId = table.Column<int>(nullable: true)
+                    UsuariosId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Compras", x => x.CompraId);
                     table.ForeignKey(
-                        name: "FK_Compras_Usuarios_UsuariosUsuarioId",
-                        column: x => x.UsuariosUsuarioId,
+                        name: "FK_Compras_Usuarios_UsuariosId",
+                        column: x => x.UsuariosId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,7 +170,8 @@ namespace ProyectoFinal_PA1.Migrations
                     Celular = table.Column<string>(nullable: true),
                     Ciudad = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    UsuariosId = table.Column<int>(nullable: false)
+                    UsuariosId = table.Column<int>(nullable: false),
+                    FechaIngreso = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -269,7 +272,7 @@ namespace ProyectoFinal_PA1.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Cedula", "Celular", "Contrasena", "Direccion", "Email", "FechaIngreso", "NombreUsuario", "Nombres", "Sexo", "Telefono", "TipoUsuario" },
-                values: new object[] { 1, "Admin", "88888888888", "8888888888", "Admin", "SFM", "admin123@gmail.com", new DateTime(2020, 4, 3, 20, 10, 34, 741, DateTimeKind.Local).AddTicks(9682), "Admin", "Admin", "Femenino", "8888888888", "Administrador" });
+                values: new object[] { 1, "Admin", "88888888888", "8888888888", "Admin", "SFM", "admin123@gmail.com", new DateTime(2020, 4, 5, 21, 59, 14, 321, DateTimeKind.Local).AddTicks(1491), "Admin", "Admin", "Femenino", "8888888888", "Administrador" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categorias_UsuariosId",
@@ -282,9 +285,9 @@ namespace ProyectoFinal_PA1.Migrations
                 column: "UsuariosId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Compras_UsuariosUsuarioId",
+                name: "IX_Compras_UsuariosId",
                 table: "Compras",
-                column: "UsuariosUsuarioId");
+                column: "UsuariosId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalle_CompraId",

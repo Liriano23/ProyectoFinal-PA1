@@ -5,39 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal_PA1.UI.Consultas"
         mc:Ignorable="d"
-       Title="Consultar Suplidor"  Height="500" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+       Title="Consultar Suplidor"  Height="500" Width="1100" Background="LightGray" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Fecha Desde" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <DatePicker x:Name="DesdeDateTimePicker"  Height="34" Grid.Row="1" Grid.Column ="0" VerticalAlignment="Top" HorizontalAlignment="Left"></DatePicker>
-        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1"></TextBlock>
+        <TextBlock Text="Fecha Hasta" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <DatePicker x:Name="HastaDateTimePicker"  Height="34" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" ></DatePicker>
 
-        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" ></TextBlock>
+        <TextBlock Text="Filtrar" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <ComboBox Name="FiltrarComboBox" Height="34" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top">
-            <ComboBoxItem Content="TODO"></ComboBoxItem>
-            <ComboBoxItem Content="ID"></ComboBoxItem>
-            <ComboBoxItem Content="Nombre Suplidor"></ComboBoxItem>
-            <ComboBoxItem Content="Nombre Compañia"></ComboBoxItem>
-            <ComboBoxItem Content="Fecha Ingreso"></ComboBoxItem>
+            <ComboBoxItem Content="TODO"/>
+            <ComboBoxItem Content="Suplidor Id"/>
+            <ComboBoxItem Content="Nombre Suplidor"/>
+            <ComboBoxItem Content="Apellidos Suplidor"/>
+            <ComboBoxItem Content="Nombre Compañia"/>
+            <ComboBoxItem Content="Direccion"/>
+            <ComboBoxItem Content="Telefono"/>
+            <ComboBoxItem Content="Celular"/>
+            <ComboBoxItem Content="Ciudad"/>
+            <ComboBoxItem Content="Email"/>
+            <ComboBoxItem Content="Fecha Ingreso"/>
+            <ComboBoxItem Content="Usuario Id"/>
         </ComboBox>
 
-        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3"></TextBlock>
+        <TextBlock Text="Criterio" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <TextBox Name="CriterioTextBox" Grid.Column="3" BorderBrush="Black" Grid.Row="1" VerticalAlignment="Top" Height="34"></TextBox>
+        <TextBox x:Name="UserActive"  IsReadOnly="True" Grid.Row="0" Grid.Column="4" BorderBrush="Black" />
 
         <Button Name="ConsultarButton" Height="34" Width="146"
                HorizontalContentAlignment="Right" Grid.Row="1" 
@@ -49,7 +57,15 @@
             Consultar
         </Button>
 
-        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-36,-134">
+        <DataGrid Name="ConsultarDataGrid" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="0" Margin="0,0,-330,-227" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.115"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.998"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Suplidor Id" Binding="{Binding SuplidorId}"/>
                 <DataGridTextColumn Header="NombreSuplidor" Binding="{Binding NombreSuplidor}"/>
@@ -60,9 +76,10 @@
                 <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
                 <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Fecha Ingreso" Binding="{Binding FechaIngreso}"/>
                 <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuariosId}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
     </Grid>
 </Window>

@@ -27,6 +27,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             this.DataContext = suplidor;
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
             SuplidorIdTextBox.Text = "0";
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
         }
         private bool ExisteEnDB()
         {
@@ -73,6 +74,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CelularTextBox.Text = suplidores.Celular;
             EmailTextBox.Text = suplidores.Email;
             CiudadTextBox.Text = suplidores.Ciudad;
+            FechaIngresoDateTimePicker.SelectedDate = suplidores.FechaIngreso;
             UsuarioIdTextBox.Text = Convert.ToString(suplidores.UsuariosId);
         }
         public static bool CedulaValida(string cedula)
@@ -98,6 +100,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             CelularTextBox.Clear();
             EmailTextBox.Clear();
             CiudadTextBox.Clear();
+            FechaIngresoDateTimePicker.SelectedDate = DateTime.Now;
             UsuarioIdTextBox.Text = (MainWindow.usuarioSiempreActivoId.ToString());
 
             Suplidores suplidor = new Suplidores();
@@ -107,6 +110,12 @@ namespace ProyectoFinal_PA1.UI.Registros
         private bool Validar()
         {
             bool paso = true;
+
+            if (string.IsNullOrEmpty(FechaIngresoDateTimePicker.Text))
+            {
+                paso = false;
+                FechaIngresoDateTimePicker.Focus();
+            }
 
             if (string.IsNullOrEmpty(CiudadTextBox.Text))
             {

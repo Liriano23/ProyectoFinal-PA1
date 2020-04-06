@@ -22,6 +22,9 @@ namespace ProyectoFinal_PA1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("FechaIngreso")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NombreCategoria")
                         .HasColumnType("TEXT");
 
@@ -105,12 +108,12 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuariosUsuarioId")
+                    b.Property<int>("UsuariosId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CompraId");
 
-                    b.HasIndex("UsuariosUsuarioId");
+                    b.HasIndex("UsuariosId");
 
                     b.ToTable("Compras");
                 });
@@ -260,6 +263,9 @@ namespace ProyectoFinal_PA1.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("FechaIngreso")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NombreCompania")
                         .HasColumnType("TEXT");
 
@@ -335,7 +341,7 @@ namespace ProyectoFinal_PA1.Migrations
                             Contrasena = "Admin",
                             Direccion = "SFM",
                             Email = "admin123@gmail.com",
-                            FechaIngreso = new DateTime(2020, 4, 3, 20, 10, 34, 741, DateTimeKind.Local).AddTicks(9682),
+                            FechaIngreso = new DateTime(2020, 4, 5, 21, 59, 14, 321, DateTimeKind.Local).AddTicks(1491),
                             NombreUsuario = "Admin",
                             Nombres = "Admin",
                             Sexo = "Femenino",
@@ -370,6 +376,9 @@ namespace ProyectoFinal_PA1.Migrations
 
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuariosId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("VentaId");
 
@@ -423,7 +432,9 @@ namespace ProyectoFinal_PA1.Migrations
                 {
                     b.HasOne("ProyectoFinal_PA1.Entidades.Usuarios", null)
                         .WithMany("Compras")
-                        .HasForeignKey("UsuariosUsuarioId");
+                        .HasForeignKey("UsuariosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProyectoFinal_PA1.Entidades.ComprasDetalle", b =>
