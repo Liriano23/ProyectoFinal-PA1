@@ -334,7 +334,7 @@ namespace ProyectoFinal_PA1.UI.Registros
             AumentarTotal();
             int valor = Convert.ToInt32(CantidadTextBox.Text);
             int id = Convert.ToInt32(ProductoIdTextBox.Text);
-            ProductosBLL.AumentarInventario(id, valor);
+            ProductosBLL.DisminuirInventario(id, valor);
 
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
